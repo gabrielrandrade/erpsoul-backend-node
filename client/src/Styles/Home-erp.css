@@ -1,0 +1,328 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{ 
+    --bc: #050538;
+    --bctr: rgba(5, 5, 56, 0.5);
+    --fc-primary: #00968F;
+    --fct-primary: rgba(0, 255, 244, 0.5);
+    --fc-secondary:#00FFF4;
+    --fct-secondary: rgba(0, 255, 244, 0.5);
+    --fc-secondary2: #cecccc;
+    --fct-secondary2:rgba(206, 204, 204, 0.5);
+    --fc-paragraphs: white;
+    --fs-paragraphs: 25px;
+}
+
+@media only screen and (max-width: 290px){body{display: none}}
+
+/* Tela Mobile */
+@media only screen and (max-width: 1023.99px){
+    .bodyGeral{
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'Itim';
+    }
+
+    .bodyGeral, .mainGeral, .mainGeral .pai, .mainGeral .boxes, .mainGeral .boxes .box, .mainGeral .ajuda{background-color: var(--bc)}
+
+    .pageGeral{
+        width: 90%;
+        margin-left: 7%;
+    }
+
+    .pageGeral, .mainGeral, .mainGeral .pai, .mainGeral .boxes, .mainGeral .boxes .box, .mainGeral .ajuda{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainGeral, .mainGeral .pai, .mainGeral .boxes, .mainGeral .boxes .box, .mainGeral .ajuda{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mainGeral .boxes .box{
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        background-color: var(--fct-secondary);
+    }
+
+    .mainGeral .boxes .box, .mainGeral .boxes .box img{margin: 10px}
+
+    .mainGeral .boxes .box, .mainGeral .ajuda{text-align: center}
+
+    .mainGeral .boxes .box a, .mainGeral .ajuda .para1 a{text-decoration: none}
+
+    .mainGeral .boxes .box a, hr, .mainGeral .ajuda .para1 a, .mainGeral .ajuda p{color: var(--fc-paragraphs)}
+
+    .mainGeral .boxes .box img{width: 50%}
+
+    hr{width: 80%}
+
+    hr, .mainGeral .ajuda .para2{margin: 10px 0 10px 0}
+
+    .mainGeral .ajuda img{
+        width: 100px;
+        height: 70px;
+    }
+
+    .mainGeral .ajuda p{font-size: 17px}
+}
+
+/* Tela Tablet */
+@media only screen and (min-width: 570px) and (max-width: 1023.99px){
+    .mainGeral .boxes{
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .mainGeral .boxes .box{
+        width: 211px;
+        height: 211px;
+    }
+
+    .mainGeral .boxes .box img{width: 60%}
+
+    hr{width: 90%}
+
+    .mainGeral .ajuda .para1{
+        margin: 10px 0 -45px -250px;
+        text-align: right;
+    }
+
+    .mainGeral .ajuda .para2{margin: -40px -250px 10px 0}
+}
+
+/* Tela Desktop - Pequeno */
+@media only screen and (min-width: 768px) and (max-width: 1023.99px){
+    hr{width: 100%}
+
+    .mainGeral .boxes .box:hover{
+        transform: scale(1.2);
+        background-color: var(--fct-secondary2);
+    }
+
+    .mainGeral .ajuda img{
+        width: 110px;
+        height: 90px;
+    }
+
+    .mainGeral .ajuda p{font-size: 19px}
+    
+    .mainGeral .ajuda .para1 a:hover{color: var(--fc-primary)}
+}
+
+/* Tela Desktop - Médio */
+@media only screen and (min-width: 1024px) and (max-width:1379.99px){
+    .bodyGeral{
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'Itim';
+        background-color: var(--bc);
+    }
+
+    hr{
+        width: 80%;
+        color: var(--fc-paragraphs);
+    }
+
+    .logo-topo, .boxes, .box, .box1, .ajuda, .para1, .para2, .rodape, .sociais, .social, .texto-rodape{float: left}
+
+    .pageGeral{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+    }
+    
+    .mainGeral{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: var(--bc);
+    }
+
+    .mainGeral .pai{
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .mainGeral .boxes{
+        width: 70%;
+        margin: auto;       
+        margin-bottom: 2%;
+    }
+    
+    .mainGeral .boxes .box{
+        width: 250px;
+        height: 250px;
+        margin: 1rem;
+        border-radius: 8%;
+        text-align: center;
+        background-color: var(--fct-secondary);
+    }
+
+    .mainGeral .boxes .box:hover{
+        transform: scale(1.2);
+        background-color: var(--fct-secondary2);
+    }
+    
+    .mainGeral .boxes .box a{
+        text-decoration: none;
+        color: var(--fc-paragraphs);
+    }
+    
+    .mainGeral .boxes .box img{
+        width: 55%;
+        margin: 30px;
+    }
+
+    .mainGeral .ajuda{
+        width: 70%;
+        height: 90px;
+        margin: 0 0 30px 27%;
+    }
+
+    .mainGeral .ajuda img{
+        width: 15%;
+        height: 90px;
+        float: left;
+        margin-top: 2%;
+    }
+
+    .mainGeral .ajuda p{
+        float: left;
+        font-size: 20px;
+        color: var(--fc-paragraphs);
+    }
+
+    .mainGeral .ajuda .para1{
+        margin-top: 25px;
+        text-align: right;
+    }
+
+    .mainGeral .ajuda .para1 a{
+        text-decoration: none;
+        color: var(--fc-paragraphs);
+    }
+
+    .mainGeral .ajuda .para1 a:hover{color: var(--fc-primary)}
+
+    .mainGeral .ajuda .para2{margin: 60px 0 0 10px}
+}
+
+/* Tela Desktop - Largo */
+@media only screen and (min-width: 1380px){
+    .bodyGeral{
+        overflow: hidden;
+        font-family: 'Itim';
+        background-color: var(--bc);
+    }
+
+    hr{
+        width: 80%;
+        margin-left: 10%;
+        color: var(--fc-paragraphs);
+    }
+
+    .logo-topo, .boxes, .box, .box1, .ajuda, .para1, .para2, .rodape, .sociais, .social, .texto-rodape{float: left}
+
+    .pageGeral{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+    }
+    
+    .mainGeral{
+        width: 100%;
+        margin-top: 50px;
+        background-color: var(--bc);
+    }
+
+    .mainGeral .pai{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainGeral .boxes{
+        width: 50%;
+        margin:auto;       
+        margin-bottom: 2%;
+        justify-content: center;
+    }
+    
+    .mainGeral .boxes .box{
+        width: 250px;
+        height: 250px;
+        margin: 1rem;
+        border-radius: 8%;
+        text-align: center;
+        background-color: var(--fct-secondary);
+    }
+
+    .mainGeral .boxes .box:hover{
+        transform: scale(1.2);
+        background-color: var(--fct-secondary2);
+    }
+    
+    .mainGeral .boxes .box a{
+        text-decoration: none;
+        flex-direction: column;
+        color: var(--fc-paragraphs);
+    }
+    
+    .mainGeral .boxes .box img{
+        width: 55%;
+        margin: 30px;
+    }
+
+    .mainGeral .boxes .box1 img{
+        width: 55%;
+        margin: 30px;
+    }
+
+    .mainGeral .ajuda{
+        width: 70%;
+        height: 90px;
+        margin: 0 0 40px 37%;
+    }
+
+    .mainGeral .ajuda img{
+        width: 10%;
+        height: 90px;
+        float: left;
+        margin-top: 2%;
+    }
+
+    .mainGeral .ajuda p{
+        float: left;
+        font-size: 20px;
+        color: var(--fc-paragraphs);
+    }
+
+    .mainGeral .ajuda .para1{
+        margin-top: 25px;
+        text-align: right;
+    }
+
+    .mainGeral .ajuda .para1 a{
+        text-decoration: none;
+        color: var(--fc-paragraphs);
+    }
+
+    .mainGeral .ajuda .para1 a:hover{color: var(--fc-primary)}
+
+    .mainGeral .ajuda .para2{margin: 60px 0 0 10px}
+}

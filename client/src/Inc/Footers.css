@@ -1,0 +1,33 @@
+.footerGeral, .footerGeral .rodape, .footerGeral .rodape .texto-rodape{width: 100%}
+
+.footerGeral, .footerGeral .rodape{
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bc)
+}
+
+.footerGeral .rodape .sociais{width: 50%}
+
+.footerGeral .rodape .sociais, .footerGeral .rodape .texto-rodape{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footerGeral .rodape .sociais .social a{font-size: 30px}
+
+.footerGeral .rodape .sociais .social a, .footerGeral .rodape .texto-rodape p{color: var(--bc-secondary)}
+
+.footerGeral .rodape .sociais .social a:hover, .footerGeral .rodape .texto-rodape a p:hover{color: var(--fc-primary)}
+
+.footerGeral .rodape .texto-rodape{
+    flex-direction: column;
+    text-align: center;
+}
+
+.footerGeral .rodape .texto-rodape a{width: auto}
+
+@media only screen and (max-width: 570px){.footerGeral .rodape .texto-rodape{font-size: 13px}}
