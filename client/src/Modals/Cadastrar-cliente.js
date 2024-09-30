@@ -33,7 +33,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                 position: "center",
                 showConfirmButton: false,
                 timer: 2000,
-                timerProgressBar: true,
+                timerProgressBar: true
             });
             Toast.fire({
                 icon: "error",
@@ -78,13 +78,15 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
             });
         } else {
             formData.id_tipo_cliente = cpfOuCnpj.length === 11 ? "1" : "2";
+            const token = localStorage.getItem("token");
 
             fetch("http://localhost:5000/api/cadastro-cliente", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${ token }`,
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(formData)
             })
             .then((response) => response.json())
             .then((data) => {
@@ -93,7 +95,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                         position: "center",
                         showConfirmButton: false,
                         timer: 2000,
-                        timerProgressBar: true,
+                        timerProgressBar: true
                     });
                     Toast.fire({
                         icon: "error",
@@ -181,7 +183,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="date" id="dt_nasc" name="dt_nasc" placeholder="Data de Nasc" required onChange={ handleChange } />
+                                    <input type="date" id="dt_nasc" name="dt_nasc" required onChange={ handleChange } />
                                 </div>
                             </div>
                         </div>

@@ -8,10 +8,21 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
 
     useEffect(() => {
         if (isOpenClientesCadastrados) {
-            fetch("http://localhost:5000/api/clientes")
-                .then((response) => response.json())
-                .then((data) => setClientes(data))
-                .catch((error) => console.error("Erro ao buscar dados:", error));
+            const token = localStorage.getItem("token");
+
+            fetch("http://localhost:5000/api/clientes", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${ token }` }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.length === 0) {
+                    setClientes([]);
+                } else {
+                    setClientes(data);
+                }
+            })
+            .catch((error) => console.error("Erro ao buscar dados:", error));
         }
     }, [isOpenClientesCadastrados]);
 
@@ -170,94 +181,100 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                                 <th>Nome</th>
                                 <th>CPF/CNPJ</th>
                             </tr>
-                           
-                            { clientes.map((cliente, index) => (
-                                <tr key={ index }>
-                                    <td>{ cliente.id_cliente }</td>
-                                    { editandoId === cliente.id_cliente ? (
-                                        <>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    id="nome"
-                                                    name="nome"
-                                                    value={ editandoDados.nome }
-                                                    maxLength={ 50 }
-                                                    required
-                                                    onChange={ handleInputChange }
-                                                    style={{
-                                                        height: "25px",
-                                                        color: "#040438"
-                                                    }}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input 
-                                                    type="text"
-                                                    id="cpfOuCnpj"
-                                                    name="cpfOuCnpj" 
-                                                    value={ editandoDados.cpfOuCnpj } 
-                                                    maxLength={ 14 }
-                                                    required
-                                                    onChange={ handleInputChange }
-                                                    style={{
-                                                        height: "25px",
-                                                        color: "#040438"
-                                                    }}
-                                                />
-                                            </td>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <td>{ cliente.nome }</td>
-                                            <td>{ cliente.cpf || cliente.cnpj }</td>
-                                        </>
-                                    )}
-                                    { editandoId === cliente.id_cliente ? (
-                                        <>
-                                            <button
-                                                    onClick={ () => saveEdit(cliente.id_cliente) }
-                                                    style={{
-                                                        padding: "2px",
-                                                        marginTop: "10px",
-                                                        marginLeft: "3px",
-                                                        color: "#040438"
-                                                    }}
-                                            >
-                                                Salvar
-                                            </button>
-                                            <button
-                                                    onClick={ cancelEdit }
-                                                    style={{
-                                                        padding: "2px",
-                                                        marginTop: "10px",
-                                                        marginLeft: "3px",
-                                                        color: "#040438"
-                                                    }}
-                                            >
-                                                Cancelar
-                                            </button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <td>
-                                                <i 
-                                                    className="fa-solid fa-pen"
-                                                    onClick={ () => startEdit(cliente) } 
-                                                    style={{ cursor: "pointer" }}>
-                                                </i>
-                                            </td>
-                                            <td>
-                                                <i 
-                                                    className="fa-solid fa-trash" 
-                                                    onClick={ () => updateToInactive(cliente.id_cliente) } 
-                                                    style={{ cursor: "pointer" }}>
-                                                </i>
-                                            </td>
-                                        </>
-                                    )}
+
+                            {clientes.length === 0 ? (
+                                <tr>
+                                    <td colSpan="3">Não há clientes cadastrados.</td>
                                 </tr>
-                            ))}
+                            ) : (
+                                clientes.map((cliente, index) => (
+                                    <tr key={ index }>
+                                        <td>{ cliente.id_cliente }</td>
+                                        { editandoId === cliente.id_cliente ? (
+                                            <>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        id="nome"
+                                                        name="nome"
+                                                        value={ editandoDados.nome }
+                                                        maxLength={ 50 }
+                                                        required
+                                                        onChange={ handleInputChange }
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input 
+                                                        type="text"
+                                                        id="cpfOuCnpj"
+                                                        name="cpfOuCnpj" 
+                                                        value={ editandoDados.cpfOuCnpj } 
+                                                        maxLength={ 14 }
+                                                        required
+                                                        onChange={ handleInputChange }
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    />
+                                                </td>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td>{ cliente.nome }</td>
+                                                <td>{ cliente.cpf || cliente.cnpj }</td>
+                                            </>
+                                        )}
+                                        { editandoId === cliente.id_cliente ? (
+                                            <>
+                                                <button
+                                                        onClick={ () => saveEdit(cliente.id_cliente) }
+                                                        style={{
+                                                            padding: "2px",
+                                                            marginTop: "10px",
+                                                            marginLeft: "3px",
+                                                            color: "#040438"
+                                                        }}
+                                                >
+                                                    Salvar
+                                                </button>
+                                                <button
+                                                        onClick={ cancelEdit }
+                                                        style={{
+                                                            padding: "2px",
+                                                            marginTop: "10px",
+                                                            marginLeft: "3px",
+                                                            color: "#040438"
+                                                        }}
+                                                >
+                                                    Cancelar
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td>
+                                                    <i 
+                                                        className="fa-solid fa-pen"
+                                                        onClick={ () => startEdit(cliente) } 
+                                                        style={{ cursor: "pointer" }}>
+                                                    </i>
+                                                </td>
+                                                <td>
+                                                    <i 
+                                                        className="fa-solid fa-trash" 
+                                                        onClick={ () => updateToInactive(cliente.id_cliente) } 
+                                                        style={{ cursor: "pointer" }}>
+                                                    </i>
+                                                </td>
+                                            </>
+                                        )}
+                                    </tr>
+                                ))
+                            )}
                         </table>
                     </div>  
                     <div className="botao-form">

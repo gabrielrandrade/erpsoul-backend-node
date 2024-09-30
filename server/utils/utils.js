@@ -89,4 +89,4 @@ module.exports = {
     encrypt,
     isValidCpfCnpj,
     isValidDate
-};
+}

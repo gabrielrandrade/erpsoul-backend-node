@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default function TesteGratis({ isOpenTesteGratis, setCloseModal }) {
+export default function TesteGratis({ isOpenTesteGratis }) {
     const [formData, setFormData] = useState({
         nome: "",
         email: "",
@@ -232,7 +232,6 @@ export default function TesteGratis({ isOpenTesteGratis, setCloseModal }) {
                         title: "Usuário cadastrado com sucesso!"
                     });
                     localStorage.setItem("token", data.token);
-                    setCloseModal();
                     navigate("/home-gratuito");
                 } else {
                     const Toast = Swal.mixin({

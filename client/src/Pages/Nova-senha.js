@@ -13,6 +13,18 @@ const NovaSenha = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            Swal.fire({
+                title: "Link inválido!",
+                color: "#050538",
+                confirmButtonColor: "#00968F"
+            }).then(() => {
+                navigate("/home-gratuito");
+            });
+        }
+        
         const params = new URLSearchParams(window.location.search);
         const idRecFromUrl = params.get("idRec");
 
@@ -97,7 +109,19 @@ const NovaSenha = () => {
                         confirmButtonColor: "#00968F"
                     });
                 } else if (data.mensagem === "Senha alterada com sucesso!") {
-                    navigate("/senha-sucesso");
+                    Swal.fire({
+                        title: "Senha alterada com sucesso!",
+                        text: "Estamos redirecionando você para a página de login.",
+                        icon: "success",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F",
+                        timer: 5000,
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        willClose: () => {
+                            navigate("/", { state: { showLoginModal: true } });
+                        }
+                    });
                 } else {
                     Swal.fire({
                         title: "ERRO - não foi possível alterar a senha!",
@@ -115,7 +139,7 @@ const NovaSenha = () => {
                 });
             });
         }
-    };
+    }
 
     const styles = {
         headerGeral: {

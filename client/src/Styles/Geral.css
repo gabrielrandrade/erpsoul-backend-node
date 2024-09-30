@@ -147,33 +147,6 @@ button{
         background-color: var(--fc-primary);
     }
 
-    /* CSS da página senha-sucesso */
-    .interna .central .senha-sucesso, .interna .central .senha-sucesso .btn-sucesso{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .interna .central .senha-sucesso i{
-        font-size: 120px;
-        margin-top: 35px;
-    }
-
-    .interna .central .senha-sucesso .bloco-sucesso{margin-top: 20px}
-
-    .interna .central .senha-sucesso .btn-sucesso{margin: 10px 0 40px 0}
-
-    .interna .central .senha-sucesso .btn-sucesso .inicio-btn{
-        width: 150px;
-        padding: 20px;
-        border-radius: 40px;
-        border: 2px solid #000;
-        color: #fff;
-        background-color: var(--fc-primary);
-    }
-
     /* CSS da página pagamento */
     .interna .central .bem-vindo, .interna .central .bem-vindo .bem-vindo-txt, .interna .central .escolha, .interna .central .escolha p, .interna .central .pagamento, .interna .central .pagamento .formulario, .interna .central .pagamento .formulario form .btn{width: 100%}
 
@@ -252,6 +225,7 @@ button{
         z-index: 10;
         transition: var(--transition);
         background-color: var(--bctr);
+        animation-duration: 0.3s;
     }
 
     .interna .central .modal-container{
@@ -263,6 +237,7 @@ button{
         position: relative;
         box-shadow: var(--box-shadow2);
         background-color: var(--bc-secondary);
+        animation: zoom-in 0.3s ease-out forwards;
     }
 
     .interna .central .modal-container h1{padding-bottom: 10px}
@@ -397,8 +372,6 @@ button{
     .interna .central .container-modal .modal-btn:hover{background-color: var(--bc)}
 
     .interna .central .ajuda .para1 a:hover{color: var(--fc-primary)}
-
-    .interna .central .senha-sucesso .btn-sucesso .inicio-btn:hover{background-color: var(--bc)}
 
     .interna .central .formulario .botao-form .botao:hover{background-color: #050538}
     
@@ -607,6 +580,7 @@ button{
         visibility: visible;
         z-index: 10;
         transition: var(--transition);
+        animation-duration: 0.3s;
     }
 
     .interna .central .modal-container{
@@ -618,6 +592,7 @@ button{
         place-items: center;
         position: relative;
         box-shadow: var(--box-shadow2);
+        animation: zoom-in 0.3s ease-out forwards;
     }
 
     .interna .central .modal-container h1{padding: 1.5rem}
@@ -1029,31 +1004,6 @@ button{
         color: var(--fc-paragraphs)
     }
 
-    .interna .central .senha-sucesso{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .interna .central .senha-sucesso i{
-        font-size: 120px;
-        margin-top: 60px;
-    }
-
-    .interna .central .senha-sucesso .bloco-sucesso{margin-top: 27px}
-
-    .interna .central .senha-sucesso .btn-sucesso .inicio-btn{
-        width: 200px;
-        height: 60px;
-        margin-bottom: 60px;
-        border: 2px solid #000;
-        border-radius: 20px;
-        background-color: var(--fc-primary);
-    }
-
-    .interna .central .senha-sucesso .btn-sucesso .inicio-btn:hover{background-color: var(--bc)}
-
     .interna .container .formulario{
         width: 90%;
         margin: auto;
@@ -1153,5 +1103,33 @@ button{
     .interna .ajuda .para2{
         margin-top: 45.5px;
         margin-left: 10px;
+    }
+}
+
+/* Animações */
+@keyframes zoom-in {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+}
+
+.zoom-out {
+    transition: var(--transition);
+    animation-duration: 0.3s;
+    animation: zoom-out 0.3s ease-in-out forwards;
+}
+
+@keyframes zoom-out {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
     }
 }

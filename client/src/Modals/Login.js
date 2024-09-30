@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default function Login({ isOpenLogin,  setCloseModal }) {
+export default function Login({ isOpenLogin }) {
     const [formData, setFormData] = useState({
         email: "",
         senha: ""
@@ -44,12 +44,14 @@ export default function Login({ isOpenLogin,  setCloseModal }) {
                 title: "Credenciais inválidas!"
             });
         } else {
+            const conectado = document.getElementById("conectado").checked;
+
             fetch("http://localhost:5000/api/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, conectado }),
             })
             .then(async (response) => {
                 const data = await response.json();
@@ -84,7 +86,6 @@ export default function Login({ isOpenLogin,  setCloseModal }) {
                         title: "Usuário logado com sucesso!"
                     });
                     localStorage.setItem("token", data.token);
-                    setCloseModal();
                     navigate("/home-gratuito");
                 } else {
                     Swal.fire({
@@ -119,7 +120,7 @@ export default function Login({ isOpenLogin,  setCloseModal }) {
                             </div>
                             <div className="row">
                                 <div className="col-12">
-                                    <input className="check-box" type="checkbox" id="conectado" name="conectado" value="1" />
+                                    <input className="check-box" type="checkbox" id="conectado" name="conectado" />
                                     <label htmlFor="conectado"> Lembre-se de mim</label>
                                 </div>
                             </div>
@@ -129,7 +130,7 @@ export default function Login({ isOpenLogin,  setCloseModal }) {
                         </form>
                         <p>
                             Esqueceu sua senha?
-                            <Link to="/esqueci-senha" onClick={ setCloseModal }><b>Clique aqui</b></Link>
+                            <Link to="/esqueci-senha"><b>Clique aqui</b></Link>
                         </p>
                     </div>
                 </div>

@@ -104,6 +104,7 @@ button{
         visibility: visible;
         z-index: 10;
         transition: var(--transition);
+        animation-duration: 0.3s;
     }
 
     .headerIndex .modal-container-index{
@@ -113,6 +114,7 @@ button{
         display: grid;
         position: relative;
         box-shadow: var(--box-shadow2);
+        animation: zoom-in 0.3s ease-out forwards;
     }
     
     .headerIndex .modal-container-index h2{
@@ -696,6 +698,7 @@ button{
         visibility: visible;
         z-index: 10;
         transition: var(--transition);
+        animation-duration: 0.3s;
     }
 
     .headerIndex .modal-container-index{
@@ -707,6 +710,7 @@ button{
         place-items: center;
         position: relative;
         box-shadow: var(--box-shadow2);
+        animation: zoom-in 0.3s ease-out forwards;
     }
 
     .headerIndex  .modal-container-index p{
@@ -1235,4 +1239,33 @@ button{
     .footerIndex .rodape .texto-rodape p{margin-bottom: 10px}
 
     .footerIndex .rodape .texto-rodape a{width: auto}
+}
+
+/* CSS Scrollbar */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fc-primary) var(--bc);
+}
+
+/* Chrome, Edge e Safari */
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--bc);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--fc-primary);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #00857e;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #006a65;
 }

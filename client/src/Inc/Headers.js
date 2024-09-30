@@ -17,9 +17,11 @@ function Headers() {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/api/login/desconectar`, {
+                const token = localStorage.getItem("token");
+                fetch("http://localhost:5000/api/login/desconectar", {
                     method: "PUT",
                     headers: {
+                        "Authorization": `Bearer ${ token }`,
                         "Content-Type": "application/json"
                     }
                 })
@@ -27,7 +29,7 @@ function Headers() {
                 .then((data) => {
                     if (data.mensagem === "Usuário desconectado com sucesso!") {
                         localStorage.removeItem("token");
-                        navigate("/");
+                        navigate("/", { state: { showLoginModal: true } });
                     } else {
                         Swal.fire({
                             title: "Erro!",

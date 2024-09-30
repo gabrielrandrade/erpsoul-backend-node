@@ -16,6 +16,8 @@ import caixa6 from "../Assets/caixa6.png";
 import caixa7 from "../Assets/caixa7.png";
 import caixa8 from "../Assets/caixa8.png";
 import "../Styles/Index.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 class Index extends React.Component {
     constructor(props) {
@@ -36,8 +38,14 @@ class Index extends React.Component {
     }
 
     setCloseModal = () => {
-        this.setState({ openModal: false, openModal2: false });
-        document.body.classList.remove("modal-open");
+        document.getElementsByClassName("modal-overlay-index")[0].classList.add("zoom-out");
+
+        setTimeout(() => {
+            document.body.classList.remove("modal-open");
+            this.setState({ openModal: false });
+            this.setState({ openModal2: false });
+            document.getElementsByClassName("modal-overlay-index")[0].classList.remove("zoom-out");
+        }, 300);
     }
 
     componentDidMount() {
@@ -68,9 +76,11 @@ class Index extends React.Component {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/api/login/desconectar`, {
+                const token = localStorage.getItem("token");
+                fetch("http://localhost:5000/api/login/desconectar", {
                     method: "PUT",
                     headers: {
+                        "Authorization": `Bearer ${ token }`,
                         "Content-Type": "application/json"
                     }
                 })
@@ -110,6 +120,8 @@ class Index extends React.Component {
                 zIndex: 10
             }
         }
+
+        AOS.init();
 
         return(
                 <>
@@ -187,7 +199,7 @@ class Index extends React.Component {
                             </header>
 
                             <main className="mainIndex">
-                                <div className="box1">
+                                <div className="box1" data-aos="fade-left">
                                     <div className="text-box1">
                                         <p>A <b style={{ color: "#00968F" }}>Soul</b> é um sistema de gestão <br />
                                             100% <b style={{ color: "#00968F" }}>on-line</b><br />
@@ -198,7 +210,7 @@ class Index extends React.Component {
                                         <img src={ imgBox1 } alt="Imagem sobre sistema de gestão" />
                                     </div>
                                 </div>
-                                <div className="box2">
+                                <div className="box2" data-aos="fade-right">
                                     <div className="img-box2">
                                         <img src={ imgBox2 } alt="Imagem sobre plataforma de e-commerce" />
                                     </div>
@@ -207,7 +219,7 @@ class Index extends React.Component {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="box3">
+                                <div className="box3" data-aos="fade-left">
                                     <div className="text-box3">
                                         <p>Gestão de Estoque como você nunca viu!<br />
                                             <b style={{ color: "#050538" }}>Cadastro</b> de seus fornecedores, <br />emissão dos <b style={{ color: "#050538" }}>relatórios</b> de estoque, <br /> <b style={{ color: "#050538" }}>controle</b> de suas compras e muito mais!
@@ -217,7 +229,7 @@ class Index extends React.Component {
                                         <img src={ imgBox3 } alt="Imagem sobre gestão de estoque" />
                                     </div>
                                 </div>
-                                <div className="box4" id="funcionalidades">
+                                <div className="box4" id="funcionalidades" data-aos="fade-up">
                                     <p>Conheça tudo que a <b style={{ color: "#00968F" }}>Soul</b> faz por você</p>
                                     <div className="caixas">
                                         <div className="caixa">
@@ -254,7 +266,7 @@ class Index extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box5" id="planosPrecos">
+                                <div className="box5" id="planosPrecos" data-aos="fade-up">
                                     <p>Planos e Preços</p>
                                     <div className="plano">
                                         <h2><i className="fa-regular fa-gem" /> Plano Diamante - Anual</h2>
@@ -299,7 +311,7 @@ class Index extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box6" id="faleConosco">
+                                <div className="box6" id="faleConosco" data-aos="fade-up">
                                     <p className="ctt">Entre em Contato</p>
                                     <div className="contato">
                                         <div className="central-suporte">

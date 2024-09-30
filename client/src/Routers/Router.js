@@ -12,7 +12,6 @@ import Contabilidade from "../Pages/Contabilidade.js";
 import Pagamento from "../Pages/Pagamento.js";
 import EsqueciSenha from "../Pages/Esqueci-senha.js";
 import NovaSenha from "../Pages/Nova-senha.js";
-import SenhaSucesso from "../Pages/Senha-sucesso.js";
 import PrivateRoute from "./PrivateRoute.js";
 
 const Router = () => {
@@ -94,7 +93,6 @@ const Router = () => {
                 />
                 <Route element={ <EsqueciSenha /> } path="/esqueci-senha" />
                 <Route element={ <NovaSenha /> } path="/nova-senha" />
-                <Route element={ <SenhaSucesso /> } path="/senha-sucesso" />
             </Routes>
         </BrowserRouter>
     );
