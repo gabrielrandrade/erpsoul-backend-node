@@ -75,12 +75,12 @@ const NovaSenha = () => {
                 confirmButtonColor: "#00968F"
             });
         } else {
-            fetch("http://localhost:5000/api/nova-senha", {
+            fetch("http://localhost:5000/api/auth/reset-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, senha, confSenha, idRec }),
+                body: JSON.stringify({ email, senha, confSenha, idRec })
             })
             .then((response) => response.json())
             .then((data) => {

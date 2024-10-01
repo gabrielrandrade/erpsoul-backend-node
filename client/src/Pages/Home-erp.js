@@ -19,7 +19,7 @@ export default function HomeERP() {
 
         const fetchUserData = async () => {
             try {
-                let response = await fetch("http://localhost:5000/api/rota-protegida", {
+                let response = await fetch("http://localhost:5000/api/users/private-route", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,

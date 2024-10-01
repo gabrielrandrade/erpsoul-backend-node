@@ -18,7 +18,7 @@ function Headers() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem("token");
-                fetch("http://localhost:5000/api/login/desconectar", {
+                fetch("http://localhost:5000/api/auth/logout", {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${ token }`,

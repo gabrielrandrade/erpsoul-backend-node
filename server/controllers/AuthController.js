@@ -41,6 +41,27 @@ exports.login = async (req, res) => {
     }
 }
 
+exports.logout = async (req, res) => {
+    const token = req.headers["authorization"]?.split(" ")[1];
+
+    if (!token) {
+        return res.status(401).json({ mensagem: "Acesso negado!" });
+    }
+
+    try {
+        const removeToken = await Token.remove(token);
+
+        if (removeToken) {
+            return res.json({ mensagem: "Usuário desconectado com sucesso!" });
+        } else {
+            return res.status(404).json({ mensagem: "Token não encontrado." });
+        }
+    } catch (err) {
+        console.error("Erro ao desconectar usuário:", err);
+        res.status(500).json({ erro: "Erro ao desconectar usuário" });
+    }
+}
+
 exports.register = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -80,6 +101,10 @@ exports.register = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
     const { email } = req.body;
 
+    if (email.length > 250) {
+        return res.status(400).json({ mensagem: "E-mail inválido!" });
+    }
+
     try {
         const user = await User.findByEmail(email);
         if (!user) {
@@ -93,5 +118,47 @@ exports.forgotPassword = async (req, res) => {
     } catch (err) {
         console.error("Erro ao enviar o E-mail:", err);
         res.status(500).json({ erro: "Erro ao enviar o E-mail" });
+    }
+}
+
+exports.resetPassword = async (req, res) => {
+    const { email, senha, confSenha, idRec } = req.body;
+
+    if (senha !== confSenha) {
+        return res.status(400).json({ mensagem: "As senhas são diferentes!" });
+    }
+
+    if (email.length > 250 || senha.length > 60 || confSenha.length > 60) {
+        return res.status(400).json({ mensagem: "Credenciais inválidas!" });
+    }
+
+    try {
+        const user = await User.findByEmailAndHash(email, idRec);
+        if (!user) {
+            return res.status(404).json({ mensagem: "Usuário inválido!" });
+        }
+
+        const { cryptPass, cryptHash } = await encrypt(senha);
+        const idUsuarioDB = user.id_usuario;
+
+        const [updatePassword] = await User.updatePassword(cryptPass, cryptHash, idUsuarioDB);
+
+        if (updatePassword.affectedRows > 0) {
+            const transporter = createEmailTransporter();
+            const mailOptions = {
+                from: "suportesoulerp@gmail.com",
+                to: email,
+                subject: "Senha Alterada",
+                text: `A senha da sua conta no ERP Soul foi alterada. Se você não solicitou essa alteração, sugerimos mudar sua senha imediatamente e ativar verificações adicionais de segurança.`
+            };
+
+            await transporter.sendMail(mailOptions);
+            return res.json({ mensagem: "Senha alterada com sucesso!" });
+        } else {
+            return res.status(500).json({ erro: "Erro ao alterar a senha" });
+        }
+    } catch (err) {
+        console.error("Erro ao alterar a senha:", err);
+        res.status(500).json({ erro: "Erro ao alterar a senha" });
     }
 }

@@ -57,6 +57,7 @@ class Index extends React.Component {
         const { state } = this.props.location;
         if (state && state.showLoginModal) {
             this.setOpenModal(true);
+            this.setState({ isLoggedIn: false });
         }
     }
 
@@ -77,7 +78,7 @@ class Index extends React.Component {
         }).then((result) => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem("token");
-                fetch("http://localhost:5000/api/login/desconectar", {
+                fetch("http://localhost:5000/api/auth/logout", {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
