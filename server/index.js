@@ -9,17 +9,16 @@ const checkDBConnection = require("./middlewares/checkDBConnection.js");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
-// Middlewares de segurança
-app.use(helmet()); 
-app.use(xss()); 
+app.use(helmet()); // Proteção básica de cabeçalhos HTTP
+app.use(xss()); // Prevenção contra ataques de cross-site scripting (XSS)
 app.use(cors());
 app.use(express.json());
 
 // Limitar requisições (para evitar DoS)
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, 
+    windowMs: 15 * 60 * 1000,
     max: 100, 
     message: "Muitas requisições deste IP, tente novamente mais tarde"
 });
@@ -37,13 +36,13 @@ app.use(limiter);
             next();
         });
 
-        // Verificar se a conexão com o banco está ativa para as rotas da API
-        app.use("/api", checkDBConnection, apiRoutes);
-
         // Endpoint básico para verificar status do backend
         app.get("/", (req, res) => {
             res.send("Backend do ERP Soul está funcionando!");
         });
+
+        // Verificar se a conexão com o banco está ativa para as rotas da API
+        app.use("/api", checkDBConnection, apiRoutes);
 
         // Tratamento de rotas não encontradas
         app.use((req, res, next) => {
@@ -58,7 +57,7 @@ app.use(limiter);
 
         // Iniciar o servidor
         app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
+            console.log(`Servidor rodando na porta ${ PORT }`);
         });
 
     } catch (error) {

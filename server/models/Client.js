@@ -4,7 +4,7 @@ exports.create = (client) => {
     const { nome, cpfOuCnpj, dt_nasc, id_tipo_cliente, id_endereco, id_usuario } = client;
     return db.query(`
         INSERT INTO tb_cliente (nome, cpf, cnpj, dt_nasc, id_tipo_cliente, id_endereco, id_usuario, id_status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, 2)`,
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             nome,
             cpfOuCnpj.length === 11 ? cpfOuCnpj : null,
@@ -12,7 +12,8 @@ exports.create = (client) => {
             dt_nasc,
             id_tipo_cliente,
             id_endereco,
-            id_usuario
+            id_usuario,
+            2
         ]
     );
 }

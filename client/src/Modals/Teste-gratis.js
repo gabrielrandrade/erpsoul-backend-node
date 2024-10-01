@@ -123,7 +123,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 title: "Faturamento inválido!"
             });
         } else {
-            fetch("http://localhost:5000/api/cadastro", {
+            fetch("http://localhost:5000/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

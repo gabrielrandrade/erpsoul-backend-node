@@ -3,7 +3,7 @@ const mysql = require("mysql2/promise");
 
 dotenv.config();
 
-let connection = null;
+let pool = null;
 
 async function connectDB() {
     try {
@@ -11,8 +11,8 @@ async function connectDB() {
             throw new Error("Faltam variáveis de ambiente para a conexão ao banco de dados!");
         }
 
-        if (!connection || connection.state === "disconnected") {
-            connection = await mysql.createConnection({
+        if (!pool) {
+            pool = mysql.createPool({
                 host: process.env.DB_HOST,
                 user: process.env.DB_USER,
                 password: process.env.DB_PASSWORD,
@@ -22,19 +22,19 @@ async function connectDB() {
                 queueLimit: 0, // Limita o número de requisições na fila (0 = sem limite)
             });
 
-            console.log("Conectado ao banco de dados MySQL!");
+            console.log("Conectado ao pool de conexões MySQL!");
 
-            connection.on("error", async (err) => {
+            pool.on("error", async (err) => {
                 if (err.code === "PROTOCOL_CONNECTION_LOST") {
                     console.log("Conexão perdida, reconectando...");
-                    connection = await connectDB();
+                    pool = await connectDB();
                 } else {
                     throw err;
                 }
             });
         }
         
-        return connection;
+        return pool;
     } catch (err) {
         console.error("Erro ao conectar ao banco de dados:", err);
         throw err;

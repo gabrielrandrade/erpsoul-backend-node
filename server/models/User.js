@@ -1,18 +1,23 @@
-const db = require("../config/db.js");
+const connectDB = require("../config/db.js");
 
-exports.findByEmail = (email) => {
-    return db.query(`SELECT * FROM tb_usuario WHERE email = ?`, [email]);
+exports.findByEmail = async (email) => {
+    const db = await connectDB();
+    const [rows] = await db.query(`SELECT * FROM tb_usuario WHERE email = ?`, [email]);
+    return rows;
 }
 
-exports.findById = (id) => {
-    return db.query(`SELECT * FROM tb_usuario WHERE id_usuario = ?`, [id]);
+exports.findById = async (id) => {
+    const db = await connectDB();
+    const [rows] = await db.query(`SELECT * FROM tb_usuario WHERE id_usuario = ?`, [id]);
+    return rows;
 }
 
-exports.create = (user) => {
+exports.create = async (user) => {
     const { nome, email, senha, hash, whatsapp, cpfOuCnpj, cargo, faturamento } = user;
-    return db.query(`
+    const db = await connectDB();
+    const [result] = await db.query(`
         INSERT INTO tb_usuario (nome, email, senha, hash, whatsapp, cpf, cnpj, cargo, faturamento, id_perfil, id_status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 2)`,
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             nome,
             email,
@@ -22,7 +27,10 @@ exports.create = (user) => {
             cpfOuCnpj.length === 11 ? cpfOuCnpj : null,
             cpfOuCnpj.length === 14 ? cpfOuCnpj : null,
             cargo,
-            faturamento
+            faturamento,
+            1,
+            2
         ]
     );
+    return result;
 }
