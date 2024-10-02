@@ -52,6 +52,8 @@ class Index extends React.Component {
         const token = localStorage.getItem("token");
         if (token) {
             this.setState({ isLoggedIn: true });
+        } else {
+            this.setState({ isLoggedIn: false });
         }
 
         const { state } = this.props.location;

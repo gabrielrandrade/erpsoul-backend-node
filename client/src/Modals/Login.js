@@ -56,7 +56,13 @@ export default function Login({ isOpenLogin }) {
             .then(async (response) => {
                 const data = await response.json();
 
-                if (response.status === 400 && data.errors) {
+                if (response.status === 429) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Limite de login atingido!",
+                        text: data.message || "Muitas tentativas de login deste IP. Tente novamente após 10 minutos."
+                    });
+                } else if (response.status === 400 && data.errors) {
                     data.errors.forEach((error) => {
                         Swal.fire({
                             icon: "error",
@@ -96,6 +102,11 @@ export default function Login({ isOpenLogin }) {
             })
             .catch((error) => {
                 console.error("Erro ao entrar:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Erro inesperado ao tentar fazer login."
+                });
             });
         }
     }
