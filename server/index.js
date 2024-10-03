@@ -1,12 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const connectDB = require("./config/db.js");
-const apiRoutes = require("./routes/apiRoutes.js");
-const rateLimit = require("express-rate-limit");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const checkDBConnection = require("./middlewares/checkDBConnection.js");
 require("dotenv").config();
+const cors = require("cors");
+const xss = require("xss-clean");
+const helmet = require("helmet");
+const express = require("express");
+const connectDB = require("./config/db.js");
+const rateLimit = require("express-rate-limit");
+const apiRoutes = require("./routes/apiRoutes.js");
+const checkDBConnection = require("./middlewares/checkDBConnection.js");
 
 const app = express();
 const PORT = process.env.PORT;

@@ -80,7 +80,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
             formData.id_tipo_cliente = cpfOuCnpj.length === 11 ? "1" : "2";
             const token = localStorage.getItem("token");
 
-            fetch("http://localhost:5000/api/cadastro-cliente", {
+            fetch("http://localhost:5000/api/clients/register", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${ token }`,

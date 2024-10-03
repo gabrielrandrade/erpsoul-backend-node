@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 const cache = require("memory-cache");
 const User = require("../models/User.js");
 const Token = require("../models/Token.js");
+const { encrypt } = require("../utils/encrypt.js");
 const { validationResult } = require("express-validator");
 const { sendEmail, confirmationEmail } = require("../utils/email.js");
-const { isValidEmail, encrypt, isValidCpfCnpj } = require("../utils/utils.js");
+const { isValidEmail, isValidCpfCnpj } = require("../utils/validators.js");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 

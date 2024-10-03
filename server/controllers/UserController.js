@@ -1,7 +1,8 @@
+const jwt = require("jsonwebtoken");
 const User = require("../models/User.js");
 
 exports.getHomeData = async (req, res) => {
-    // const id_usuario = req.user.id_usuario;
+    const id_usuario = req.user.userId;
 
     try {
         const user = await User.findById(id_usuario);
