@@ -22,7 +22,7 @@ export default function Crm() {
 
         const fetchUserData = async () => {
             try {
-                let response = await fetch("http://localhost:5000/api/users/private-route", {
+                let response = await fetch("http://localhost:5000/api/private-route", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,

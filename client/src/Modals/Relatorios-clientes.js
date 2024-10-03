@@ -67,7 +67,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
         } else {
             const token = localStorage.getItem("token");
 
-            fetch("http://localhost:5000/api/clients/reports", {
+            fetch("http://localhost:5000/api/crm/reports", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${ token }`,
@@ -153,7 +153,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                 if (result.isConfirmed) {
                     const clienteIds = clientes.map(cliente => cliente.id_cliente);
 
-                    fetch("http://localhost:5000/api/clients/exportReports", {
+                    fetch("http://localhost:5000/api/crm/exportReports", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

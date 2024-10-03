@@ -1,12 +1,14 @@
 const express = require("express");
-const authRoutes = require("./authRoutes.js");
+const crmRoutes = require("./crmRoutes.js");
 const userRoutes = require("./userRoutes.js");
-const clientRoutes = require("./clientRoutes.js");
+const homeRoutes = require("./homeRoutes.js");
+const privateRoutes = require("./privateRoutes.js");
 
 const router = express.Router();
 
-router.use("/auth", authRoutes);
-router.use("/users", userRoutes);
-router.use("/clients", clientRoutes);
+router.use("/crm", crmRoutes);
+router.use("/user", userRoutes);
+router.use("/home", homeRoutes);
+router.use("/private-route", privateRoutes);
 
 module.exports = router;

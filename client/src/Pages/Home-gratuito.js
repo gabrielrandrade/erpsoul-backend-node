@@ -20,7 +20,7 @@ export default function HomeGratuito() {
 
         const fetchUserData = async () => {
             try {
-                let response = await fetch("http://localhost:5000/api/users/home", {
+                let response = await fetch("http://localhost:5000/api/home", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
@@ -37,6 +37,10 @@ export default function HomeGratuito() {
                     });
                     navigate("/", { state: { showLoginModal: true } });
                     return;
+                }
+
+                if (response.mensagem === "Usuário não encontrado!") {
+                    return setUser("Usuário não encontrado!");
                 }
 
                 const data = await response.json();

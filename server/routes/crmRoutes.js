@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const { authenticate } = require("../middlewares/auth.js");
-const { registerClient, getClients, editClient, deleteClient, reportsClients, exportReportsClients } = require("../controllers/ClientController.js");
+const { registerClient, getClients, editClient, deleteClient, reportsClients, exportReportsClients } = require("../controllers/CrmController.js");
 
 const router = express.Router();
 

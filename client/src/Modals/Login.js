@@ -46,7 +46,7 @@ export default function Login({ isOpenLogin }) {
         } else {
             const conectado = document.getElementById("conectado").checked;
 
-            fetch("http://localhost:5000/api/auth/login", {
+            fetch("http://localhost:5000/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

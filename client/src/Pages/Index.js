@@ -80,7 +80,7 @@ class Index extends React.Component {
         }).then((result) => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem("token");
-                fetch("http://localhost:5000/api/auth/logout", {
+                fetch("http://localhost:5000/api/user/logout", {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
