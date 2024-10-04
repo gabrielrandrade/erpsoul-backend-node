@@ -132,7 +132,7 @@ exports.register = async (req, res) => {
             faturamento
         });
 
-        expiresIn = "1d"
+        expiresIn = "1d";
         const token = jwt.sign({ userId: newUserId }, JWT_SECRET, { expiresIn });
         await Token.create(token, expiresIn, newUserId);
 
