@@ -123,10 +123,26 @@ export default function Login({ isOpenLogin }) {
                         <form onSubmit={ handleSubmit }>
                             <div className="row">
                                 <div className="col-12">
-                                    <input type="email" id="email" name="email" placeholder="E-mail" maxLength={ 250 } required onChange={ handleChange } />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="E-mail"
+                                        maxLength={ 250 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                                 <div className="col-12">
-                                    <input type="password" id="senha" name="senha" placeholder="Senha" maxLength={ 60 } required onChange={ handleChange } />
+                                    <input
+                                        type="password"
+                                        id="senha"
+                                        name="senha"
+                                        placeholder="Senha"
+                                        maxLength={ 60 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">

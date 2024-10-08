@@ -37,7 +37,22 @@ button{
         background-color: var(--bc);
     }
 
-    .bodyGratuito, .mainGratuito, .mainGratuito .container, .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido, .mainGratuito #resumo-rapido #resumo, .mainGratuito #acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito, .mainGratuito #acessar-erp #acesso-gratuito-cor, .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar, .mainGratuito #resumo-vendas, .mainGratuito #resumo-vendas .resumo-cor, .mainGratuito .container .ajuda{
+    .bodyGratuito,
+    .mainGratuito,
+    .mainGratuito .container,
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, 
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar,
+    .mainGratuito #resumo-vendas,
+    .mainGratuito #resumo-vendas .resumo-cor,
+    .mainGratuito .container .ajuda{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -47,34 +62,127 @@ button{
 
     .pageGratuito, .mainGratuito .linha-horizontal{width: 90%}
 
-    .mainGratuito, .mainGratuito .container, .mainGratuito #resumo-rapido, .mainGratuito #resumo-rapido #resumo, .mainGratuito #busca-rapida .lista-menu-rapido, .mainGratuito #acessar-erp, .mainGratuito #resumo-vendas, .mainGratuito .container .ajuda{flex-direction: column}
+    .mainGratuito,
+    .mainGratuito .container,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #busca-rapida .lista-menu-rapido,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #resumo-vendas,
+    .mainGratuito .container .ajuda{
+        flex-direction: column
+    }
 
-    .mainGratuito, .mainGratuito .container, .mainGratuito .container .carrinho, .mainGratuito #alterar-usuario .btn-alterar, .mainGratuito #resumo-rapido p, .mainGratuito #resumo-rapido #resumo .dados-vendas, .mainGratuito #resumo-rapido #resumo .dados-estoque, .mainGratuito #resumo-rapido #resumo .dados-vencimento, .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido, .mainGratuito #acessar-erp #acesso-gratuito, .mainGratuito #acessar-erp #acesso-gratuito-cor, .mainGratuito  #acessar-erp #acesso-gratuito-cor p, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar, .mainGratuito #resumo-vendas .mes-anterior, .mainGratuito #resumo-vendas .mes-atual, .mainGratuito .container .ajuda{width: 100%}
+    .mainGratuito,
+    .mainGratuito .container,
+    .mainGratuito .container .carrinho,
+    .mainGratuito #alterar-usuario .btn-alterar,
+    .mainGratuito #resumo-rapido p,
+    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-estoque,
+    .mainGratuito #resumo-rapido #resumo .dados-vencimento,
+    .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido,
+    .mainGratuito #acessar-erp #acesso-gratuito,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor,
+    .mainGratuito  #acessar-erp #acesso-gratuito-cor p,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar,
+    .mainGratuito #resumo-vendas .mes-anterior,
+    .mainGratuito #resumo-vendas .mes-atual,
+    .mainGratuito .container .ajuda{
+        width: 100%
+    }
 
-    .mainGratuito .container .carrinho, .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido p, .mainGratuito #resumo-rapido #resumo, .mainGratuito #busca-rapida p, .mainGratuito #acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor, .mainGratuito #resumo-vendas{text-align: center}
+    .mainGratuito .container .carrinho,
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido p,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #busca-rapida p,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor,
+    .mainGratuito #resumo-vendas{
+        text-align: center
+    }
 
     .mainGratuito .container .carrinho img{
         width: 110px;
         height: 90px;
     }
 
-    .mainGratuito .container .carrinho p, .mainGratuito .container .ajuda p, .mainGratuito .container .ajuda .para1 a{color: #050538}
+    .mainGratuito .container .carrinho p,
+    .mainGratuito .container .ajuda p,
+    .mainGratuito .container .ajuda .para1 a{
+        color: #050538
+    }
 
-    .mainGratuito .container .carrinho p, .mainGratuito #alterar-usuario .email-usuario, .mainGratuito #alterar-usuario .plano-usuario, .mainGratuito #acessar-erp #acesso-gratuito .demonstracao, .mainGratuito  #acessar-erp #acesso-gratuito-cor p, .mainGratuito #resumo-vendas .resumo-cor, .mainGratuito .container .ajuda p{font-size: 17px}
+    .mainGratuito .container .carrinho p,
+    .mainGratuito #alterar-usuario .email-usuario,
+    .mainGratuito #alterar-usuario .plano-usuario,
+    .mainGratuito #acessar-erp #acesso-gratuito .demonstracao,
+    .mainGratuito  #acessar-erp #acesso-gratuito-cor p,
+    .mainGratuito #resumo-vendas .resumo-cor,
+    .mainGratuito .container .ajuda p{
+        font-size: 17px
+    }
 
-    .mainGratuito .container .carrinho .para1, .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido #resumo, .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido, .mainGratuito #acessar-erp #acesso-gratuito-cor img{margin-top: 10px}
+    .mainGratuito .container .carrinho .para1,
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor img{
+        margin-top: 10px
+    }
 
-    hr, .mainGratuito #resumo-rapido #resumo, .mainGratuito #resumo-vendas .resumo-cor{width: 80%}
+    hr,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #resumo-vendas .resumo-cor{
+        width: 80%
+    }
 
     .mainGratuito #alterar-usuario{padding: 10px}
 
-    .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido, .mainGratuito #resumo-rapido #resumo, .mainGratuito #resumo-rapido #resumo .dados-vendas, .mainGratuito #resumo-rapido #resumo .dados-estoque, .mainGratuito #resumo-rapido #resumo .dados-vencimento, .mainGratuito #busca-rapida, .mainGratuito #acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito, .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp, .mainGratuito #resumo-vendas, .mainGratuito #resumo-vendas .resumo-cor{background-color: rgba(0,150,143,0.5)}
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-estoque,
+    .mainGratuito #resumo-rapido #resumo .dados-vencimento,
+    .mainGratuito #busca-rapida,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp,
+    .mainGratuito #resumo-vendas, 
+    .mainGratuito #resumo-vendas .resumo-cor{
+        background-color: rgba(0,150,143,0.5)
+    }
 
-    .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido, .mainGratuito #busca-rapida, .mainGratuito #acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito, .mainGratuito #resumo-vendas{border-radius: 11px}
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #busca-rapida,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito,
+    .mainGratuito #resumo-vendas{
+        border-radius: 11px
+    }
 
-    .mainGratuito #alterar-usuario, .mainGratuito #resumo-rapido, .mainGratuito #busca-rapida, .mainGratuito #acessar-erp, .mainGratuito #resumo-vendas{box-shadow: 10px 10px 10px rgba(0,0,0, 0.25)}
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #busca-rapida,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #resumo-vendas{
+        box-shadow: 10px 10px 10px rgba(0,0,0, 0.25)
+    }
 
-    .mainGratuito #alterar-usuario, .mainGratuito #alterar-usuario .alterar-dados, .mainGratuito #resumo-rapido, .mainGratuito #busca-rapida, .mainGratuito #busca-rapida .lista-menu-rapido, .mainGratuito #acessar-erp, .mainGratuito #resumo-vendas{width: 70%}
+    .mainGratuito #alterar-usuario,
+    .mainGratuito #alterar-usuario .alterar-dados,
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #busca-rapida,
+    .mainGratuito #busca-rapida .lista-menu-rapido,
+    .mainGratuito #acessar-erp,
+    .mainGratuito #resumo-vendas{
+        width: 70%
+    }
 
     .mainGratuito #alterar-usuario .icon{
         color: #000;
@@ -90,25 +198,55 @@ button{
         background-color: #00968f;
     }
 
-    .mainGratuito #alterar-usuario .alterar-dados, .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{height: 40px}
+    .mainGratuito #alterar-usuario .alterar-dados,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{
+        height: 40px
+    }
 
-    .mainGratuito #alterar-usuario .alterar-dados, .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{border-radius: 20px}
+    .mainGratuito #alterar-usuario .alterar-dados,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{
+        border-radius: 20px
+    }
 
     .mainGratuito #alterar-usuario .btn-alterar{color: var(--bc-secondary)}
 
     .mainGratuito #resumo-rapido{padding: 10px 0}
 
-    .mainGratuito #resumo-rapido, .mainGratuito #resumo-vendas .resumo-cor{justify-content: space-evenly}
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #resumo-vendas .resumo-cor{
+        justify-content: space-evenly
+    }
 
-    .mainGratuito #resumo-rapido, .mainGratuito #acessar-erp #acesso-gratuito-cor, .mainGratuito #resumo-vendas .resumo-cor{flex-wrap: wrap}
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor,
+    .mainGratuito #resumo-vendas .resumo-cor{
+        flex-wrap: wrap
+    }
 
-    .mainGratuito #resumo-rapido, .mainGratuito #busca-rapida, .mainGratuito #acessar-erp{margin-top: 30px}
+    .mainGratuito #resumo-rapido,
+    .mainGratuito #busca-rapida,
+    .mainGratuito #acessar-erp{
+        margin-top: 30px
+    }
 
-    .mainGratuito #resumo-rapido #resumo, .mainGratuito #resumo-rapido #resumo p, .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido a, .mainGratuito  #acessar-erp #acesso-gratuito .restante-gratuito, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{color: #fff}
+    .mainGratuito #resumo-rapido #resumo,
+    .mainGratuito #resumo-rapido #resumo p,
+    .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido a,
+    .mainGratuito  #acessar-erp #acesso-gratuito .restante-gratuito,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{
+        color: #fff
+    }
 
     .mainGratuito #resumo-rapido #resumo p, .mainGratuito #busca-rapida p{margin-top: 15px}
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas, .mainGratuito #resumo-rapido #resumo .dados-estoque, .mainGratuito #resumo-rapido #resumo .dados-vencimento{
+    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-estoque,
+    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
         height: 100px;
         margin-top: 20px;
     }
@@ -129,16 +267,26 @@ button{
 
     .mainGratuito  #acessar-erp #acesso-gratuito .restante-gratuito{margin-right: 4%}
 
-    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{width: 30%}
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{
+        width: 30%
+    }
 
-    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp, .mainGratuito .container .ajuda .para2{margin: 10px 0 10px 0}
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp,
+    .mainGratuito .container .ajuda .para2{
+        margin: 10px 0 10px 0
+    }
 
     .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{
         margin-left: 5px;
         background-color:  rgba(0,150,143);
     }
 
-    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{height: 100%}
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{
+        height: 100%
+    }
 
     .mainGratuito #resumo-vendas{margin: 30px 0 10px 0}
 
@@ -146,7 +294,10 @@ button{
 
     .mainGratuito #resumo-vendas .resumo-cor{margin-bottom: 10px}
 
-    .mainGratuito #resumo-vendas .mes-anterior, .mainGratuito #resumo-vendas .mes-atual{margin-bottom: -10px}
+    .mainGratuito #resumo-vendas .mes-anterior,
+    .mainGratuito #resumo-vendas .mes-atual{
+        margin-bottom: -10px
+    }
 
     .mainGratuito .linha-horizontal{border: 1px solid #000}
 
@@ -176,7 +327,11 @@ button{
 
     .mainGratuito .container #alterar-usuario{margin-top: 30px}
 
-    .mainGratuito .container #alterar-usuario, .mainGratuito .container #busca-rapida, .mainGratuito .container #acessar-erp{width: 30%}
+    .mainGratuito .container #alterar-usuario,
+    .mainGratuito .container #busca-rapida,
+    .mainGratuito .container #acessar-erp{
+        width: 30%
+    }
 
     .mainGratuito .alterar-dados:hover{background: var(--bc)}
 
@@ -189,7 +344,11 @@ button{
         margin-top: 10px;
     }
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas, .mainGratuito #resumo-rapido #resumo .dados-estoque, .mainGratuito #resumo-rapido #resumo .dados-vencimento{height: 250px}
+    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-estoque,
+    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
+        height: 250px
+    }
 
     .mainGratuito .container #busca-rapida{margin-top: -130px}
 
@@ -199,7 +358,11 @@ button{
 
     .mainGratuito  #acessar-erp #acesso-gratuito-cor p{width: 60%}
 
-    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp, .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp, .mainGratuito .container .ajuda .para2{margin: 15px 20px}
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp,
+    .mainGratuito .container .ajuda .para2{
+        margin: 15px 20px
+    }
     
     .mainGratuito #resumo-vendas .resumo-cor{
         height: 200px;
@@ -271,7 +434,11 @@ button{
 
     .mainGratuito .alterar-dados:hover{background: var(--bc)}
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas, .mainGratuito #resumo-rapido #resumo .dados-estoque, .mainGratuito #resumo-rapido #resumo .dados-vencimento{height: 300px}
+    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-estoque,
+    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
+        height: 300px
+    }
 
     .mainGratuito .container #busca-rapida{margin-top: -140px}
 

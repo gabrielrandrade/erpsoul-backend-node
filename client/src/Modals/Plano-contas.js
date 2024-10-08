@@ -19,11 +19,17 @@ export default function PlanoContas({ isOpenPlanoContas, setCloseModal }) {
                         <div className="row">
                             <div className="box-plano-contas">
                                 <input type="checkbox" name="favoritos-1" value="integrar" />
-                                <label>Integrar também os rateios dos Lançamentos de Centros de Custos</label><br />
+                                <label>
+                                    Integrar também os rateios dos Lançamentos de Centros de Custos
+                                </label><br />
                                 <input type="checkbox" name="favoritos-2" value="consolidar" />
-                                <label>Consolidar o lançamento da conta corrente nas baixas de contas a pagar e receber</label><br />
+                                <label>
+                                    Consolidar o lançamento da conta corrente nas baixas de contas a pagar e receber
+                                </label><br />
                                 <input type="checkbox" name="favoritos-3" value="enviar" />
-                                <label>Enviar o CNPJ/CPF do Cliente ou Fornecedor no Lançamento Contábil</label><br />
+                                <label>
+                                    Enviar o CNPJ/CPF do Cliente ou Fornecedor no Lançamento Contábil
+                                </label><br />
                             </div>
                         </div>
                         <div className="botao-form">

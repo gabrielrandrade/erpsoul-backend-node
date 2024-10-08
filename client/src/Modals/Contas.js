@@ -13,43 +13,91 @@ export default function Contas({ isOpenContas, setCloseModal }) {
                             <div className="row">
                                 <div className="col-6-financas" id="tipo-conta-financas">
                                     <label className="label-financas">A pagar</label>
-                                    <input className="radio-financas" type="radio" id="tipo-contas-pagar" name="tipo-contas" value="1" />
+                                    <input
+                                        className="radio-financas"
+                                        type="radio"
+                                        id="tipo-contas-pagar"
+                                        name="tipo-contas"
+                                        value="1"
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6-financas">
                                     <label className="label-financas">A receber</label>
-                                    <input className="radio-financas" type="radio" id="tipo-contas-receber" name="tipo-contas" value="2" />
+                                    <input
+                                        className="radio-financas"
+                                        type="radio"
+                                        id="tipo-contas-receber"
+                                        name="tipo-contas"
+                                        value="2"
+                                    />
                                 </div>
                             </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="fornecedor" name="fornecedor" placeholder="Fornecedor" required />
+                                <input
+                                    type="text"
+                                    id="fornecedor"
+                                    name="fornecedor"
+                                    placeholder="Fornecedor"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="venci-original" name="venci-original" placeholder="Vencimento original" required />
+                                <input
+                                    type="text"
+                                    id="venci-original"
+                                    name="venci-original"
+                                    placeholder="Vencimento original"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="venci" name="venci" placeholder="Vencimento" required />
+                                <input
+                                    type="text"
+                                    id="venci"
+                                    name="venci"
+                                    placeholder="Vencimento"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="valor" name="valor" placeholder="Valor" required />
+                                <input
+                                    type="text"
+                                    id="valor"
+                                    name="valor"
+                                    placeholder="Valor"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="n-docu" name="n-docu" placeholder="Nº documento" required />
+                                <input
+                                    type="text"
+                                    id="n-docu"
+                                    name="n-docu"
+                                    placeholder="Nº documento"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6-financas">
-                                <input type="text" id="compe" name="compe" placeholder="Competência" required />
+                                <input
+                                    type="text"
+                                    id="compe"
+                                    name="compe"
+                                    placeholder="Competência"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">

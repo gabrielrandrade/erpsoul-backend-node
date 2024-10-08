@@ -278,14 +278,39 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                     <form onSubmit={ handleSubmit }>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" name="nome" id="nome" placeholder="Nome do Cliente" maxLength={ 50 } onChange={ handleChange } />
-                                <input type="date" name="dt_nasc" id="dt_nasc" onChange={ handleChange } />
+                                <input
+                                    type="text"
+                                    name="nome"
+                                    id="nome"
+                                    placeholder="Nome do Cliente"
+                                    maxLength={ 50 }
+                                    onChange={ handleChange }
+                                />
+                                <input
+                                    type="date"
+                                    name="dt_nasc"
+                                    id="dt_nasc"
+                                    onChange={ handleChange }
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" name="cpfOuCnpj" id="cpfOuCnpj" placeholder="CPF ou CNPJ" minLength={ 11 } maxLength={ 14 } onChange={ handleChange } />
-                                <select name="id_tipo_cliente" id="id_tipo_cliente" value={ formData.id_tipo_cliente } onChange={ handleChange }>
+                                <input
+                                    type="text"
+                                    name="cpfOuCnpj"
+                                    id="cpfOuCnpj"
+                                    placeholder="CPF ou CNPJ"
+                                    minLength={ 11 }
+                                    maxLength={ 14 }
+                                    onChange={ handleChange }
+                                />
+                                <select
+                                    name="id_tipo_cliente"
+                                    id="id_tipo_cliente"
+                                    value={ formData.id_tipo_cliente }
+                                    onChange={ handleChange }
+                                >
                                     <option value="" selected>Tipo de cliente</option>
                                     <option value="1">Físico</option>
                                     <option value="2">Jurídico</option>

@@ -173,17 +173,40 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                             <p>Informações pessoais</p>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="nome" name="nome" placeholder="Nome" maxLength={ 50 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="nome"
+                                        name="nome"
+                                        placeholder="Nome"
+                                        maxLength={ 50 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cpfOuCnpj" name="cpfOuCnpj" placeholder="CPF ou CNPJ" minLength={ 11 } maxLength={ 14 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="cpfOuCnpj"
+                                        name="cpfOuCnpj"
+                                        placeholder="CPF ou CNPJ"
+                                        minLength={ 11 }
+                                        maxLength={ 14 }
+                                        required
+                                        onChange={ handleChange }
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="date" id="dt_nasc" name="dt_nasc" required onChange={ handleChange } />
+                                    <input
+                                        type="date"
+                                        id="dt_nasc"
+                                        name="dt_nasc"
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -191,32 +214,81 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                             <p>Endereço</p>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" maxLength={ 60 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="logradouro"
+                                        name="logradouro"
+                                        placeholder="Logradouro"
+                                        maxLength={ 60 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="numero" name="numero" placeholder="Número" maxLength={ 5 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="numero"
+                                        name="numero"
+                                        placeholder="Número"
+                                        maxLength={ 5 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cep" name="cep" placeholder="CEP" maxLength={ 8 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="cep"
+                                        name="cep"
+                                        placeholder="CEP"
+                                        maxLength={ 8 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="bairro" name="bairro" placeholder="Bairro" maxLength={ 100 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="bairro"
+                                        name="bairro"
+                                        placeholder="Bairro"
+                                        maxLength={ 100 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cidade" name="cidade" placeholder="Cidade" maxLength={ 30 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="cidade"
+                                        name="cidade"
+                                        placeholder="Cidade"
+                                        maxLength={ 30 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="uf" name="uf" placeholder="UF" minLength={ 2 } maxLength={ 2 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="uf"
+                                        name="uf"
+                                        placeholder="UF"
+                                        minLength={ 2 }
+                                        maxLength={ 2 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -226,13 +298,29 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                             <div className="row">
                                 <div className="col-12">
                                     <label htmlFor="parcelamento">Físico</label>
-                                    <input className="radio" type="radio" id="id_tipo_cliente" name="id_tipo_cliente" value="1" checked={ formData.id_tipo_cliente === "1" } onChange={ handleChange } />
+                                    <input
+                                        className="radio"
+                                        type="radio"
+                                        id="id_tipo_cliente"
+                                        name="id_tipo_cliente"
+                                        value="1"
+                                        checked={ formData.id_tipo_cliente === "1" }
+                                        onChange={ handleChange }
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-12">
                                     <label htmlFor="parcelamento">Jurídico</label>
-                                    <input className="radio" type="radio" id="id_tipo_cliente" name="id_tipo_cliente" value="2" checked={ formData.id_tipo_cliente === "2" } onChange={ handleChange } />
+                                    <input
+                                        className="radio"
+                                        type="radio"
+                                        id="id_tipo_cliente"
+                                        name="id_tipo_cliente"
+                                        value="2"
+                                        checked={ formData.id_tipo_cliente === "2" }
+                                        onChange={ handleChange }
+                                    />
                                 </div>
                             </div>
                         </div>

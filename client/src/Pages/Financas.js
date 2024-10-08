@@ -81,16 +81,43 @@ export default function Financas() {
                         <div className="central">
                             <h1>FINANÇAS</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">CONTAS</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">BAIXAR CONTAS</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btnModal">GERAR NF</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal4(true) } id="btn-importar-nfs">IMPORTAR NFS</button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal(true) }
+                                    id="btnModal"
+                                >
+                                    CONTAS
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal2(true) }
+                                    id="btnModal"
+                                >
+                                    BAIXAR CONTAS
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal3(true) }
+                                    id="btnModal"
+                                >
+                                    GERAR NF
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal4(true) }
+                                    id="btn-importar-nfs"
+                                >
+                                    IMPORTAR NFS
+                                </button><br />
                             </div>
 
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <Contas isOpenContas={ openModal } setCloseModal={ setCloseModal } />
+                                        <Contas
+                                            isOpenContas={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -102,7 +129,10 @@ export default function Financas() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <BaixarContas isOpenBaixarContas={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <BaixarContas
+                                            isOpenBaixarContas={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -114,7 +144,10 @@ export default function Financas() {
                             {openModal3 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <GerarNF isOpenGerarNF={ openModal3 } setCloseModal={ setCloseModal } />
+                                        <GerarNF
+                                            isOpenGerarNF={ openModal3 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -126,7 +159,10 @@ export default function Financas() {
                             {openModal4 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <Integracoes isOpenIntegracoes={ openModal4 } setCloseModal={ setCloseModal } />
+                                        <Integracoes
+                                            isOpenIntegracoes={ openModal4 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

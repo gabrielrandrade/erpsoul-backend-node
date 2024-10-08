@@ -1,10 +1,10 @@
-const User = require("../models/User.js");
+const HomeModel = require("../models/HomeModel.js");
 
 exports.getHomeData = async (req, res) => {
     const id_usuario = req.user.userId;
 
     try {
-        const user = await User.findById(id_usuario);
+        const user = await HomeModel.findById(id_usuario);
         if (user && user.length > 0) {
             return res.json({
                 nome: user[0].nome,

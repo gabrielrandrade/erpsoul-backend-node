@@ -14,12 +14,22 @@ export default function CadastrarVenda({ isOpenCadastrarVenda, setCloseModal }) 
                             <p>Dados do cliente</p>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cliente" name="cliente" placeholder="Nome do cliente" />
+                                    <input
+                                        type="text"
+                                        id="cliente"
+                                        name="cliente"
+                                        placeholder="Nome do cliente"
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="documento" name="documento" placeholder="CPF/CNPJ" />
+                                    <input 
+                                        type="text"
+                                        id="documento"
+                                        name="documento"
+                                        placeholder="CPF/CNPJ"
+                                    />
                                 </div>
                             </div>
                             <button className="modal-btn">Buscar</button>
@@ -81,7 +91,12 @@ export default function CadastrarVenda({ isOpenCadastrarVenda, setCloseModal }) 
                             <p>Venda</p>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cod-produto" name="cod-produto" placeholder="Código do produto" />
+                                    <input
+                                        type="text"
+                                        id="cod-produto"
+                                        name="cod-produto"
+                                        placeholder="Código do produto"
+                                    />
                                 </div>
                             </div>
                             <button className="modal-btn">Buscar</button>

@@ -11,22 +11,46 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                     <form method="post" action="">
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="servico" name="servico" placeholder="Serviço*" required />
+                                <input
+                                    type="text"
+                                    id="servico"
+                                    name="servico"
+                                    placeholder="Serviço*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_servico" name="cod_servico" placeholder="Código Interno" required />
+                                <input
+                                    type="text"
+                                    id="cod_servico"
+                                    name="cod_servico"
+                                    placeholder="Código Interno"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_servico_municipal" name="cod_servico_municipal" placeholder="Código de Serviço Municipal*" required />
+                                <input
+                                    type="text"
+                                    id="cod_servico_municipal"
+                                    name="cod_servico_municipal"
+                                    placeholder="Código de Serviço Municipal*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_lc" name="cod_lc" placeholder="Código LC 116*" required />
+                                <input
+                                    type="text"
+                                    id="cod_lc"
+                                    name="cod_lc"
+                                    placeholder="Código LC 116*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
@@ -41,7 +65,13 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="val_servico" name="val_servico" placeholder="Valor do Serviço" required />
+                                <input
+                                    type="text"
+                                    id="val_servico"
+                                    name="val_servico"
+                                    placeholder="Valor do Serviço"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row textarea">

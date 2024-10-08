@@ -54,12 +54,22 @@ export default function GerarNF({ isOpenGerarNF, setCloseModal }) {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="dt-emissao" name="dt-emissao" placeholder="Data de emissão" />
+                                    <input
+                                        type="text"
+                                        id="dt-emissao"
+                                        name="dt-emissao"
+                                        placeholder="Data de emissão"
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="hr-emissao" name="hr-emissao" placeholder="Hora de emissão" />
+                                    <input
+                                        type="text"
+                                        id="hr-emissao"
+                                        name="hr-emissao"
+                                        placeholder="Hora de emissão"
+                                    />
                                 </div>
                             </div>
                             <div className="row">

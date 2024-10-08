@@ -147,25 +147,43 @@ const EsqueciSenha = () => {
                 <main className="interna">
                     <div className="central">
                         <h1 className="tituloSenha">Precisa recuperar sua senha?</h1>
-                        <p className="paragrafoCentro">Primeiro, utilize o E-mail cadastrado para validarmos o seu registro.</p>
+                        <p className="paragrafoCentro">
+                            Primeiro, utilize o E-mail cadastrado para validarmos o seu registro.
+                        </p>
                         <div className="box-senha">
                             <div className="formulario">
                                 <form onSubmit={ handleSubmit }>
                                     <div className="row">
                                         <div className="col-12">
                                             <label className="labelSenha">Digite o E-mail cadastrado:</label>
-                                            <input type="email" name="email" id="email" placeholder="E-mail" maxLength={ 250 } required onChange={ handleChange } value={ email } />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                placeholder="E-mail"
+                                                maxLength={ 250 }
+                                                onChange={ handleChange }
+                                                value={ email }
+                                                required
+                                            />
                                         </div>
                                     </div>
                                     <div className="btn">
-                                        <button className="btn-login" type="submit" id="loginBtn" disabled={ !canSendEmail }>
+                                        <button
+                                            className="btn-login"
+                                            type="submit"
+                                            id="loginBtn"
+                                            disabled={ !canSendEmail }
+                                        >
                                             { canSendEmail ? "Enviar" : `Aguarde ${ timer }s` }
                                         </button>
                                     </div>
                                 </form>
                             </div>
                             <br />
-                            <p className="paragrafoCentro">Você receberá um link para recuperar a senha. <br /> <b>Fique atento!</b></p>
+                            <p className="paragrafoCentro">
+                                Você receberá um link para recuperar a senha. <br /> <b>Fique atento!</b>
+                            </p>
                         </div>
                     </div>
                 </main>

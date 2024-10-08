@@ -11,22 +11,46 @@ export default function FormX({ isOpenFormX, setCloseModal }) {
                     <form method="post" action="">
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="servico" name="servico" placeholder="Serviço*" required />
+                                <input
+                                    type="text"
+                                    id="servico"
+                                    name="servico"
+                                    placeholder="Serviço*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_servico" name="cod_servico" placeholder="Código Interno" required />
+                                <input
+                                    type="text"
+                                    id="cod_servico"
+                                    name="cod_servico"
+                                    placeholder="Código Interno"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_servico_municipal" name="cod_servico_municipal" placeholder="Código de Serviço Municipal*" required />
+                                <input
+                                    type="text"
+                                    id="cod_servico_municipal"
+                                    name="cod_servico_municipal"
+                                    placeholder="Código de Serviço Municipal*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="cod_lc" name="cod_lc" placeholder="Código LC 116*" required />
+                                <input
+                                    type="text"
+                                    id="cod_lc"
+                                    name="cod_lc" 
+                                    placeholder="Código LC 116*"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
@@ -41,17 +65,35 @@ export default function FormX({ isOpenFormX, setCloseModal }) {
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-cliente" name="fil-cliente" placeholder="Filtrar por cliente" required />
+                                <input
+                                    type="text"
+                                    id="fil-cliente"
+                                    name="fil-cliente"
+                                    placeholder="Filtrar por cliente"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-produto" name="fil-produto" placeholder="Filtrar por produto" required />
+                                <input
+                                    type="text"
+                                    id="fil-produto"
+                                    name="fil-produto"
+                                    placeholder="Filtrar por produto"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-cpf-cnpj" name="fil-cpf-cnpj" placeholder="Filtrar por CPF" required />
+                                <input
+                                    type="text"
+                                    id="fil-cpf-cnpj"
+                                    name="fil-cpf-cnpj"
+                                    placeholder="Filtrar por CPF"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row textarea">

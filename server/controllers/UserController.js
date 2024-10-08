@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cache = require("memory-cache");
-const User = require("../models/User.js");
-const Token = require("../models/Token.js");
+const UserModel = require("../models/UserModel.js");
+const TokenModel = require("../models/TokenModel.js");
 const { encrypt } = require("../utils/encrypt.js");
 const { validationResult } = require("express-validator");
 const { sendEmail, confirmationEmail } = require("../utils/email.js");
@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
     }
 
     try {
-        const user = await User.findByEmail(email);
+        const user = await UserModel.findByEmail(email);
         if (!user) {
             return res.status(400).json({ mensagem: "E-mail e/ou Senha inválido!" });
         }
@@ -33,12 +33,12 @@ exports.login = async (req, res) => {
             return res.status(400).json({ mensagem: "E-mail e/ou Senha inválido!" });
         }
 
-        await Token.removeAllByUser(user.id_usuario);
+        await TokenModel.removeAllByUser(user.id_usuario);
 
         const expiresIn = conectado ? "7d" : "1d";
         const token = jwt.sign({ userId: user.id_usuario }, JWT_SECRET, { expiresIn });
 
-        await Token.create(token, expiresIn, user.id_usuario);
+        await TokenModel.create(token, expiresIn, user.id_usuario);
 
         return res.json({ mensagem: "Usuário logado com sucesso!", token });
     } catch (err) {
@@ -55,7 +55,7 @@ exports.logout = async (req, res) => {
     }
 
     try {
-        const removeToken = await Token.remove(token);
+        const removeToken = await TokenModel.remove(token);
 
         if (removeToken.affectedRows === 0) {
             return res.status(404).json({ mensagem: "Token não encontrado." });
@@ -113,13 +113,13 @@ exports.register = async (req, res) => {
     }
 
     try {
-        const existingUser = await User.findByEmail(email);
+        const existingUser = await UserModel.findByEmail(email);
         if (existingUser) {
             return res.status(400).json({ mensagem: "Não foi possível cadastrar usuário!" });
         }
 
         const { cryptPass, cryptHash } = await encrypt(senha);
-        const newUserId = await User.create({
+        const newUserId = await UserModel.create({
             nome,
             email,
             senha: cryptPass,
@@ -134,7 +134,7 @@ exports.register = async (req, res) => {
 
         expiresIn = "1d";
         const token = jwt.sign({ userId: newUserId }, JWT_SECRET, { expiresIn });
-        await Token.create(token, expiresIn, newUserId);
+        await TokenModel.create(token, expiresIn, newUserId);
 
         return res.json({ mensagem: "Usuário cadastrado com sucesso!", token });
     } catch (err) {
@@ -151,7 +151,7 @@ exports.forgotPassword = async (req, res) => {
     }
 
     try {
-        const user = await User.findByEmail(email);
+        const user = await UserModel.findByEmail(email);
         if (!user) {
             return res.status(404).json({ mensagem: "E-mail inválido!" });
         }
@@ -193,13 +193,13 @@ exports.resetPassword = async (req, res) => {
     }
 
     try {
-        const user = await User.findByEmailAndHash(email, idRec);
+        const user = await UserModel.findByEmailAndHash(email, idRec);
         if (!user) {
             return res.status(404).json({ mensagem: "Usuário inválido!" });
         }
 
         const { cryptPass, cryptHash } = await encrypt(senha);
-        const updatePassword = await User.updatePassword(cryptPass, cryptHash, user.id_usuario);
+        const updatePassword = await UserModel.updatePassword(cryptPass, cryptHash, user.id_usuario);
 
         if (updatePassword.affectedRows > 0) {
             await confirmationEmail(email);

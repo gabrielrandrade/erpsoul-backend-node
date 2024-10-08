@@ -6,12 +6,6 @@ exports.findByEmail = async (email) => {
     return rows.length > 0 ? rows[0] : null;
 }
 
-exports.findById = async (id) => {
-    const db = await connectDB();
-    const [rows] = await db.query(`SELECT * FROM tb_usuario WHERE id_usuario = ?`, [id]);
-    return rows;
-}
-
 exports.create = async (user) => {
     const { nome, email, senha, hash, whatsapp, nome_empresa, cpfOuCnpj, email_contador, cargo, faturamento } = user;
     const db = await connectDB();

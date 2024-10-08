@@ -81,16 +81,43 @@ export default function Estoque() {
                         <div class="central">
                             <h1>ESTOQUE</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btn-cadastrar-fornecedores">CADASTRAR FORNECEDORES</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">CADASTRAR PRODUTOS</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btn-cadastrar-reabastecimento">CADASTRAR REABASTECIMENTO</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal4(true) } id="btn-relatorios-estoque">RELATÓRIOS</button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal(true) }
+                                    id="btn-cadastrar-fornecedores"
+                                >
+                                    CADASTRAR FORNECEDORES
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal2(true) }
+                                    id="btnModal"
+                                >
+                                    CADASTRAR PRODUTOS
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal3(true) }
+                                    id="btn-cadastrar-reabastecimento"
+                                >
+                                    CADASTRAR REABASTECIMENTO
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal4(true) } 
+                                    id="btn-relatorios-estoque"
+                                >
+                                    RELATÓRIOS
+                                </button><br />
                             </div>
                             
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarContador isOpenCadastrarContador={ openModal } setCloseModal={ setCloseModal } />
+                                        <CadastrarContador
+                                            isOpenCadastrarContador={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -102,7 +129,10 @@ export default function Estoque() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarProduto isOpenCadastrarProduto={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <CadastrarProduto
+                                            isOpenCadastrarProduto={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -114,7 +144,10 @@ export default function Estoque() {
                             {openModal3 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <PlanoContas isOpenPlanoContas={ openModal3 } setCloseModal={ setCloseModal } />
+                                        <PlanoContas
+                                            isOpenPlanoContas={ openModal3 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -126,7 +159,10 @@ export default function Estoque() {
                             {openModal4 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <RelatoriosEstoque isOpenRelatoriosEstoque={ openModal4 } setCloseModal={ setCloseModal } />
+                                        <RelatoriosEstoque
+                                            isOpenRelatoriosEstoque={ openModal4 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

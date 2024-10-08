@@ -11,22 +11,46 @@ export default function CadastrarProduto({ isOpenCadastrarProduto, setCloseModal
                     <form method="post" action="">
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="nome" name="nome" placeholder="Nome" required />
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    placeholder="Nome"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="marca" name="marca" placeholder="Marca" required />
+                                <input
+                                    type="text"
+                                    id="marca"
+                                    name="marca"
+                                    placeholder="Marca"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="preco-venda" name="preco-venda" placeholder="Preço de venda" required />
+                                <input
+                                    type="text"
+                                    id="preco-venda"
+                                    name="preco-venda"
+                                    placeholder="Preço de venda"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="unidade" name="unidade" placeholder="Unidade" required />
+                                <input
+                                    type="text"
+                                    id="unidade"
+                                    name="unidade"
+                                    placeholder="Unidade"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
@@ -58,12 +82,24 @@ export default function CadastrarProduto({ isOpenCadastrarProduto, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="codigo" name="codigo" placeholder="Código(SKU)" required />
+                                <input
+                                    type="text"
+                                    id="codigo"
+                                    name="codigo"
+                                    placeholder="Código(SKU)"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="dt-validade" name="dt-validade" placeholder="Data de validade" required />
+                                <input
+                                    type="text"
+                                    id="dt-validade"
+                                    name="dt-validade"
+                                    placeholder="Data de validade"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
@@ -78,42 +114,90 @@ export default function CadastrarProduto({ isOpenCadastrarProduto, setCloseModal
 
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="peso-liquido" name="peso-liquido" placeholder="Peso líquido" required />
+                                <input
+                                    type="text"
+                                    id="peso-liquido"
+                                    name="peso-liquido"
+                                    placeholder="Peso líquido"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="peso-bruto" name="peso-bruto" placeholder="Peso bruto" required />
+                                <input
+                                    type="text"
+                                    id="peso-bruto"
+                                    name="peso-bruto"
+                                    placeholder="Peso bruto"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="largura" name="largura" placeholder="Largura" required />
+                                <input
+                                    type="text"
+                                    id="largura"
+                                    name="largura"
+                                    placeholder="Largura"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="altura" name="altura" placeholder="Altura" required />
+                                <input
+                                    type="text"
+                                    id="altura"
+                                    name="altura"
+                                    placeholder="Altura"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="itens-caixa" name="itens-caixa" placeholder="Itens por caixa" required />
+                                <input
+                                    type="text"
+                                    id="itens-caixa"
+                                    name="itens-caixa"
+                                    placeholder="Itens por caixa"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="unidade-medida" name="unidade-medida" placeholder="Unidade de medida" required />
+                                <input
+                                    type="text"
+                                    id="unidade-medida"
+                                    name="unidade-medida"
+                                    placeholder="Unidade de medida"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="gtin" name="gtin" placeholder="GTIN/EAN" required />
+                                <input
+                                    type="text"
+                                    id="gtin"
+                                    name="gtin"
+                                    placeholder="GTIN/EAN"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="gtin-ean" name="gtin-ean" placeholder="GTIN/EAN tributário" required />
+                                <input
+                                    type="text"
+                                    id="gtin-ean"
+                                    name="gtin-ean"
+                                    placeholder="GTIN/EAN tributário"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row-textarea">

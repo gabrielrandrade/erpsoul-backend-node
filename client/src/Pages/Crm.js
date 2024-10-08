@@ -78,15 +78,24 @@ export default function Crm() {
                         <div className="central">
                             <h1>CRM</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">CADASTRAR CLIENTE</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">CLIENTES CADASTRADOS</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btnModal">GERAR RELATÓRIO</button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">
+                                    CADASTRAR CLIENTE
+                                </button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">
+                                    CLIENTES CADASTRADOS
+                                </button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btnModal">
+                                    GERAR RELATÓRIO
+                                </button><br />
                             </div>
 
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarCliente isOpenCadastrarCliente={ openModal } setCloseModal={ setCloseModal } />
+                                        <CadastrarCliente
+                                            isOpenCadastrarCliente={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -98,7 +107,10 @@ export default function Crm() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <ClientesCadastrados isOpenClientesCadastrados={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <ClientesCadastrados
+                                            isOpenClientesCadastrados={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -110,7 +122,10 @@ export default function Crm() {
                             {openModal3 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <RelatoriosClientes isOpenRelatoriosClientes={ openModal3 } setCloseModal={ setCloseModal } />
+                                        <RelatoriosClientes
+                                            isOpenRelatoriosClientes={ openModal3 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

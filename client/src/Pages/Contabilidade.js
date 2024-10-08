@@ -83,17 +83,50 @@ export default function Contabilidade() {
                         <div className="central">
                             <h1>CONTABILIDADE</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btn-cad-contador">CADASTRAR CONTADOR</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btn-plano-contas">PLANO DE CONTAS</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btn-integracoes">INTEGRAÇÕES</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal4(true) } id="btn-gerar-arquivo">GERAR ARQUIVO</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal5(true) } id="btn-fechar-periodo">FECHAR PERÍODO</button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal(true) }
+                                    id="btn-cad-contador"
+                                >
+                                    CADASTRAR CONTADOR
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal2(true) }
+                                    id="btn-plano-contas"
+                                >
+                                    PLANO DE CONTAS
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal3(true) }
+                                    id="btn-integracoes"
+                                >
+                                    INTEGRAÇÕES
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal4(true) }
+                                    id="btn-gerar-arquivo"
+                                >
+                                    GERAR ARQUIVO
+                                </button><br />
+                                <button
+                                    className="modal-btn"
+                                    onClick={ () => setOpenModal5(true) }
+                                    id="btn-fechar-periodo"
+                                >
+                                    FECHAR PERÍODO
+                                </button><br />
                             </div>
 
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarContador isOpenCadastrarContador={ openModal } setCloseModal={ setCloseModal } />
+                                        <CadastrarContador
+                                            isOpenCadastrarContador={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -105,7 +138,10 @@ export default function Contabilidade() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <PlanoContas isOpenPlanoContas={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <PlanoContas
+                                            isOpenPlanoContas={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -117,7 +153,10 @@ export default function Contabilidade() {
                             {openModal3 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <Integracoes isOpenIntegracoes={ openModal3 } setCloseModal={ setCloseModal } />
+                                        <Integracoes
+                                            isOpenIntegracoes={ openModal3 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

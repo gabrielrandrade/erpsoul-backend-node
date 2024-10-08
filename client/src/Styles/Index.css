@@ -52,7 +52,26 @@ button{
         background-color: var(--bc-secondary);
     }
 
-    .pageIndex, .headerIndex, .headerIndex .formulario, .headerIndex .box-login .row .col-12, .headerIndex .box-teste .row .col-12, .mainIndex, .mainIndex .box1, .mainIndex .box2, .mainIndex .box3, .mainIndex .box4, .mainIndex .box4 .caixas, .mainIndex .box4 .caixas .caixa, .mainIndex .box5, .mainIndex .box5 .plano, .mainIndex .box5 .plano .lista, .mainIndex .box6, .mainIndex .box6 .contato .central-suporte, .footerIndex, .footerIndex .rodape, .footerIndex .rodape .sociais, .footerIndex .rodape .texto-rodape p{
+    .pageIndex, .headerIndex,
+    .headerIndex .formulario,
+    .headerIndex .box-login .row .col-12,
+    .headerIndex .box-teste .row .col-12,
+    .mainIndex,
+    .mainIndex .box1,
+    .mainIndex .box2,
+    .mainIndex .box3,
+    .mainIndex .box4,
+    .mainIndex .box4 .caixas,
+    .mainIndex .box4 .caixas .caixa,
+    .mainIndex .box5,
+    .mainIndex .box5 .plano,
+    .mainIndex .box5 .plano .lista,
+    .mainIndex .box6,
+    .mainIndex .box6 .contato .central-suporte,
+    .footerIndex,
+    .footerIndex .rodape,
+    .footerIndex .rodape .sociais,
+    .footerIndex .rodape .texto-rodape p{
         width: 100%;
         display: flex;
         align-items: center;
@@ -88,7 +107,11 @@ button{
         background-color: var(--fc-primary);
     }
 
-    .headerIndex .container-modal-index .modal-btn-index, .mainIndex .box6 .contato .central-suporte .btn-login, .footerIndex .rodape .texto-rodape p{font-size: 3vw}
+    .headerIndex .container-modal-index .modal-btn-index,
+    .mainIndex .box6 .contato .central-suporte .btn-login,
+    .footerIndex .rodape .texto-rodape p{
+        font-size: 3vw
+    }
 
     .modal-open{overflow: hidden}
 
@@ -265,14 +288,23 @@ button{
         margin-left: 20px;
     }
 
-    .mainIndex .box1 .text-box1 p, .mainIndex .box2 .text-box2 p, .mainIndex .box3 .text-box3 p, .mainIndex .box4 .caixas .caixa p, .mainIndex .box6 .contato .central-suporte .titulo, .mainIndex .box6 .contato .central-suporte p{font-size: 4vw}
+    .mainIndex .box1 .text-box1 p,
+    .mainIndex .box2 .text-box2 p,
+    .mainIndex .box3 .text-box3 p,
+    .mainIndex .box4 .caixas .caixa p,
+    .mainIndex .box6 .contato .central-suporte .titulo,
+    .mainIndex .box6 .contato .central-suporte p{
+        font-size: 4vw
+    }
 
     .mainIndex .box1 .img-box1, .mainIndex .box2 .img-box2, .mainIndex .box3 .img-box3{
         width: 25%;
         margin-right: 20px;
     }
 
-    .mainIndex .box1 .img-box1 img, .mainIndex .box2 .img-box2 img, .mainIndex .box3 .img-box3 img{
+    .mainIndex .box1 .img-box1 img,
+    .mainIndex .box2 .img-box2 img,
+    .mainIndex .box3 .img-box3 img{
         width: 100%;
         filter: drop-shadow(var(--drop-shadow));
     }
@@ -311,7 +343,12 @@ button{
         text-align: center;
     }
 
-    .mainIndex .box4 p, .mainIndex .box5 p, .mainIndex .box6  .ctt, .mainIndex .box5 .plano h2{font-size: 5vw}
+    .mainIndex .box4 p,
+    .mainIndex .box5 p,
+    .mainIndex .box6  .ctt,
+    .mainIndex .box5 .plano h2{
+        font-size: 5vw
+    }
 
     .mainIndex .box4 .caixas{
         flex-wrap: wrap;
@@ -347,7 +384,11 @@ button{
 
     .mainIndex .box5 .plano h2{color: var(--bc-secondary)}
 
-    .mainIndex .box5 .plano p, .mainIndex .box5 .plano .btn-login, .mainIndex .box6 .contato .central-suporte .btn-login{font-size: 3.5vw}
+    .mainIndex .box5 .plano p,
+    .mainIndex .box5 .plano .btn-login,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        font-size: 3.5vw
+    }
 
     .mainIndex .box5 .plano .lista ul li{
         font-size: 4.5vw;
@@ -387,7 +428,10 @@ button{
     
     .footerIndex .rodape .sociais .social{font-size: 6vw}
 
-    .footerIndex .rodape .sociais .social a, .footerIndex .rodape .texto-rodape p {color: #fff}
+    .footerIndex .rodape .sociais .social a,
+    .footerIndex .rodape .texto-rodape p{
+        color: #fff
+    }
 
     .footerIndex .rodape .texto-rodape{
         width: 100%;
@@ -410,9 +454,17 @@ button{
 
     .headerIndex .container-modal-index .modal-btn-index{margin-left: 10px}
 
-    .headerIndex .container-modal-index .modal-btn-index, .mainIndex .box5 .plano .btn-login, .mainIndex .box6 .contato .central-suporte .btn-login{border-radius: 50px}
+    .headerIndex .container-modal-index .modal-btn-index,
+    .mainIndex .box5 .plano .btn-login,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        border-radius: 50px
+    }
 
-    .headerIndex .container-modal-index .modal-btn-index, .mainIndex .box6 .contato .central-suporte .btn-login, .footerIndex .rodape .texto-rodape p{font-size: 2.5vw}
+    .headerIndex .container-modal-index .modal-btn-index,
+    .mainIndex .box6 .contato .central-suporte .btn-login,
+    .footerIndex .rodape .texto-rodape p{
+        font-size: 2.5vw
+    }
 
     .mainIndex .box3 .img-box3{margin-right: 65px}
 
@@ -420,11 +472,22 @@ button{
 
     .mainIndex .box4 .caixas .caixa p{font-size: 3.5vw}
 
-    .mainIndex .box5 .plano h2, .mainIndex .box5 .plano .lista ul li, .mainIndex .box6 .contato .central-suporte .titulo{font-size: 4vw}
+    .mainIndex .box5 .plano h2,
+    .mainIndex .box5 .plano .lista ul li,
+    .mainIndex .box6 .contato .central-suporte .titulo{
+        font-size: 4vw
+    }
 
-    .mainIndex .box5 .plano p, .mainIndex .box5 .plano .btn-login, .mainIndex .box6 .contato .central-suporte .btn-login{font-size: 3vw}
+    .mainIndex .box5 .plano p,
+    .mainIndex .box5 .plano .btn-login,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        font-size: 3vw
+    }
 
-    .mainIndex .box5 .plano .btn-login, .mainIndex .box6 .contato .central-suporte .btn-login{width: 40%}
+    .mainIndex .box5 .plano .btn-login,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        width: 40%
+    }
 
     .mainIndex .box6 .contato .central-suporte .btn-login{
         width: 50%;
@@ -438,7 +501,9 @@ button{
 @media only screen and (min-width: 768px) and (max-width: 1624.99px){
     .headerIndex .logo{margin-left: 30px}
 
-    .headerIndex .nav-bar, .headerIndex .nav-bar ul, .headerIndex .container-modal-index .modal-btn-index{
+    .headerIndex .nav-bar,
+    .headerIndex .nav-bar ul,
+    .headerIndex .container-modal-index .modal-btn-index{
         width: 100%;
         display: flex;
         align-items: center;
@@ -455,11 +520,25 @@ button{
         color: var(--fc-paragraphs);
     }
 
-    .headerIndex .nav-bar ul a, .mainIndex .box5 .plano p, .mainIndex .box5 .plano .btn-login, .footerIndex .rodape .texto-rodape p{font-size: 2vw}
+    .headerIndex .nav-bar ul a,
+    .mainIndex .box5 .plano p,
+    .mainIndex .box5 .plano .btn-login,
+    .footerIndex .rodape .texto-rodape p{
+        font-size: 2vw
+    }
 
-    .headerIndex .nav-bar ul a:hover, .footerIndex .rodape .sociais .social a:hover{color: var(--fc-primary)}
+    .headerIndex .nav-bar ul a:hover,
+    .footerIndex .rodape .sociais .social a:hover{
+        color: var(--fc-primary)
+    }
 
-    .headerIndex .container-modal-index, .mainIndex .box1 .img-box1, .mainIndex .box2 .img-box2, .mainIndex .box2 .text-box2 p, .mainIndex .box3 .img-box3{margin-right: 50px}
+    .headerIndex .container-modal-index,
+    .mainIndex .box1 .img-box1,
+    .mainIndex .box2 .img-box2,
+    .mainIndex .box2 .text-box2 p,
+    .mainIndex .box3 .img-box3{
+        margin-right: 50px
+    }
 
     .headerIndex .container-modal-index .modal-btn-index{
         width: 10vw;
@@ -478,9 +557,20 @@ button{
 
     .mainIndex .box1 .text-box1, .mainIndex .box3 .text-box3{margin-left: 50px}
 
-    .mainIndex .box1 .text-box1 p, .mainIndex .box2 .text-box2 p, .mainIndex .box3 .text-box3 p, .mainIndex .box4 p, .mainIndex .box5 p, .mainIndex .box6  .ctt{font-size: 3vw}
+    .mainIndex .box1 .text-box1 p,
+    .mainIndex .box2 .text-box2 p,
+    .mainIndex .box3 .text-box3 p,
+    .mainIndex .box4 p,
+    .mainIndex .box5 p,
+    .mainIndex .box6 .ctt{
+        font-size: 3vw
+    }
     
-    .mainIndex .box1 .img-box1, .mainIndex .box2 .img-box2, .mainIndex .box3 .img-box3{width: 20%}
+    .mainIndex .box1 .img-box1,
+    .mainIndex .box2 .img-box2,
+    .mainIndex .box3 .img-box3{
+        width: 20%
+    }
 
     .mainIndex .box2 .img-box2{margin: 0 0 0 60px}
 
@@ -502,7 +592,12 @@ button{
 
     .mainIndex .box4 .caixas .caixa p{margin-bottom: 0}
 
-    .mainIndex .box4 .caixas .caixa p, .mainIndex .box5 .plano .lista ul li, .mainIndex .box6 .contato .central-suporte .titulo, .mainIndex .box6 .contato .central-suporte p{font-size: 2.5vw}
+    .mainIndex .box4 .caixas .caixa p,
+    .mainIndex .box5 .plano .lista ul li,
+    .mainIndex .box6 .contato .central-suporte .titulo, 
+    .mainIndex .box6 .contato .central-suporte p{
+        font-size: 2.5vw
+    }
 
     .mainIndex .box5, .mainIndex .box6{
         align-items: flex-start;
@@ -532,7 +627,10 @@ button{
         flex-direction: column;
     }
 
-    .mainIndex .box6 .contato .central-suporte .subtitulo, .mainIndex .box6 .contato .central-suporte .btn-login{font-size: 1.8vw}
+    .mainIndex .box6 .contato .central-suporte .subtitulo,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        font-size: 1.8vw
+    }
 
     .mainIndex .box6 .contato .central-suporte .btn-login{width: 77%}
 
@@ -544,7 +642,10 @@ button{
     
     .footerIndex .rodape .sociais .social{font-size: 4vw}
 
-    .footerIndex .rodape .sociais .social a:hover, .footerIndex .rodape .texto-rodape a p:hover{color: var(--fc-primary)}
+    .footerIndex .rodape .sociais .social a:hover,
+    .footerIndex .rodape .texto-rodape a p:hover{
+        color: var(--fc-primary)
+    }
 
     .footerIndex .rodape .texto-rodape a{width: auto}
 }
@@ -555,9 +656,19 @@ button{
     
     .headerIndex .nav-bar ul a{margin-right: 30px}
 
-    .headerIndex .nav-bar ul a, .mainIndex .box5 .plano p, .mainIndex .box5 .plano .btn-login{font-size: 1.5vw}
+    .headerIndex .nav-bar ul a,
+    .mainIndex .box5 .plano p,
+    .mainIndex .box5 .plano .btn-login{
+        font-size: 1.5vw
+    }
 
-    .headerIndex .container-modal-index, .mainIndex .box1 .img-box1, .mainIndex .box2 .img-box2, .mainIndex .box2 .text-box2 p, .mainIndex .box3 .img-box3{margin-right: 90px}
+    .headerIndex .container-modal-index,
+    .mainIndex .box1 .img-box1,
+    .mainIndex .box2 .img-box2,
+    .mainIndex .box2 .text-box2 p,
+    .mainIndex .box3 .img-box3{
+        margin-right: 90px
+    }
 
     .headerIndex .container-modal-index .modal-btn-index{
         width: 10vw;
@@ -570,7 +681,14 @@ button{
 
     .mainIndex .box1 .text-box1, .mainIndex .box3 .text-box3{margin-left: 75px}
 
-    .mainIndex .box1 .text-box1 p, .mainIndex .box2 .text-box2 p, .mainIndex .box3 .text-box3 p, .mainIndex .box4 p, .mainIndex .box5 p, .mainIndex .box6  .ctt{font-size: 2vw}
+    .mainIndex .box1 .text-box1 p,
+    .mainIndex .box2 .text-box2 p,
+    .mainIndex .box3 .text-box3 p,
+    .mainIndex .box4 p,
+    .mainIndex .box5 p,
+    .mainIndex .box6 .ctt{
+        font-size: 2vw
+    }
     
     .mainIndex .box1 .img-box1, .mainIndex .box2 .img-box2, .mainIndex .box3 .img-box3{width: 16%}
 
@@ -587,7 +705,13 @@ button{
         height: 18vw;
     }
 
-    .mainIndex .box4 .caixas .caixa p, .mainIndex .box5 .plano h2, .mainIndex .box5 .plano .lista ul li, .mainIndex .box6 .contato .central-suporte .titulo, .mainIndex .box6 .contato .central-suporte p{font-size: 1.8vw}
+    .mainIndex .box4 .caixas .caixa p,
+    .mainIndex .box5 .plano h2,
+    .mainIndex .box5 .plano .lista ul li,
+    .mainIndex .box6 .contato .central-suporte .titulo,
+    .mainIndex .box6 .contato .central-suporte p{
+        font-size: 1.8vw
+    }
 
     .mainIndex .box5 .plano, .mainIndex .box6 .contato{width: 33%}
 
@@ -595,7 +719,10 @@ button{
 
     .mainIndex .box6 .contato{height: 30vw}
 
-    .mainIndex .box6 .contato .central-suporte .subtitulo, .mainIndex .box6 .contato .central-suporte .btn-login{font-size: 1.3vw}
+    .mainIndex .box6 .contato .central-suporte .subtitulo,
+    .mainIndex .box6 .contato .central-suporte .btn-login{
+        font-size: 1.3vw
+    }
 
     .mainIndex .box6 .contato .central-suporte .btn-login{width: 60%}
     
@@ -1227,7 +1354,10 @@ button{
     
     .footerIndex .rodape .sociais .social a, .footerIndex .rodape .texto-rodape p{color: #fff}
 
-    .footerIndex .rodape .sociais .social a:hover, .footerIndex .rodape .texto-rodape a p:hover{color: var(--fc-primary)}
+    .footerIndex .rodape .sociais .social a:hover,
+    .footerIndex .rodape .texto-rodape a p:hover{
+        color: var(--fc-primary)
+    }
 
     .footerIndex .rodape .texto-rodape{
         width: 100%;

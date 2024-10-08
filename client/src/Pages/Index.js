@@ -166,8 +166,16 @@ class Index extends React.Component {
                                         </>
                                     ) : (
                                         <>
-                                            <button className="modal-btn-index" onClick={ () => this.setOpenModal2(true) }>TESTE GRÁTIS</button>
-                                            <button className="modal-btn-index" onClick={ () => this.setOpenModal(true) }>
+                                            <button
+                                                className="modal-btn-index"
+                                                onClick={ () => this.setOpenModal2(true) }
+                                            >
+                                                TESTE GRÁTIS
+                                            </button>
+                                            <button
+                                                className="modal-btn-index"
+                                                onClick={ () => this.setOpenModal(true) }
+                                            >
                                                 <i className="fa-solid fa-user" /> ENTRAR
                                             </button>
                                         </>
@@ -177,7 +185,10 @@ class Index extends React.Component {
                                 {this.state.openModal && (
                                     <div className="modal-overlay-index">
                                         <div className="modal-container-index">
-                                            <Login isOpenLogin={ this.state.openModal } setCloseModal={ this.setCloseModal } />
+                                            <Login
+                                                isOpenLogin={ this.state.openModal }
+                                                setCloseModal={ this.setCloseModal }
+                                            />
                                             <div className="botoes">
                                                 <button className="close-btn-index" onClick={ this.setCloseModal }>
                                                     <i className="fa-solid fa-xmark" />
@@ -189,7 +200,10 @@ class Index extends React.Component {
                                 {this.state.openModal2 && (
                                     <div className="modal-overlay-index">
                                         <div className="modal-container-index">
-                                            <TesteGratis isOpenTesteGratis={ this.state.openModal2 } setCloseModal={ this.setCloseModal } />
+                                            <TesteGratis
+                                                isOpenTesteGratis={ this.state.openModal2 }
+                                                setCloseModal={ this.setCloseModal }
+                                            />
                                             <div className="botoes">
                                                 <button className="close-btn-index" onClick={ this.setCloseModal }>
                                                     <i className="fa-solid fa-xmark" />
@@ -204,7 +218,8 @@ class Index extends React.Component {
                             <main className="mainIndex">
                                 <div className="box1" data-aos="fade-left">
                                     <div className="text-box1">
-                                        <p>A <b style={{ color: "#00968F" }}>Soul</b> é um sistema de gestão <br />
+                                        <p>
+                                            A <b style={{ color: "#00968F" }}>Soul</b> é um sistema de gestão <br />
                                             100% <b style={{ color: "#00968F" }}>on-line</b><br />
                                             que <b style={{ color: "#00968F" }}>descomplica</b> seu e-commerce.
                                         </p>
@@ -218,14 +233,20 @@ class Index extends React.Component {
                                         <img src={ imgBox2 } alt="Imagem sobre plataforma de e-commerce" />
                                     </div>
                                     <div className="text-box2">
-                                        <p><b style={{ color: "#00FFF4" }}>Integração</b> com plataformas de <br />e-commerce e marketplaces de forma <br /><b style={{ color: "#00FFF4" }}>fácil</b> e <b style={{ color: "#00FFF4" }}>rápida</b>
+                                        <p>
+                                            <b style={{ color: "#00FFF4" }}>Integração</b> com plataformas de <br />
+                                            e-commerce e marketplaces de forma <br />
+                                            <b style={{ color: "#00FFF4" }}>fácil</b> e <b style={{ color: "#00FFF4" }}>rápida</b>
                                         </p>
                                     </div>
                                 </div>
                                 <div className="box3" data-aos="fade-left">
                                     <div className="text-box3">
-                                        <p>Gestão de Estoque como você nunca viu!<br />
-                                            <b style={{ color: "#050538" }}>Cadastro</b> de seus fornecedores, <br />emissão dos <b style={{ color: "#050538" }}>relatórios</b> de estoque, <br /> <b style={{ color: "#050538" }}>controle</b> de suas compras e muito mais!
+                                        <p>
+                                            Gestão de Estoque como você nunca viu!<br />
+                                            <b style={{ color: "#050538" }}>Cadastro</b> de seus fornecedores, <br />
+                                            emissão dos <b style={{ color: "#050538" }}>relatórios</b> de estoque, <br /> 
+                                            <b style={{ color: "#050538" }}>controle</b> de suas compras e muito mais!
                                         </p>
                                     </div>
                                     <div className="img-box3">
@@ -261,7 +282,9 @@ class Index extends React.Component {
                                         </div>
                                         <div className="caixa">
                                             <img src={ caixa7 } alt="Imagem sobre avaliação de relevância" />
-                                            <p>Avaliação de relevância de cada produto com relatórios baseados em lucro/prejuízo, compras/vendas.</p>
+                                            <p>
+                                                Avaliação de relevância de cada produto com relatórios baseados em lucro/prejuízo, compras/vendas.
+                                            </p>
                                         </div>
                                         <div className="caixa">
                                             <img src={ caixa8 } alt="Imagem sobre facilidade das negociações" />
@@ -339,13 +362,19 @@ class Index extends React.Component {
                                             <p className="titulo"><b>Ainda não é nosso cliente?</b></p>
                                             <p className="subtitulo">Fale com nossa equipe comercial.</p>
                                             <br />
-                                            <p className="email-central-suporte"><i className="fa-solid fa-envelope-open-text" /> <b>E-mail</b></p>
+                                            <p className="email-central-suporte">
+                                                <i className="fa-solid fa-envelope-open-text" /> <b>E-mail</b>
+                                            </p>
                                             <p>soul-erp@soul.com.br</p>
                                         </div>
                                         <div className="central-suporte">
-                                            <p className="tel-central-suporte"><i className="fa-solid fa-phone" /> <b>Telefone</b></p>
+                                            <p className="tel-central-suporte">
+                                                <i className="fa-solid fa-phone" /> <b>Telefone</b>
+                                            </p>
                                             <p>+55 11 88888-8888</p>
-                                            <p className="subtitulo" id="hora-central-suporte">Horário de atendimento: das 8h às 17h</p>
+                                            <p className="subtitulo" id="hora-central-suporte">
+                                                Horário de atendimento: das 8h às 17h
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

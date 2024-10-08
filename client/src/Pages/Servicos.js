@@ -75,14 +75,21 @@ export default function Servicos() {
                         <div className="central">
                             <h1>SERVIÇOS</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal" >CADASTRAR SERVIÇO</button><br />
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal" >GERAR RELATÓRIOS</button>
+                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">
+                                    CADASTRAR SERVIÇO
+                                </button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">
+                                    GERAR RELATÓRIOS
+                                </button>
                             </div>
 
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarServico isOpenCadastrarServico={ openModal } setCloseModal={ setCloseModal } />
+                                        <CadastrarServico
+                                            isOpenCadastrarServico={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -94,7 +101,10 @@ export default function Servicos() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <RelatoriosServicos isOpenRelatoriosServicos={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <RelatoriosServicos
+                                            isOpenRelatoriosServicos={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

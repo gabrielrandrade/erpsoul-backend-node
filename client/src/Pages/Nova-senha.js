@@ -180,18 +180,45 @@ const NovaSenha = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <label className="labelSenha">E-mail:</label>
-                                                <input type="email" name="email" id="email" placeholder="E-mail" maxLength={ 250 } required onChange={ handleChangeEmail } value={ email } />
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    id="email"
+                                                    placeholder="E-mail"
+                                                    maxLength={ 250 }
+                                                    onChange={ handleChangeEmail }
+                                                    value={ email }
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-12">
                                                 <label className="labelSenha">Digite sua nova senha:</label>
-                                                <input type="password" name="senha" id="senha" placeholder="Nova Senha" maxLength={ 60 } required onChange={ handleChangeSenha } value={ senha } />
+                                                <input
+                                                    type="password"
+                                                    name="senha"
+                                                    id="senha"
+                                                    placeholder="Nova Senha"
+                                                    maxLength={ 60 }
+                                                    onChange={ handleChangeSenha }
+                                                    value={ senha }
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-12">
-                                                <input type="password" name="confSenha" id="confSenha" placeholder="Repita Nova Senha" maxLength={ 60 } required onChange={ handleChangeConfSenha } value={ confSenha } />
+                                                <input
+                                                    type="password"
+                                                    name="confSenha"
+                                                    id="confSenha"
+                                                    placeholder="Repita Nova Senha"
+                                                    maxLength={ 60 }
+                                                    onChange={ handleChangeConfSenha }
+                                                    value={ confSenha }
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="btn">

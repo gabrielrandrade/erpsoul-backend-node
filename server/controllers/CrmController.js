@@ -1,5 +1,5 @@
-const Crm = require("../models/Crm.js");
-const Address = require("../models/Address.js");
+const CrmModel = require("../models/CrmModel.js");
+const AddressModel = require("../models/AddressModel.js");
 const { isValidCpfCnpj, isValidDate } = require("../utils/validators.js");
 
 exports.registerClient = async (req, res) => {
@@ -34,17 +34,17 @@ exports.registerClient = async (req, res) => {
     const id_usuario = req.user.userId;
 
     try {
-        const [existingClient] = await Crm.findClient(cpfOuCnpj, id_usuario);
+        const [existingClient] = await CrmModel.findClient(cpfOuCnpj, id_usuario);
 
         if (existingClient.length > 0) {
             return res.status(400).json({ mensagem: "Cliente já cadastrado!" });
         }
 
-        const addressId = await Address.create({
+        const addressId = await AddressModel.create({
             logradouro, numero, cep, bairro, cidade, uf
         });
 
-        await Crm.create({
+        await CrmModel.create({
             nome,
             cpfOuCnpj,
             dt_nasc,
@@ -64,7 +64,7 @@ exports.getClients = async (req, res) => {
     const id_usuario = req.user.userId;
 
     try {
-        const [clients] = await Crm.findByUserId(id_usuario);
+        const [clients] = await CrmModel.findByUserId(id_usuario);
         return res.json(clients);
     } catch (err) {
         console.error("Erro ao buscar clientes:", err);
@@ -89,7 +89,7 @@ exports.editClient = async (req, res) => {
     }
     
     try {
-        const [result] = await Crm.edit(nome, cpfOuCnpj, id_cliente);
+        const [result] = await CrmModel.edit(nome, cpfOuCnpj, id_cliente);
 
         if (result.affectedRows > 0) {
             return res.json({ mensagem: "Cliente atualizado com sucesso!" });
@@ -106,7 +106,7 @@ exports.deleteClient = async (req, res) => {
     const { id_cliente } = req.params;
 
     try {
-        const [result] = await Crm.delete(id_cliente);
+        const [result] = await CrmModel.delete(id_cliente);
 
         if (result.affectedRows > 0) {
             return res.json({ mensagem: "Cliente excluído com sucesso!" });
@@ -149,7 +149,7 @@ exports.reportsClients = async (req, res) => {
     }
 
     try {
-        const [results] = await Crm.reports(id_usuario, nome, cpfOuCnpj, dt_nasc, id_tipo_cliente);
+        const [results] = await CrmModel.reports(id_usuario, nome, cpfOuCnpj, dt_nasc, id_tipo_cliente);
 
         if (results.length > 0) {
             return res.status(200).json({ mensagem: "Cliente encontrado!", results });
@@ -170,7 +170,7 @@ exports.exportReportsClients = async (req, res) => {
     }
 
     try {
-        const [results] = await Crm.exportReports(clienteIds);
+        const [results] = await CrmModel.exportReports(clienteIds);
         return res.status(200).json({ clientes: results });
     } catch (err) {
         console.error("Erro ao exportar relatório:", err);

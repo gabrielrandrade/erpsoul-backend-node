@@ -27,7 +27,14 @@
         font-family: 'Itim';
     }
 
-    .bodyGeral, .mainGeral, .mainGeral .pai, .mainGeral .boxes, .mainGeral .boxes .box, .mainGeral .ajuda{background-color: var(--bc)}
+    .bodyGeral,
+    .mainGeral,
+    .mainGeral .pai,
+    .mainGeral .boxes,
+    .mainGeral .boxes .box,
+    .mainGeral .ajuda{
+        background-color: var(--bc)
+    }
 
     .pageGeral{
         width: 90%;

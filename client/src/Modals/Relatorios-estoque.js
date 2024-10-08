@@ -40,17 +40,35 @@ export default function RelatoriosEstoque({ isOpenRelatoriosEstoque, setCloseMod
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-cliente" name="fil-cliente"placeholder="Filtrar por cliente" required />
+                                <input
+                                    type="text"
+                                    id="fil-cliente"
+                                    name="fil-cliente"
+                                    placeholder="Filtrar por cliente"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-produto" name="fil-produto" placeholder="Filtrar por produto" required />
+                                <input
+                                    type="text"
+                                    id="fil-produto"
+                                    name="fil-produto"
+                                    placeholder="Filtrar por produto"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" id="fil-cpf-cnpj" name="fil-cpf-cnpj" placeholder="Filtrar por CPF ou CNPJ" required />
+                                <input
+                                    type="text"
+                                    id="fil-cpf-cnpj"
+                                    name="fil-cpf-cnpj"
+                                    placeholder="Filtrar por CPF ou CNPJ"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">

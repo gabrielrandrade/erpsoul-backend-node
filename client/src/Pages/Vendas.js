@@ -75,14 +75,21 @@ export default function Vendas() {
                         <div className="central">
                             <h1>VENDAS</h1>
                             <div className="container-modal">
-                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">CADASTRAR VENDA</button>
-                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">RELATÓRIOS</button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal(true) } id="btnModal">
+                                    CADASTRAR VENDA
+                                </button>
+                                <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">
+                                    RELATÓRIOS
+                                </button><br />
                             </div>
 
                             {openModal && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <CadastrarVenda isOpenCadastrarVenda={ openModal } setCloseModal={ setCloseModal } />
+                                        <CadastrarVenda
+                                            isOpenCadastrarVenda={ openModal }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>
@@ -94,7 +101,10 @@ export default function Vendas() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
-                                        <RelatoriosVendas isOpenRelatoriosVendas={ openModal2 } setCloseModal={ setCloseModal } />
+                                        <RelatoriosVendas
+                                            isOpenRelatoriosVendas={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
                                         <div className="botoes">
                                             <button className="close-btn" onClick={ setCloseModal }>
                                                 <i class="fa-solid fa-xmark"></i>

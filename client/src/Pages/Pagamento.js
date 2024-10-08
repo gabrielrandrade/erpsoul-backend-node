@@ -35,27 +35,53 @@ class Pagamento extends React.Component {
                                         <form method="POST" action="">
                                             <div className="row">
                                                 <div className="col-12">
-                                                    <input type="text" name="nome_cartao" id="nome_cartao" placeholder="Nome impresso no cartão" required />
+                                                    <input
+                                                        type="text"
+                                                        name="nome_cartao"
+                                                        id="nome_cartao"
+                                                        placeholder="Nome impresso no cartão"
+                                                        required
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-6">
-                                                    <input type="text" name="num_cartao" id="num_cartao" placeholder="Número do cartão" />
+                                                    <input
+                                                        type="text"
+                                                        name="num_cartao"
+                                                        id="num_cartao"
+                                                        placeholder="Número do cartão"
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-6">
-                                                    <input type="text" name="ccv" id="ccv" placeholder="CCV" />
+                                                    <input
+                                                        type="text"
+                                                        name="ccv"
+                                                        id="ccv"
+                                                        placeholder="CCV"
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-6">
-                                                    <input type="text" name="cpf_tit" id="cpf_tit" placeholder="CPF titular" />
+                                                    <input
+                                                        type="text"
+                                                        name="cpf_tit"
+                                                        id="cpf_tit"
+                                                        placeholder="CPF titular"
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-6">
-                                                    <input type="text" name="validade" id="validade" placeholder="Validade" />
+                                                    <input
+                                                        type="text"
+                                                        name="validade"
+                                                        id="validade"
+                                                        placeholder="Validade"
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="btn">
@@ -64,7 +90,10 @@ class Pagamento extends React.Component {
                                                 </button>
                                             </div>
                                         </form>
-                                        <p>Você receberá um e-mail confirmando sua assinatura. <br /><b>Fique atento</b></p>
+                                        <p>
+                                            Você receberá um e-mail confirmando sua assinatura. <br />
+                                            <b>Fique atento</b>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

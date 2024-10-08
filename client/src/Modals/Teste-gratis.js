@@ -263,52 +263,130 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         <form onSubmit={ handleSubmit }>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="nome" name="nome" placeholder="Nome*" maxLength={ 50 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="nome"
+                                        name="nome"
+                                        placeholder="Nome*"
+                                        maxLength={ 50 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="email" id="email" name="email" placeholder="E-mail*" maxLength={ 250 } required onChange={ handleChange } />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="E-mail*"
+                                        maxLength={ 250 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="senha" name="senha" placeholder="Senha*" maxLength={ 60 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="senha"
+                                        name="senha"
+                                        placeholder="Senha*"
+                                        maxLength={ 60 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="whatsapp" name="whatsapp" placeholder="Nº WhatsApp (com DDD)*" maxLength={ 14 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="whatsapp"
+                                        name="whatsapp"
+                                        placeholder="NºWhatsApp (com DDD)*"
+                                        maxLength={ 14 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Nome da Empresa*" maxLength={ 50 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="nome_empresa"
+                                        name="nome_empresa"
+                                        placeholder="Nome da Empresa*"
+                                        maxLength={ 50 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cpfOuCnpj" name="cpfOuCnpj" placeholder="CPF/CNPJ*" minLength={ 11 } maxLength={ 14 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="cpfOuCnpj"
+                                        name="cpfOuCnpj"
+                                        placeholder="CPF/CNPJ*"
+                                        minLength={ 11 }
+                                        maxLength={ 14 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="email_contador" name="email_contador" placeholder="E-mail Contador" maxLength={ 250 } onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="email_contador"
+                                        name="email_contador"
+                                        placeholder="E-mail Contador"
+                                        maxLength={ 250 }
+                                        onChange={ handleChange }
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="cargo" name="cargo" placeholder="Cargo*" maxLength={ 50 } required onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="cargo"
+                                        name="cargo"
+                                        placeholder="Cargo*"
+                                        maxLength={ 50 }
+                                        onChange={ handleChange }
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="text" id="faturamento" name="faturamento" placeholder="Faturamento" maxLength={ 20 } onChange={ handleChange } />
+                                    <input
+                                        type="text"
+                                        id="faturamento"
+                                        name="faturamento"
+                                        placeholder="Faturamento"
+                                        maxLength={ 20 }
+                                        onChange={ handleChange }
+                                    />
                                 </div>
                             </div>
                             <div className="row termos">
                                 <div className="col-12">
-                                    <input className="check-box" type="checkbox" id="termos_priv" name="termos_priv" value="1" required />
+                                    <input
+                                        className="check-box"
+                                        type="checkbox"
+                                        id="termos_priv"
+                                        name="termos_priv"
+                                        value="1"
+                                        required
+                                    />
                                     <label for="termos_priv"> Li e Aceitos os Termos de Privacidade</label>
                                 </div>
                             </div>
