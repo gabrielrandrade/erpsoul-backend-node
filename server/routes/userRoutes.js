@@ -1,7 +1,13 @@
 const express = require("express");
 const { check } = require("express-validator");
 const { loginLimiter } = require("../middlewares/loginLimiter.js");
-const { login, logout, register, forgotPassword, resetPassword } = require("../controllers/UserController.js");
+const {
+    login,
+    logout,
+    register,
+    forgotPassword,
+    resetPassword
+} = require("../controllers/UserController.js");
 
 const router = express.Router();
 

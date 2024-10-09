@@ -74,7 +74,17 @@ exports.register = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { nome, email, senha, whatsapp, nome_empresa, cpfOuCnpj, email_contador, cargo, faturamento } = req.body;
+    const {
+        nome,
+        email,
+        senha,
+        whatsapp,
+        nome_empresa,
+        cpfOuCnpj,
+        email_contador,
+        cargo,
+        faturamento
+    } = req.body;
 
     if (!nome || !email || !senha || !nome_empresa || !cpfOuCnpj || !cargo) {
         return res.status(400).json({ mensagem: "Preencha todos os campos requeridos!" });
@@ -162,7 +172,9 @@ exports.forgotPassword = async (req, res) => {
             const timeSinceLastEmail = (Date.now() - cachedTime) / 1000;
             if (timeSinceLastEmail < EMAIL_WAIT_TIME) {
                 const remainingTime = Math.ceil(EMAIL_WAIT_TIME - timeSinceLastEmail);
-                return res.status(429).json({ mensagem: `Aguarde ${ remainingTime } segundos para enviar outro E-mail.` });
+                return res.status(429).json({
+                    mensagem: `Aguarde ${ remainingTime } segundos para enviar outro E-mail.`
+                });
             }
         }
 

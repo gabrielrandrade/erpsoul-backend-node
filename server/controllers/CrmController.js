@@ -3,7 +3,18 @@ const AddressModel = require("../models/AddressModel.js");
 const { isValidCpfCnpj, isValidDate } = require("../utils/validators.js");
 
 exports.registerClient = async (req, res) => {
-    const { nome, cpfOuCnpj, dt_nasc, id_tipo_cliente, logradouro, numero, cep, bairro, cidade, uf } = req.body;
+    const {
+        nome,
+        cpfOuCnpj,
+        dt_nasc,
+        id_tipo_cliente,
+        logradouro,
+        numero,
+        cep,
+        bairro,
+        cidade,
+        uf
+    } = req.body;
     
     if (nome.length > 50) {
         return res.status(400).json({ mensagem: "Nome inválido!" });

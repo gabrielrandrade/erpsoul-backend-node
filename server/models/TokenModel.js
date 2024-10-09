@@ -5,7 +5,14 @@ exports.create = async (token, expiresIn, userId) => {
     expiresAt.setDate(expiresAt.getDate() + (expiresIn === "7d" ? 7 : 1));
     
     const db = await connectDB();
-    return await db.query(`INSERT INTO tb_tokens (token, expira_em, id_usuario) VALUES (?, ?, ?)`, [token, expiresAt, userId]);
+    return await db.query(
+        `INSERT INTO tb_tokens (token, expira_em, id_usuario) VALUES (?, ?, ?)`,
+        [
+            token,
+            expiresAt,
+            userId
+        ]
+    );
 }
 
 exports.removeAllByUser = async (id_usuario) => {

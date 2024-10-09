@@ -41,9 +41,19 @@ button{
 
 /* Tela Mobile */
 @media only screen and (max-width: 1379.99px){
-    .bodyGeral, .pageGeral .interna, .interna .central, .interna .central .container-modal .modal-btn, .interna .central .ajuda{width: 100%}
+    .bodyGeral,
+    .pageGeral .interna,
+    .interna .central,
+    .interna .central .container-modal .modal-btn,
+    .interna .central .ajuda{
+        width: 100%
+    }
 
-    .bodyGeral, .pageGeral, .pageGeral .interna, .interna .central, .interna .central .ajuda{
+    .bodyGeral,
+    .pageGeral,
+    .pageGeral .interna,
+    .interna .central,
+    .interna .central .ajuda{
         height: auto;
         display: flex;
         align-items: center;
@@ -54,7 +64,12 @@ button{
     
     .pageGeral, hr{width: 90%}
 
-    .pageGeral, .pageGeral .interna, .interna .central, .interna .central .ajuda{flex-direction: column}
+    .pageGeral,
+    .pageGeral .interna,
+    .interna .central,
+    .interna .central .ajuda{
+        flex-direction: column
+    }
 
     .pageGeral .interna{
         text-align: center;
@@ -68,7 +83,11 @@ button{
         font-size: 17px;
     }
 
-    .interna .carrinho .para1, .interna .central .container-modal .modal-btn, .interna .central .ajuda .para2{margin-top: 10px}
+    .interna .carrinho .para1,
+    .interna .central .container-modal .modal-btn,
+    .interna .central .ajuda .para2{
+        margin-top: 10px
+    }
 
     .interna .carrinho img{
         width: 110px;
@@ -115,9 +134,14 @@ button{
         box-shadow: var(--box-shadow);
     }
 
-    .interna .central .box-senha, .interna .central .box-senha .formulario form input{background-color: var(--fct-primary)}
+    .interna .central .box-senha,
+    .interna .central .box-senha .formulario form input{
+        background-color: var(--fct-primary)
+    }
 
-    .interna .central .box-senha, .interna .central .box-senha .formulario form, .interna .central .box-senha .formulario .btn{
+    .interna .central .box-senha,
+    .interna .central .box-senha .formulario form,
+    .interna .central .box-senha .formulario .btn{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -135,7 +159,10 @@ button{
         font-family: var(--ff-primary);
     }
 
-    .interna .central .box-senha .formulario form input, .interna .central .box-senha .formulario .btn{width: 100%}
+    .interna .central .box-senha .formulario form input,
+    .interna .central .box-senha .formulario .btn{
+        width: 100%
+    }
 
     .interna .central .box-senha .formulario .btn{margin-top: 20px} 
 
@@ -148,9 +175,21 @@ button{
     }
 
     /* CSS da página pagamento */
-    .interna .central .bem-vindo, .interna .central .bem-vindo .bem-vindo-txt, .interna .central .escolha, .interna .central .escolha p, .interna .central .pagamento, .interna .central .pagamento .formulario, .interna .central .pagamento .formulario form .btn{width: 100%}
+    .interna .central .bem-vindo,
+    .interna .central .bem-vindo .bem-vindo-txt,
+    .interna .central .escolha,
+    .interna .central .escolha p,
+    .interna .central .pagamento,
+    .interna .central .pagamento .formulario,
+    .interna .central .pagamento .formulario form .btn{
+        width: 100%
+    }
 
-    .interna .central .bem-vindo, .interna .central .bem-vindo .bem-vindo-txt, .interna .central .escolha, .interna .central .pagamento, .interna .central .pagamento .formulario{
+    .interna .central .bem-vindo,
+    .interna .central .bem-vindo .bem-vindo-txt,
+    .interna .central .escolha,
+    .interna .central .pagamento,
+    .interna .central .pagamento .formulario{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -175,7 +214,10 @@ button{
         background-color: var(--bctr);
     }
 
-    .interna .central .escolha .planinho, .interna .central .pagamento .formulario form .btn .btn-login{color: var(--fc-paragraphs)}
+    .interna .central .escolha .planinho,
+    .interna .central .pagamento .formulario form .btn .btn-login{
+        color: var(--fc-paragraphs)
+    }
 
     .interna .central .escolha .planinho, .interna .central .pagamento{
         padding: 20px;
@@ -188,7 +230,10 @@ button{
         margin: 30px 0 40px 0;
     }
 
-    .interna .central .pagamento, .interna .central .pagamento .formulario form input{background-color: var(--fct-primary)}
+    .interna .central .pagamento,
+    .interna .central .pagamento .formulario form input{
+        background-color: var(--fct-primary)
+    }
 
     .interna .central .pagamento .formulario form input{
         width: 150px;
@@ -212,7 +257,15 @@ button{
     /* Modals */
     .modal-open{overflow: hidden}
 
-    .interna .central .modal-overlay, .interna .central .formulario, .interna .central .formulario form .info, .interna .central .formulario form .info p, .row-textarea, .formulario .row-textarea #historico, .interna .central .formulario .botao-form{width: 100%}
+    .interna .central .modal-overlay,
+    .interna .central .formulario,
+    .interna .central .formulario form .info,
+    .interna .central .formulario form .info p,
+    .row-textarea,
+    .formulario .row-textarea #historico,
+    .interna .central .formulario .botao-form{
+        width: 100%
+    }
 
     .interna .central .modal-overlay{
         height: 100%;
@@ -249,7 +302,20 @@ button{
         flex-direction: column;
     }
 
-    .interna .central .formulario h3, .interna .central .formulario form h4, .interna .central .formulario form .info p, .interna .central .formulario form select, .interna .central .relatorios #table-relatorios-crm, .interna .central .rel-clientes #table-rel-clientes, .info .lista2, .interna .central .relatorios #table-relatorios-crm, .interna .central .rel-clientes #table-rel-clientes, .interna .central .formulario form .tipo-cli p, .formulario .titulo-financas, .interna .central .botoes .close-btn{color: var(--bc)}
+    .interna .central .formulario h3,
+    .interna .central .formulario form h4,
+    .interna .central .formulario form .info p,
+    .interna .central .formulario form select,
+    .interna .central .relatorios #table-relatorios-crm,
+    .interna .central .rel-clientes #table-rel-clientes,
+    .info .lista2,
+    .interna .central .relatorios #table-relatorios-crm,
+    .interna .central .rel-clientes #table-rel-clientes,
+    .interna .central .formulario form .tipo-cli p,
+    .formulario .titulo-financas,
+    .interna .central .botoes .close-btn{
+        color: var(--bc)
+    }
 
     .interna .central .formulario form .info{
         display: flex;
@@ -284,7 +350,12 @@ button{
         margin: auto;
     }
 
-    .interna .central .relatorios, .info .lista, .row-textarea #historico, .row-textarea #desc-produto{width: 80%}
+    .interna .central .relatorios,
+    .info .lista,
+    .row-textarea #historico,
+    .row-textarea #desc-produto{
+        width: 80%
+    }
 
     .interna .central .relatorios{
         display: flex;
@@ -297,7 +368,12 @@ button{
         background-color: var(--fct-primary);
     }
 
-    .interna .central .relatorios #table-relatorios-crm, .interna .central .rel-clientes #table-rel-clientes, .info .modal-btn, .interna .central .formulario .botao-form .botao{background-color: var(--fc-primary)}
+    .interna .central .relatorios #table-relatorios-crm,
+    .interna .central .rel-clientes #table-rel-clientes,
+    .info .modal-btn,
+    .interna .central .formulario .botao-form .botao{
+        background-color: var(--fc-primary)
+    }
 
     .interna .central .rel-clientes{
         width: 90%;
@@ -437,7 +513,21 @@ button{
         margin-left: 10%;
     }
     
-    .logo, .carrinho, .para1, .para2, .ajuda, .central, .botoes, .botao-form, .rodape, .sociais, .social, .texto-rodape, .relatorios{float: left}
+    .logo,
+    .carrinho,
+    .para1,
+    .para2,
+    .ajuda,
+    .central,
+    .botoes,
+    .botao-form,
+    .rodape,
+    .sociais,
+    .social,
+    .texto-rodape,
+    .relatorios{
+        float: left
+    }
 
     .pageGeral{
         width: 90%;

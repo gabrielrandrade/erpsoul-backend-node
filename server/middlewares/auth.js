@@ -10,7 +10,9 @@ exports.authenticate = async (req, res, next) => {
 
     try {
         const db = await connectDB();
-        const [tokenData] = await db.query(`SELECT * FROM tb_tokens WHERE token = ? AND expira_em > NOW()`, [token]);
+        const [tokenData] = await db.query(
+            `SELECT * FROM tb_tokens WHERE token = ? AND expira_em > NOW()`, [token]
+        );
 
         if (!tokenData.length) {
             return res.status(401).json({ mensagem: "Token expirado ou inválido!" });

@@ -14,6 +14,7 @@ exports.findClient = async (cpfOuCnpj, id) => {
 
 exports.create = async (client) => {
     const { nome, cpfOuCnpj, dt_nasc, id_tipo_cliente, id_endereco, id_usuario } = client;
+    
     const db = await connectDB();
     return await db.query(`
         INSERT INTO tb_cliente (nome, cpf, cnpj, dt_nasc, id_tipo_cliente, id_endereco, id_usuario, id_status)
@@ -33,7 +34,9 @@ exports.create = async (client) => {
 
 exports.findByUserId = async (id_usuario) => {
     const db = await connectDB();
-    return await db.query(`SELECT id_cliente, nome, cpf, cnpj FROM tb_cliente WHERE id_status = 2 AND id_usuario = ?`, [id_usuario]);
+    return await db.query(
+        `SELECT id_cliente, nome, cpf, cnpj FROM tb_cliente WHERE id_status = 2 AND id_usuario = ?`, [id_usuario]
+    );
 }
 
 exports.edit = async (nome, cpfOuCnpj, id_cliente) => {
@@ -88,7 +91,9 @@ exports.exportReports = async (clienteIds) => {
             c.nome,
             c.cpf, c.cnpj,
             c.dt_nasc,
-            CONCAT(e.logradouro, ', ', e.numero, ' - ', e.bairro, ', ', e.cidade, ' - ', e.uf, ', CEP: ', e.cep) AS endereco_completo,
+            CONCAT(
+                e.logradouro, ', ', e.numero, ' - ', e.bairro, ', ', e.cidade, ' - ', e.uf, ', CEP: ', e.cep
+            ) AS endereco_completo,
             c.id_tipo_cliente
         FROM tb_cliente c
         LEFT JOIN tb_endereco e ON c.id_endereco = e.id_endereco

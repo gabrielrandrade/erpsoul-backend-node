@@ -58,6 +58,7 @@ function isValidCnpj(cnpj) {
 function isValidDate(dateString) {
     const date = new Date(dateString);
     const isValid = !isNaN(date.getTime());
+
     return isValid && dateString === date.toISOString().substring(0, 10);
 }
 

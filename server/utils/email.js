@@ -17,7 +17,11 @@ exports.sendEmail = async (email, idRec) => {
         from: "suportesoulerp@gmail.com",
         to: email,
         subject: "Recuperação de Senha",
-        text: `Solicitação de alteração de senha para o E-mail: ${ email }\nClique no link abaixo para redefinir sua senha:\n\n${ url }`
+        text: `
+            Solicitação de alteração de senha para o E-mail: ${ email }\n
+            Clique no link abaixo para redefinir sua senha:\n\n
+            ${ url }
+        `
     }
 
     try {
