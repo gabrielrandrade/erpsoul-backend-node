@@ -353,7 +353,9 @@ button{
     .interna .central .relatorios,
     .info .lista,
     .row-textarea #historico,
-    .row-textarea #desc-produto{
+    .row-textarea #desc-produto,
+    .row-textarea #desc_servico,
+    .row-textarea #observacoes{
         width: 80%
     }
 

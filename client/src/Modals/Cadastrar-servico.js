@@ -55,12 +55,13 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <select name="categoria" id="categoria">
-                                    <option>Selecione categoria</option>
-                                    <option value="1">Categoria 1</option>
-                                    <option value="2">Categoria 2</option>
-                                    <option value="3">Categoria 3</option>
-                                </select>
+                                <input
+                                    type="text"
+                                    id="imposto"
+                                    name="imposto"
+                                    placeholder="Alíquota ISS (%)"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row">
@@ -74,9 +75,23 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                 />
                             </div>
                         </div>
-                        <div className="row textarea">
+                        <div className="row">
+                            <div className="col-6">
+                                <select name="categoria" id="categoria">
+                                    <option>Selecione categoria</option>
+                                    <option value="1">Categoria 1</option>
+                                    <option value="2">Categoria 2</option>
+                                    <option value="3">Categoria 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row-textarea">
                             <label for="descrição serviço">Descrição do serviço:</label>
                             <textarea id="desc_servico" name="desc_servico" rows="4" cols="50"></textarea>
+                        </div>
+                        <div className="row-textarea">
+                            <label for="obsevacoes">Observações Adicionais:</label>
+                            <textarea id="observacoes" name="observacoes" rows="4" cols="50"></textarea>
                         </div>
                         <div className="botao-form">
                             <button type="submit" className="botao">

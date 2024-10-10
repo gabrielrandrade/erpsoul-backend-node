@@ -82,8 +82,8 @@ export default function HomeGratuito() {
                             <div id="resumo-rapido" data-aos="fade-left">
                                 <p><b>Resumo Rápido</b></p>
                                 <div id="resumo">
-                                    <p>Vendas Resumo</p>
-                                    <div className="dados-vendas"></div>
+                                    <p>Contas</p>
+                                    <div className="dados-contas"></div>
                                 </div>
                                 <div id="resumo">
                                     <p>Estoque</p>
@@ -107,8 +107,7 @@ export default function HomeGratuito() {
                             </div>
                             <div id="acessar-erp" data-aos="fade-right">
                                 <div id="acesso-gratuito">
-                                    <p className="demonstracao"><b>Demonstração</b></p>
-                                    <p className="restante-gratuito">x dias restante <br />Soul</p>
+                                    <p className="restante-gratuito">7 dias restantes na Soul</p>
                                 </div>
                                 <div id="acesso-gratuito-cor">    
                                     <div id="logo-acesso">

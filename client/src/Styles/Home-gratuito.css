@@ -78,7 +78,7 @@ button{
     .mainGratuito .container .carrinho,
     .mainGratuito #alterar-usuario .btn-alterar,
     .mainGratuito #resumo-rapido p,
-    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-contas,
     .mainGratuito #resumo-rapido #resumo .dados-estoque,
     .mainGratuito #resumo-rapido #resumo .dados-vencimento,
     .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido,
@@ -118,7 +118,6 @@ button{
     .mainGratuito .container .carrinho p,
     .mainGratuito #alterar-usuario .email-usuario,
     .mainGratuito #alterar-usuario .plano-usuario,
-    .mainGratuito #acessar-erp #acesso-gratuito .demonstracao,
     .mainGratuito  #acessar-erp #acesso-gratuito-cor p,
     .mainGratuito #resumo-vendas .resumo-cor,
     .mainGratuito .container .ajuda p{
@@ -144,7 +143,7 @@ button{
     .mainGratuito #alterar-usuario,
     .mainGratuito #resumo-rapido,
     .mainGratuito #resumo-rapido #resumo,
-    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-contas,
     .mainGratuito #resumo-rapido #resumo .dados-estoque,
     .mainGratuito #resumo-rapido #resumo .dados-vencimento,
     .mainGratuito #busca-rapida,
@@ -161,7 +160,6 @@ button{
     .mainGratuito #resumo-rapido,
     .mainGratuito #busca-rapida,
     .mainGratuito #acessar-erp,
-    .mainGratuito #acessar-erp #acesso-gratuito,
     .mainGratuito #resumo-vendas{
         border-radius: 11px
     }
@@ -244,7 +242,7 @@ button{
 
     .mainGratuito #resumo-rapido #resumo p, .mainGratuito #busca-rapida p{margin-top: 15px}
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-contas,
     .mainGratuito #resumo-rapido #resumo .dados-estoque,
     .mainGratuito #resumo-rapido #resumo .dados-vencimento{
         height: 100px;
@@ -261,11 +259,17 @@ button{
 
     .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido{font-size: 15px}
 
-    .mainGratuito #acessar-erp #acesso-gratuito{justify-content: space-between}
+    .mainGratuito #acessar-erp #acesso-gratuito{
+        justify-content: space-between;
+        border-radius: 11px 11px 0 0;
+    }
 
-    .mainGratuito #acessar-erp #acesso-gratuito .demonstracao{margin-left: 4%}
-
-    .mainGratuito  #acessar-erp #acesso-gratuito .restante-gratuito{margin-right: 4%}
+    .mainGratuito  #acessar-erp #acesso-gratuito .restante-gratuito{
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
 
     .mainGratuito #acessar-erp #acesso-gratuito-cor .assinar-erp,
     .mainGratuito #acessar-erp #acesso-gratuito-cor .acessar-erp{
@@ -344,7 +348,7 @@ button{
         margin-top: 10px;
     }
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-contas,
     .mainGratuito #resumo-rapido #resumo .dados-estoque,
     .mainGratuito #resumo-rapido #resumo .dados-vencimento{
         height: 250px
@@ -434,7 +438,7 @@ button{
 
     .mainGratuito .alterar-dados:hover{background: var(--bc)}
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas,
+    .mainGratuito #resumo-rapido #resumo .dados-contas,
     .mainGratuito #resumo-rapido #resumo .dados-estoque,
     .mainGratuito #resumo-rapido #resumo .dados-vencimento{
         height: 300px
@@ -584,7 +588,7 @@ button{
 
     .mainGratuito #resumo-rapido #resumo p{ color: #fff}
 
-    .mainGratuito #resumo-rapido #resumo .dados-vendas{
+    .mainGratuito #resumo-rapido #resumo .dados-contas{
         width: 100%;
         height: 467px;
         margin-top: 20px;
@@ -670,22 +674,13 @@ button{
         border-radius: 11px 11px 0 0;
     }
 
-    .mainGratuito #acessar-erp #acesso-gratuito .demonstracao{
-        float: left;
-        font-size: 17px;
-        position: relative;
-        margin-top: 10px;
-        text-align:center;
-        margin-left: 4%;
-    }
-
     .mainGratuito #acessar-erp #acesso-gratuito .restante-gratuito{
         color: #fff;
-        float: right;
         position: relative;
-        bottom: 10px;
-        right: 10px;
-        margin-top: 10px;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
     }
 
     .mainGratuito #acessar-erp #acesso-gratuito-cor{
