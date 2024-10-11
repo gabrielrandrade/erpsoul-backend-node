@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 export default function ServicosCadastrados({ isOpenServicosCadastrados, setCloseModal }) {
-/*
-    const [clientes, setClientes] = useState([]);
-    const [editandoId, setEditandoId] = useState(null);
-    const [editandoDados, setEditandoDados] = useState({ nome: "", cpfOuCnpj: "" });
+    const [services, setServices] = useState([]);
+    // const [editandoId, setEditandoId] = useState(null);
+    // const [editandoDados, setEditandoDados] = useState({ nome: "", cpfOuCnpj: "" });
 
     useEffect(() => {
         if (isOpenServicosCadastrados) {
             const token = localStorage.getItem("token");
 
-            fetch("http://localhost:5000/api/services/servicesRegistered", {
+            fetch("http://localhost:5000/api/service/servicesRegistered", {
                 method: "GET",
                 headers: { "Authorization": `Bearer ${ token }` }
             })
@@ -27,6 +26,7 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         }
     }, [isOpenServicosCadastrados]);
 
+/*
     const startEdit = (cliente) => {
         setEditandoId(cliente.id_cliente);
         setEditandoDados({ nome: cliente.name, cpfOuCnpj: cliente.cpf || cliente.cnpj });
@@ -187,109 +187,24 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                 <th>Data de Vencimento</th>
                                 <th>Status</th>
                             </tr>
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Consultoria Fiscal</td>
-                                <td>R$ 150,00</td>
-                                <td>10,8%</td>
-                                <td>PF</td>
-                                <td>09/10/2033</td>
-                                <td>Em Andamento</td>
-                            </tr>
 
-                            {/* {clientes.length === 0 ? (
+                            {services.length === 0 ? (
                                 <tr>
-                                    <td colSpan="3">Não há serviços cadastrados.</td>
+                                    <td colSpan="7">Não há serviços cadastrados.</td>
                                 </tr>
                             ) : (
-                                clientes.map((cliente, index) => (
+                                services.map((service, index) => (
                                     <tr key={ index }>
-                                        <td>{ cliente.id_cliente }</td>
-                                        { editandoId === cliente.id_cliente ? (
-                                            <>
-                                                <td>
-                                                    <input
-                                                        type="text"
-                                                        id="nome"
-                                                        name="nome"
-                                                        value={ editandoDados.nome }
-                                                        maxLength={ 50 }
-                                                        required
-                                                        onChange={ handleInputChange }
-                                                        style={{
-                                                            height: "25px",
-                                                            color: "#040438"
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>
-                                                    <input 
-                                                        type="text"
-                                                        id="cpfOuCnpj"
-                                                        name="cpfOuCnpj" 
-                                                        value={ editandoDados.cpfOuCnpj } 
-                                                        maxLength={ 14 }
-                                                        required
-                                                        onChange={ handleInputChange }
-                                                        style={{
-                                                            height: "25px",
-                                                            color: "#040438"
-                                                        }}
-                                                    />
-                                                </td>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <td>{ cliente.nome }</td>
-                                                <td>{ cliente.cpf || cliente.cnpj }</td>
-                                            </>
-                                        )}
-                                        { editandoId === cliente.id_cliente ? (
-                                            <>
-                                                <button
-                                                        onClick={ () => saveEdit(cliente.id_cliente) }
-                                                        style={{
-                                                            padding: "2px",
-                                                            marginTop: "10px",
-                                                            marginLeft: "3px",
-                                                            color: "#040438"
-                                                        }}
-                                                >
-                                                    Salvar
-                                                </button>
-                                                <button
-                                                        onClick={ cancelEdit }
-                                                        style={{
-                                                            padding: "2px",
-                                                            marginTop: "10px",
-                                                            marginLeft: "3px",
-                                                            color: "#040438"
-                                                        }}
-                                                >
-                                                    Cancelar
-                                                </button>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <td>
-                                                    <i 
-                                                        className="fa-solid fa-pen"
-                                                        onClick={ () => startEdit(cliente) } 
-                                                        style={{ cursor: "pointer" }}>
-                                                    </i>
-                                                </td>
-                                                <td>
-                                                    <i 
-                                                        className="fa-solid fa-trash" 
-                                                        onClick={ () => updateToInactive(cliente.id_cliente) } 
-                                                        style={{ cursor: "pointer" }}>
-                                                    </i>
-                                                </td>
-                                            </>
-                                        )}
+                                        <td>{ service.id_cliente }</td>
+                                        <td>{ service.servico }</td>
+                                        <td>{ service.valor_servico }</td>
+                                        <td>{ service.aliquota_iss }</td>
+                                        <td>{ service.id_natureza }</td>
+                                        <td>{ service.dt_vencimento }</td>
+                                        <td>{ service.id_status }</td>
                                     </tr>
                                 ))
-                            )} */}
+                            )}
                         </table>
                     </div>  
                     <div className="botao-form">

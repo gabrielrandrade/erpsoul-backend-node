@@ -27,11 +27,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
             })
             .then((response) => response.json())
             .then((data) => {
-                if (data.length === 0) {
-                    setClientes([]);
-                } else {
-                    setClientes(data);
-                }
+                setClientes(data.length > 0 ? data : []);
             })
             .catch((error) => console.error("Erro ao buscar dados:", error));
         }
@@ -39,6 +35,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        
         setFormData({
             ...formData,
             [name]: value
@@ -47,15 +44,22 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
 
     const handleClienteChange = (e) => {
         const selectedCliente = e.target.value;
-        const cliente = clientes.find(c => c.id === selectedCliente);
+        const cliente = clientes.find(c => c.id && c.id.toString() === selectedCliente);
+        
         if (cliente) {
             setFormData({
                 ...formData,
                 cliente: selectedCliente,
-                cpfOuCnpj: cliente.cpfOuCnpj
+                cpfOuCnpj: cliente.cpf || cliente.cnpj
+            });
+        } else {
+            setFormData({
+                ...formData,
+                cliente: "",
+                cpfOuCnpj: ""
             });
         }
-    };
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -149,6 +153,12 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         icon: "error",
                         title: "Preencha todos os campos requeridos!"
                     });
+                } else if (data.mensagem === "Cliente inválido!") {
+                    Swal.fire({
+                        title: "Cliente inválido!",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F"
+                    });
                 } else if (data.mensagem === "Serviço inválido!") {
                     Swal.fire({
                         title: "Serviço inválido!",
@@ -173,15 +183,15 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         color: "#050538",
                         confirmButtonColor: "#00968F"
                     });
-                } else if (data.mensagem === "Descrição inválida!") {
+                } else if (data.mensagem === "Data de vencimento inválida!") {
                     Swal.fire({
-                        title: "Descrição inválida!",
+                        title: "Data de vencimento inválida!",
                         color: "#050538",
                         confirmButtonColor: "#00968F"
                     });
-                } else if (data.mensagem === "Serviço já cadastrado!") {
+                } else if (data.mensagem === "Descrição inválida!") {
                     Swal.fire({
-                        title: "Serviço já está cadastrado!",
+                        title: "Descrição inválida!",
                         color: "#050538",
                         confirmButtonColor: "#00968F"
                     });
@@ -224,7 +234,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                     onChange={ handleClienteChange }
                                     required
                                 >
-                                    <option>Selecione o cliente*</option>
+                                    <option value="">Selecione o Cliente*</option>
                                     {clientes.map(cliente => (
                                         <option key={ cliente.id } value={ cliente.id }>
                                             { cliente.nome }
@@ -237,9 +247,12 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                             <div className="col-6">
                                 <input
                                     type="text"
+                                    id="cpfOuCnpj"
+                                    name="cpfOuCnpj"
                                     placeholder="CPF/CNPJ do Cliente"
                                     value={ formData.cpfOuCnpj }
-                                    readOnly
+                                    onChange={ handleClienteChange }
+                                    required
                                 />
                             </div>
                         </div>
@@ -339,7 +352,14 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         <div className="row">
                             <div className="col-6">
                                 <label>Data de vencimento*</label>
-                                <input type="date" id="data_vencimento" name="data_vencimento" />
+                                <input
+                                    type="date"
+                                    id="data_vencimento"
+                                    name="data_vencimento"
+                                    value={ formData.data_vencimento }
+                                    onChange={ handleChange }
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="row-textarea">
