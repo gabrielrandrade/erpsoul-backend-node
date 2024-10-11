@@ -263,7 +263,8 @@ button{
     .interna .central .formulario form .info p,
     .row-textarea,
     .formulario .row-textarea #historico,
-    .interna .central .formulario .botao-form{
+    .interna .central .formulario .botao-form,
+    .natureza-servico p{
         width: 100%
     }
 
@@ -350,6 +351,19 @@ button{
         margin: auto;
     }
 
+    .natureza-servico{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .natureza-servico,
+    .info .lista2,
+    .interna .central .formulario .botao-form .botao{
+        margin: 10px 0 10px 0
+    }
+
     .interna .central .relatorios,
     .info .lista,
     .row-textarea #historico,
@@ -397,8 +411,6 @@ button{
     }
 
     .info .lista ul, .info .lista2 ul{list-style: none}
-    
-    .info .lista2, .interna .central .formulario .botao-form .botao{margin: 10px 0 10px 0}
     
     .formulario .titulo-financas{font-weight: bold}
 
@@ -1164,6 +1176,18 @@ button{
        width: 100%;
        float: left;
     }
+
+    .natureza-servico{
+        width: 63%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .natureza-servico p{width: 90%}
 
     .interna .ajuda{
         width: 60%;

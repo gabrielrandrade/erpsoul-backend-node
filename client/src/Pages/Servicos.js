@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Headers from "../Inc/Headers.js";
 import Footers from "../Inc/Footers.js";
 import CadastrarServico from "../Modals/Cadastrar-servico.js";
+import ServicosCadastrados from "../Modals/Servicos-cadastrados.js";
 import RelatoriosServicos from "../Modals/Relatorios-servicos.js";
 import carrinho from "../Assets/carrinho.png";
 import ajuda from "../Assets/ajuda.png";
@@ -12,6 +13,7 @@ import Swal from "sweetalert2";
 export default function Servicos() {
     const [openModal, setOpenModal] = useState(false);
     const [openModal2, setOpenModal2] = useState(false);
+    const [openModal3, setOpenModal3] = useState(false);
 
     const navigate = useNavigate();
 
@@ -53,6 +55,7 @@ export default function Servicos() {
             document.body.classList.remove("modal-open");
             setOpenModal(false);
             setOpenModal2(false);
+            setOpenModal3(false);
             document.getElementsByClassName("modal-overlay")[0].classList.remove("zoom-out");
         }, 300);
     }
@@ -79,6 +82,9 @@ export default function Servicos() {
                                     CADASTRAR SERVIÇO
                                 </button><br />
                                 <button className="modal-btn" onClick={ () => setOpenModal2(true) } id="btnModal">
+                                    SERVIÇOS CADASTRADOS
+                                </button><br />
+                                <button className="modal-btn" onClick={ () => setOpenModal3(true) } id="btnModal">
                                     GERAR RELATÓRIOS
                                 </button>
                             </div>
@@ -101,8 +107,23 @@ export default function Servicos() {
                             {openModal2 && (
                                 <div className="modal-overlay">
                                     <div className="modal-container">
+                                        <ServicosCadastrados
+                                            isOpenServicosCadastrados={ openModal2 }
+                                            setCloseModal={ setCloseModal }
+                                        />
+                                        <div className="botoes">
+                                            <button className="close-btn" onClick={ setCloseModal }>
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            {openModal3 && (
+                                <div className="modal-overlay">
+                                    <div className="modal-container">
                                         <RelatoriosServicos
-                                            isOpenRelatoriosServicos={ openModal2 }
+                                            isOpenRelatoriosServicos={ openModal3 }
                                             setCloseModal={ setCloseModal }
                                         />
                                         <div className="botoes">

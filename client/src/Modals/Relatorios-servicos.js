@@ -14,26 +14,23 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                     <form method="post" action="">
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" placeholder="Nome do Cliente" />
-                                <input type="text" placeholder="Número da NF" />
+                                <input type="text" name="nome_cliente" id="nome_cliente" placeholder="Nome do Cliente" />
+                                <input type="text" name="cod_servico" id="cod_servico" placeholder="Código do Serviço" />
+                                <input type="text" name="servico" id="servico" placeholder="Serviço Prestado" />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input type="text" placeholder="Código do Serviço" />
-                                <input type="text" placeholder="Serviço Prestado" />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <label for="dt_servico"> Data do Serviço</label>
-                                <input type="date"  placeholder="Data do Serviço" />
+                                <label>Data de Vencimento</label>
+                                <input type="date" name="dt_venc" id="dt_venc" />
+                
                                 <label>Status do Serviço</label>
-                                <select name="forma_pgto" id="forma_pgto">
+                                <select name="status_serv" id="status_serv">
                                     <option>Selecione</option>
                                     <option value="1">CONCLUÍDO</option>
                                     <option value="2">EM ANDAMENTO</option>
-                                    <option value="3">Forma 3</option>
+                                    <option value="3">VENCIDO</option>
+                                    <option value="4">CANCELADO</option>
                                 </select>
                             </div>
                         </div>
@@ -43,27 +40,25 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                             </button>
                         </div>
                     </form>
-                    <div className="relatorios">
-                        <table id="table-relatorios-crm">
+                    <div className="rel-clientes">
+                        <table id="table-rel-clientes">
                             <tr>
-                                <th>No Cliente</th>
-                                <th>Nome</th>
-                                <th>CPF/CNPJ</th>
+                                <th>Cliente</th>
+                                <th>Serviço</th> 
+                                <th>Valor Serviço</th>
+                                <th>Alíquota ISS</th>
+                                <th>Natureza</th>
+                                <th>Data de Vencimento</th>
+                                <th>Status</th>
                             </tr>
                             <tr>
-                                <td>1</td>
                                 <td>Alfreds Futterkiste</td>
-                                <td>123456789-11</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Maria Anders</td>
-                                <td>321456987-22</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Germany</td>
-                                <td>222123645/0001-30</td>
+                                <td>Consultoria Fiscal</td>
+                                <td>R$ 150,00</td>
+                                <td>10,8%</td>
+                                <td>PF</td>
+                                <td>09/10/2033</td>
+                                <td>Em Andamento</td>
                             </tr>
                         </table>
                     </div>
