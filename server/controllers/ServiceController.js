@@ -35,6 +35,9 @@ exports.registerService = async (req, res) => {
         return res.status(400).json({ mensagem: "Alíquota ISS inválida!" });
     }
 
+    const valImposto = parseFloat(imposto.replace(",", "."));
+    const valServico = parseFloat(val_servico.replace(".", "").replace(",", "."));
+
     if (desc_servico.length > 250) {
         return res.status(400).json({ mensagem: "Descrição inválida!" });
     }
@@ -46,22 +49,22 @@ exports.registerService = async (req, res) => {
     }
 
     const id_usuario = req.user.userId;
-    const id_cliente = cliente.id_cliente;
+    const id_cliente = cliente;
 
     try {
-        const [client] = await ServiceModel.verifyClient({
+        const client = await ServiceModel.verifyClient(
             id_usuario,
             id_cliente,
             cpfOuCnpj
-        });
+        );
 
         if (client.length > 0) {
             await ServiceModel.create({
                 servico,
                 cod_servico,
                 cod_lc,
-                imposto,
-                val_servico,
+                imposto: valImposto,
+                val_servico: valServico,
                 desc_servico,
                 data_vencimento,
                 id_natureza,
@@ -84,7 +87,16 @@ exports.getServices = async (req, res) => {
 
     try {
         const [services] = await ServiceModel.findByUserId(id_usuario);
-        return res.json(services);
+
+        const servicesWithClientName = await Promise.all(services.map(async (service) => {
+            const clientName = await ServiceModel.getClientName(service.id_cliente, id_usuario);
+            return {
+                ...service,
+                clientName
+            }
+        }));
+
+        return res.json(servicesWithClientName);
     } catch (err) {
         console.error("Erro ao buscar serviços:", err);
         res.status(500).json({ erro: "Erro ao buscar serviços" });
@@ -95,6 +107,6 @@ exports.getServices = async (req, res) => {
 
 // exports.deleteService = async (req, res) => {}
 
-exports.reportsServices = async (req, res) => {}
+// exports.reportsServices = async (req, res) => {}
 
-exports.exportReportsServices = async (req, res) => {}
+// exports.exportReportsServices = async (req, res) => {}

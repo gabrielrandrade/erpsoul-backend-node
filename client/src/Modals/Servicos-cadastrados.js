@@ -195,13 +195,21 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                             ) : (
                                 services.map((service, index) => (
                                     <tr key={ index }>
-                                        <td>{ service.id_cliente }</td>
+                                        <td>{ service.clientName }</td>
                                         <td>{ service.servico }</td>
-                                        <td>{ service.valor_servico }</td>
-                                        <td>{ service.aliquota_iss }</td>
-                                        <td>{ service.id_natureza }</td>
-                                        <td>{ service.dt_vencimento }</td>
-                                        <td>{ service.id_status }</td>
+                                        <td>R$ { service.valor_servico }</td>
+                                        <td>{ service.aliquota_iss }%</td>
+                                        <td>{ service.id_natureza === 2 ? "PJ" : "PF" }</td>
+                                        <td>
+                                            { new Date(service.dt_vencimento).toLocaleDateString("pt-BR") }
+                                        </td>
+                                        <td>{
+                                            service.id_status === 3 ? "Concluído" :
+                                            service.id_status === 4 ? "Em Andamento" :
+                                            service.id_status === 5 ? "Vencido" :
+                                            service.id_status === 6 ? "Cancelado" :
+                                            "Status Desconhecido"
+                                        }</td>
                                     </tr>
                                 ))
                             )}

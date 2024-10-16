@@ -36,7 +36,7 @@ exports.create = async (service) => {
             aliquota_iss,
             valor_servico,
             descricao,
-            data_vencimento,
+            dt_vencimento,
             id_natureza,
             id_status,
             id_cliente,
@@ -69,4 +69,14 @@ exports.findByUserId = async (id_usuario) => {
             id_status = 6
         ) AND id_usuario = ?`, [id_usuario]
     );
+}
+
+exports.getClientName = async (id_cliente, id_usuario) => {
+    const db = await connectDB();
+    const [result] = await db.query(
+        `SELECT nome FROM tb_cliente WHERE id_cliente = ? AND id_usuario = ?`,
+        [id_cliente, id_usuario]
+    );
+    
+    return result.length > 0 ? result[0].nome : "";
 }

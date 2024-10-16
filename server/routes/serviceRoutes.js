@@ -6,8 +6,8 @@ const {
     getServices,
     // editService,
     // deleteService,
-    reportsServices,
-    exportReportsServices
+    // reportsServices,
+    // exportReportsServices
 } = require("../controllers/ServiceController.js");
 
 const router = express.Router();
@@ -35,8 +35,8 @@ router.get("/servicesRegistered", authenticate, getServices);
 
 // router.put("/servicesRegistered/:id_servico/delete", deleteService);
 
-router.post("/reports", authenticate, reportsServices);
+// router.post("/reports", authenticate, reportsServices);
 
-router.post("/exportReports", exportReportsServices);
+// router.post("/exportReports", exportReportsServices);
 
 module.exports = router;

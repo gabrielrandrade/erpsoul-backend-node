@@ -44,7 +44,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
 
     const handleClienteChange = (e) => {
         const selectedCliente = e.target.value;
-        const cliente = clientes.find(c => c.id && c.id.toString() === selectedCliente);
+        const cliente = clientes.find(c => c.id_cliente && c.id_cliente.toString() === selectedCliente);
         
         if (cliente) {
             setFormData({
@@ -98,6 +98,12 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
             Toast.fire({
                 icon: "error",
                 title: "Preencha todos os campos requeridos!"
+            });
+        } else if (!cliente || !cpfOuCnpj) {
+            Swal.fire({
+                title: "Cliente inválido!",
+                color: "#050538",
+                confirmButtonColor: "#00968F"
             });
         } else if (servico.length > 100) {
             Swal.fire({
@@ -236,7 +242,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                 >
                                     <option value="">Selecione o Cliente*</option>
                                     {clientes.map(cliente => (
-                                        <option key={ cliente.id } value={ cliente.id }>
+                                        <option key={ cliente.id_cliente } value={ cliente.id_cliente }>
                                             { cliente.nome }
                                         </option>
                                     ))}
@@ -245,6 +251,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
+                                <label>CPF/CNPJ</label>
                                 <input
                                     type="text"
                                     id="cpfOuCnpj"
@@ -252,6 +259,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                     placeholder="CPF/CNPJ do Cliente"
                                     value={ formData.cpfOuCnpj }
                                     onChange={ handleClienteChange }
+                                    readOnly
                                     required
                                 />
                             </div>
