@@ -251,12 +251,12 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <label>CPF/CNPJ</label>
+                                <label>CPF/CNPJ do Cliente</label>
                                 <input
+                                    style={{ "cursor": "default" }}
                                     type="text"
                                     id="cpfOuCnpj"
                                     name="cpfOuCnpj"
-                                    placeholder="CPF/CNPJ do Cliente"
                                     value={ formData.cpfOuCnpj }
                                     onChange={ handleClienteChange }
                                     readOnly

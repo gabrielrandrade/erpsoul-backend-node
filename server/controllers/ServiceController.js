@@ -103,9 +103,13 @@ exports.getServices = async (req, res) => {
     }
 }
 
-// exports.editService = async (req, res) => {}
+exports.editService = async (req, res) => {
 
-// exports.deleteService = async (req, res) => {}
+}
+
+exports.deleteService = async (req, res) => {
+    
+}
 
 exports.reportsServices = async (req, res) => {
     const id_usuario = req.user.userId;
@@ -147,4 +151,18 @@ exports.reportsServices = async (req, res) => {
     }
 }
 
-exports.exportReportsServices = async (req, res) => {}
+exports.exportReportsServices = async (req, res) => {
+    const { servicoIds } = req.body;
+
+    if (!servicoIds) {
+        return res.status(404).json({ mensagem: "Nenhum serviço encontrado!" });
+    }
+
+    try {
+        const [results] = await ServiceModel.exportReports(servicoIds);
+        return res.status(200).json({ servicos: results });
+    } catch (err) {
+        console.error("Erro ao exportar relatório:", err);
+        res.status(500).json({ erro: "Erro ao exportar relatório" });
+    }
+}

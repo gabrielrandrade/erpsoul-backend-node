@@ -4,8 +4,8 @@ const { authenticate } = require("../middlewares/auth.js");
 const {
     registerService,
     getServices,
-    // editService,
-    // deleteService,
+    editService,
+    deleteService,
     reportsServices,
     exportReportsServices
 } = require("../controllers/ServiceController.js");
@@ -29,11 +29,11 @@ router.post("/register", [
 
 router.get("/servicesRegistered", authenticate, getServices);
 
-// router.put("/servicesRegistered/:id_servico/edit", [
-//     check("servico").notEmpty().withMessage(msg)
-// ], editService);
+router.put("/servicesRegistered/:id_servico/edit", [
+    check("servico").notEmpty().withMessage(msg)
+], editService);
 
-// router.put("/servicesRegistered/:id_servico/delete", deleteService);
+router.put("/servicesRegistered/:id_servico/delete", deleteService);
 
 router.post("/reports", authenticate, reportsServices);
 

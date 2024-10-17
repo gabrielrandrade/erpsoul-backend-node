@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-// import * as XLSX from "xlsx";
-// import jsPDF from "jspdf";
-// import "jspdf-autotable";
+import * as XLSX from "xlsx";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseModal }) {
     const [servicos, setServicos] = useState([]);
@@ -120,9 +120,8 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         }
     }
     
-/*
     const handleImprimirClick = () => {
-        if (clientes.length > 0) {
+        if (servicos.length > 0) {
             Swal.fire({
                 title: "Escolha o formato para exportar",
                 input: "radio",
@@ -141,23 +140,23 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                 confirmButtonText: "Exportar"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const clienteIds = clientes.map(cliente => cliente.id_cliente);
+                    const servicoIds = servicos.map(servico => servico.id_servico);
 
-                    fetch("http://localhost:5000/api/crm/exportReports", {
+                    fetch("http://localhost:5000/api/service/exportReports", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify({ clienteIds })
+                        body: JSON.stringify({ servicoIds })
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (result.value === "excel") {
-                            exportToExcel(data.clientes);
+                            exportToExcel(data.servicos);
                         } else if (result.value === "pdf") {
-                            exportToPDF(data.clientes);
+                            exportToPDF(data.servicos);
                         } else if (result.value === "txt") {
-                            exportToText(data.clientes);
+                            exportToText(data.servicos);
                         }
                     })
                     .catch(error => console.error("Erro ao exportar relatório:", error));
@@ -165,7 +164,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
             });
         } else {
             Swal.fire({
-                title: "Nenhum cliente encontrado!",
+                title: "Nenhum serviço encontrado!",
                 text: "Por favor, faça uma busca antes de exportar.",
                 color: "#050538",
                 confirmButtonColor: "#00968F"
@@ -173,27 +172,59 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         }
     }
 
-    const exportToExcel = (clientes) => {
+    function formatarDocumento(cpfOuCnpjCliente) {
+        if (!cpfOuCnpjCliente) return "";
+    
+        if (cpfOuCnpjCliente.length === 11) {
+            return cpfOuCnpjCliente.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        } else if (cpfOuCnpjCliente.length === 14) {
+            return cpfOuCnpjCliente.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+        }
+    
+        return cpfOuCnpjCliente;
+    }
+
+    const exportToExcel = (servicos) => {
         const wb = XLSX.utils.book_new();
         const ws_data = [
-            ["N° Cliente", "Nome", "CPF/CNPJ", "Data de Nascimento", "Endereço", "Tipo de Cliente"]
+            [
+                "N° Serviço",
+                "Código LC-116",
+                "Código do Serviço",
+                "Cliente",
+                "Serviço",
+                "Descrição do Serviço",
+                "Valor do Serviço",
+                "Alíquota ISS",
+                "Natureza",
+                "Data de Vencimento",
+                "Status"
+            ]
         ];
 
-        clientes.forEach((cliente) => {
-            const clienteData = [
-                cliente.id_cliente,
-                cliente.nome,
-                cliente.cpf || cliente.cnpj,
-                new Date(cliente.dt_nasc).toLocaleDateString("pt-BR"),
-                cliente.endereco_completo,
-                cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico"
+        servicos.forEach((servico) => {
+            const servicoData = [
+                servico.id_servico,
+                servico.cod_lc,
+                servico.cod_servico,
+                `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })`,
+                servico.servico,
+                servico.descricao,
+                "R$ " + servico.valor_servico,
+                servico.aliquota_iss + "%",
+                servico.id_natureza === 2 ? "PJ" : "PF",
+                new Date(servico.dt_vencimento).toLocaleDateString("pt-BR"),
+                servico.id_status === 3 ? "Concluído" :
+                servico.id_status === 4 ? "Em Andamento" :
+                servico.id_status === 5 ? "Vencido" :
+                servico.id_status === 6 ? "Cancelado" : "Status Desconhecido"
             ];
-            ws_data.push(clienteData);
+            ws_data.push(servicoData);
         });
 
         const ws = XLSX.utils.aoa_to_sheet(ws_data);
-        XLSX.utils.book_append_sheet(wb, ws, "Clientes");
-        XLSX.writeFile(wb, "relatorios_clientes.xlsx");
+        XLSX.utils.book_append_sheet(wb, ws, "Serviços");
+        XLSX.writeFile(wb, "relatorios_servicos.xlsx");
 
         Swal.fire({
             position: "top-end",
@@ -204,25 +235,66 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         });
     }
 
-    const exportToPDF = (clientes) => {
+    const exportToPDF = (servicos) => {
         const doc = new jsPDF();
-        const tableColumn = ["N° Cliente", "Nome", "CPF/CNPJ", "Data de Nascimento", "Endereço", "Tipo de Cliente"];
+        const tableColumn = [
+            "N° Serviço",
+            "Código LC-116",
+            "Código do Serviço",
+            "Cliente",
+            "Serviço",
+            "Descrição do Serviço",
+            "Valor do Serviço",
+            "Alíquota ISS",
+            "Natureza",
+            "Data de Vencimento",
+            "Status"
+        ];
         const tableRows = [];
 
-        clientes.forEach((cliente) => {
-            const clienteData = [
-                cliente.id_cliente,
-                cliente.nome,
-                cliente.cpf || cliente.cnpj,
-                new Date(cliente.dt_nasc).toLocaleDateString("pt-BR"),
-                cliente.endereco_completo,
-                cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico"
+        servicos.forEach((servico) => {
+            const servicoData = [
+                servico.id_servico,
+                servico.cod_lc,
+                servico.cod_servico,
+                `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })`,
+                servico.servico,
+                servico.descricao,
+                "R$ " + servico.valor_servico,
+                servico.aliquota_iss + "%",
+                servico.id_natureza === 2 ? "PJ" : "PF",
+                new Date(servico.dt_vencimento).toLocaleDateString("pt-BR"),
+                servico.id_status === 3 ? "Concluído" :
+                servico.id_status === 4 ? "Em Andamento" :
+                servico.id_status === 5 ? "Vencido" :
+                servico.id_status === 6 ? "Cancelado" : "Status Desconhecido"
             ];
-            tableRows.push(clienteData);
+            tableRows.push(servicoData);
         });
 
-        doc.autoTable(tableColumn, tableRows, { startY: 20 });
-        doc.save("relatorios_clientes.pdf");
+        doc.autoTable(tableColumn, tableRows, {
+            startY: 0,
+            margin: { left: 0 },
+            styles: {
+                cellPadding: 2,
+                minCellHeight: 10,
+                overflow: "linebreak"
+            },
+            columnStyles: {
+                0: { cellWidth: 17 },
+                1: { cellWidth: 16 },
+                2: { cellWidth: 17 },
+                3: { cellWidth: 22 },
+                4: { cellWidth: 20 },
+                5: { cellWidth: 22 },
+                6: { cellWidth: 18 },
+                7: { cellWidth: 18 },
+                8: { cellWidth: 19 },
+                9: { cellWidth: 22 },
+                10: { cellWidth: 19 }
+            }
+        });
+        doc.save("relatorios_servicos.pdf");
         
         Swal.fire({
             position: "top-end",
@@ -233,17 +305,17 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         });
     }
 
-    const exportToText = (clientes) => {
-        let texto = "N° Cliente | Nome | CPF/CNPJ | Data de Nascimento | Endereço | Tipo de Cliente\n";
+    const exportToText = (servicos) => {
+        let texto = "N° Serviço | Código LC-116 | Código do Serviço | Cliente | Serviço | Descrição do Serviço | Valor do Serviço | Alíquota ISS | Natureza | Data de Vencimento | Status\n";
 
-        clientes.forEach((cliente) => {
-            texto += `${ cliente.id_cliente } | ${ cliente.nome } | ${ cliente.cpf || cliente.cnpj } | ${ new Date(cliente.dt_nasc).toLocaleDateString("pt-BR") } | ${ cliente.endereco_completo || '' } | ${ cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico" }\n`;
+        servicos.forEach((servico) => {
+            texto += `${ servico.id_servico } | ${ servico.cod_lc } | ${ servico.cod_servico } | ${ `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })` } | ${ servico.servico } | ${ "R$ " + servico.valor_servico } | ${ servico.aliquota_iss + "%" } | ${ servico.id_natureza === 2 ? "PJ" : "PF" } | ${ new Date(servico.dt_vencimento).toLocaleDateString("pt-BR") } | ${ servico.id_status === 3 ? "Concluído" : servico.id_status === 4 ? "Em Andamento" : servico.id_status === 5 ? "Vencido" : servico.id_status === 6 ? "Cancelado" : "Status Desconhecido" }\n`;
         });
 
         const blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "relatorios_clientes.txt";
+        link.download = "relatorios_servicos.txt";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -256,7 +328,6 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
             timer: 1500
         });
     }
-*/
 
     if (isOpenRelatoriosServicos) {
         document.body.classList.add("modal-open");
@@ -360,8 +431,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                                             servico.id_status === 3 ? "Concluído" :
                                             servico.id_status === 4 ? "Em Andamento" :
                                             servico.id_status === 5 ? "Vencido" :
-                                            servico.id_status === 6 ? "Cancelado" :
-                                            "Status Desconhecido"
+                                            servico.id_status === 6 ? "Cancelado" : "Status Desconhecido"
                                         }</td>
                                     </tr>
                                 ))
@@ -369,7 +439,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                         </table>
                     </div>
                     <div className="botao-form">
-                        <button type="button" className="botao">
+                        <button type="button" className="botao" onClick={ handleImprimirClick }>
                             <p>Imprimir</p>
                         </button>
                     </div>

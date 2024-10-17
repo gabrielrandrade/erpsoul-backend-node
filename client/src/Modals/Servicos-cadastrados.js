@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 export default function ServicosCadastrados({ isOpenServicosCadastrados, setCloseModal }) {
     const [services, setServices] = useState([]);
-    // const [editandoId, setEditandoId] = useState(null);
-    // const [editandoDados, setEditandoDados] = useState({ nome: "", cpfOuCnpj: "" });
+    const [editandoId, setEditandoId] = useState(null);
+    const [editandoDados, setEditandoDados] = useState({ nome: "", cpfOuCnpj: "" });
 
     useEffect(() => {
         if (isOpenServicosCadastrados) {
@@ -26,7 +26,6 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         }
     }, [isOpenServicosCadastrados]);
 
-/*
     const startEdit = (cliente) => {
         setEditandoId(cliente.id_cliente);
         setEditandoDados({ nome: cliente.name, cpfOuCnpj: cliente.cpf || cliente.cnpj });
@@ -166,7 +165,6 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
             }
         });
     };
-*/
 
     if (isOpenServicosCadastrados) {
         document.body.classList.add("modal-open");

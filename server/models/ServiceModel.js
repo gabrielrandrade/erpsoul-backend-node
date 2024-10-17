@@ -81,6 +81,14 @@ exports.getClientName = async (id_cliente, id_usuario) => {
     return result.length > 0 ? result[0].nome : "";
 }
 
+exports.edit = async () => {
+
+}
+
+exports.delete = async () => {
+    
+}
+
 exports.reports = async (id_usuario, nome_cliente, cod_servico, servico, data_vencimento, status_servico) => {
     const db = await connectDB();
 
@@ -107,4 +115,17 @@ exports.reports = async (id_usuario, nome_cliente, cod_servico, servico, data_ve
             status_servico || null, status_servico || null
         ]
     );
+}
+
+exports.exportReports = async (servicoIds) => {
+    const db = await connectDB();
+    return await db.query(`
+        SELECT 
+            s.*,
+            c.nome AS nome_cliente,
+            COALESCE(c.cpf, c.cnpj) AS cpfOuCnpjCliente
+        FROM tb_servico s
+        JOIN tb_cliente c ON s.id_cliente = c.id_cliente
+        WHERE s.id_servico IN (?)
+    `, [servicoIds]);
 }
