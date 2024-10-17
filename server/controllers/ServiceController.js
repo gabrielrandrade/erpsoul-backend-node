@@ -107,6 +107,44 @@ exports.getServices = async (req, res) => {
 
 // exports.deleteService = async (req, res) => {}
 
-// exports.reportsServices = async (req, res) => {}
+exports.reportsServices = async (req, res) => {
+    const id_usuario = req.user.userId;
+    const { nome_cliente, cod_servico, servico, data_vencimento, status_servico } = req.body;
 
-// exports.exportReportsServices = async (req, res) => {}
+    if (!nome_cliente && !cod_servico && !servico && !data_vencimento && !status_servico) {
+        return res.status(400).json({ mensagem: "Preencha pelo menos um dos campos!" });
+    }
+
+    if (nome_cliente.length > 50) {
+        return res.status(400).json({ mensagem: "Nome inválido!" });
+    }
+
+    if (cod_servico.length > 11 && isNaN(cod_servico)) {
+        return res.status(400).json({ mensagem: "Código do Serviço inválido!" });
+    }
+
+    if (servico.length > 100) {
+        return res.status(400).json({ mensagem: "Serviço inválido!" });
+    }
+
+    if (data_vencimento.length > 0 && !isValidDate(data_vencimento)) {
+        return res.status(400).json({ mensagem: "Data de Vencimento inválida!" });
+    }
+
+    try {
+        const [results] = await ServiceModel.reports(
+            id_usuario, nome_cliente, cod_servico, servico, data_vencimento, status_servico
+        );
+
+        if (results.length > 0) {
+            return res.status(200).json({ mensagem: "Serviço encontrado!", results });
+        }
+
+        return res.status(404).json({ mensagem: "Serviço não encontrado!" });
+    } catch (err) {
+        console.error("Erro ao gerar relatórios:", err);
+        res.status(500).json({ erro: "Erro ao gerar relatórios" });
+    }
+}
+
+exports.exportReportsServices = async (req, res) => {}

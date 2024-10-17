@@ -270,6 +270,16 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
     if (isOpenRelatoriosClientes) {
         document.body.classList.add("modal-open");
 
+        function formatCpfCnpj(value) {
+            if (value.length === 11) {
+                return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            } else if (value.length === 14) {
+                return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+            }
+            
+            return value;
+        }
+
         return(
             <> 
                 <div className="formulario">
@@ -340,7 +350,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                                     <tr key={ index }>
                                         <td>{ cliente.id_cliente }</td>
                                         <td>{ cliente.nome }</td>
-                                        <td>{ cliente.cpf || cliente.cnpj }</td>
+                                        <td>{ formatCpfCnpj(cliente.cpf || cliente.cnpj) }</td>
                                     </tr>
                                 ))
                             )}

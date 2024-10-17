@@ -80,3 +80,31 @@ exports.getClientName = async (id_cliente, id_usuario) => {
     
     return result.length > 0 ? result[0].nome : "";
 }
+
+exports.reports = async (id_usuario, nome_cliente, cod_servico, servico, data_vencimento, status_servico) => {
+    const db = await connectDB();
+
+    return await db.query(`
+        SELECT 
+            s.*, 
+            c.nome AS nome_cliente
+        FROM tb_servico s
+        JOIN tb_cliente c ON s.id_cliente = c.id_cliente
+        WHERE
+            s.id_usuario = ?
+            AND (c.nome = ? OR ? IS NULL)
+            AND (s.cod_servico = ? OR ? IS NULL)
+            AND (s.servico = ? OR ? IS NULL)
+            AND (s.dt_vencimento = ? OR ? IS NULL)
+            AND (s.id_status = ? OR ? IS NULL)
+        `,
+        [
+            id_usuario,
+            nome_cliente || null, nome_cliente || null,
+            cod_servico || null, cod_servico || null,
+            servico || null, servico || null,
+            data_vencimento || null, data_vencimento || null,
+            status_servico || null, status_servico || null
+        ]
+    );
+}
