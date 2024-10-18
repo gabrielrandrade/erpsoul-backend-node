@@ -37,13 +37,9 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         setEditandoDados({
             val_servico: service.valor_servico,
             imposto: service.aliquota_iss,
-            id_natureza: service.id_natureza === 2 ? "PJ" : "PF",
-            data_vencimento: new Date(service.dt_vencimento).toLocaleDateString("pt-BR"),
-            status_servico: service.id_status === 3 ? "Concluído" :
-                            service.id_status === 4 ? "Em Andamento" :
-                            service.id_status === 5 ? "Vencido" :
-                            service.id_status === 6 ? "Cancelado" :
-                            "Status Desconhecido"
+            id_natureza: service.id_natureza,
+            data_vencimento: new Date(service.dt_vencimento).toISOString().split("T")[0],
+            status_servico: service.id_status
         });
     }
 
@@ -66,22 +62,39 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
     const saveEdit = (id_servico) => {
         const { val_servico, imposto, id_natureza, data_vencimento, status_servico } = editandoDados;
 
-        if (!val_servico || !imposto || !id_natureza || data_vencimento || status_servico) {
+        if (!val_servico || !imposto || !id_natureza || !data_vencimento || !status_servico) {
             Swal.fire({
                 title: "Erro!",
                 text: "Os campos não podem ficar vazios!",
                 icon: "error",
                 confirmButtonColor: "#00968F"
             });
-        } else if (imposto.length > 50) {
+        } else if (val_servico.length > 20) {
+            Swal.fire({
+                title: "Valor do Serviço inválido!",
+                color: "#050538",
+                confirmButtonColor: "#00968F"
+            });
+        } else if (imposto.length > 10) {
             Swal.fire({
                 title: "Alíquota ISS inválida!",
                 color: "#050538",
                 confirmButtonColor: "#00968F"
             });
-        } else if (id_natureza !== "PF" && id_natureza !== "PJ") {
+        } else if (id_natureza !== 1 && id_natureza !== 2) {
             Swal.fire({
                 title: "Natureza inválida!",
+                color: "#050538",
+                confirmButtonColor: "#00968F"
+            });
+        } else if (
+            status_servico !== "3" &&
+            status_servico !== "4" &&
+            status_servico !== "5" &&
+            status_servico !== "6"
+        ) {
+            Swal.fire({
+                title: "Status inválido!",
                 color: "#050538",
                 confirmButtonColor: "#00968F"
             });
@@ -102,28 +115,46 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                         icon: "error",
                         confirmButtonColor: "#00968F"
                     });
-                } else if (data.mensagem === "Nome inválido!") {
+                } else if (data.mensagem === "Valor do Serviço inválido!") {
                     Swal.fire({
-                        title: "Nome inválido!",
+                        title: "Valor do Serviço inválido!",
                         color: "#050538",
                         confirmButtonColor: "#00968F"
                     });
-                } else if (data.mensagem === "CPF ou CNPJ inválido!") {
+                } else if (data.mensagem === "Alíquota ISS inválida!") {
                     Swal.fire({
-                    title: "CPF ou CNPJ inválido!",
-                    color: "#050538",
-                    confirmButtonColor: "#00968F"
-                });
-                } else if (data.mensagem === "Cliente atualizado com sucesso!") {
+                        title: "Alíquota ISS inválida!",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F"
+                    });
+                } else if (data.mensagem === "Natureza inválida!") {
+                    Swal.fire({
+                        title: "Natureza inválida!",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F"
+                    });
+                } else if (data.mensagem === "Data de Vencimento inválida!") {
+                    Swal.fire({
+                        title: "Data de Vencimento inválida!",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F"
+                    });
+                } else if (data.mensagem === "Status inválido!") {
+                    Swal.fire({
+                        title: "Status inválido!",
+                        color: "#050538",
+                        confirmButtonColor: "#00968F"
+                    });
+                } else if (data.mensagem === "Serviço atualizado com sucesso!") {
                     Swal.fire({
                         title: "Sucesso!",
-                        text: "O cliente foi atualizado com sucesso.",
+                        text: "O serviço foi atualizado com sucesso.",
                         icon: "success",
                         confirmButtonColor: "#00968F"
                     });
                     setServices(services.map(service => 
-                        service.id_servico === id_servico ? { 
-                            ...service, 
+                        service.id_servico === id_servico ? {
+                            ...service,
                             val_servico: editandoDados.val_servico,
                             imposto: editandoDados.imposto,
                             id_natureza: editandoDados.id_natureza,
@@ -131,6 +162,7 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                             status_servico: editandoDados.status_servico
                         } : service
                     ));
+                    // Atualizar a linha
                     cancelEdit();
                 } else {
                     Swal.fire({
@@ -155,7 +187,8 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
             cancelButtonColor: "#d33",
             confirmButtonText: "Sim, excluir!",
             cancelButtonText: "Cancelar"
-        }).then((result) => {
+        })
+        .then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/delete`, {
                     method: "PUT",
@@ -257,17 +290,33 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                                 </td>
                                                 <td>
                                                     <select
-                                                        name="status_servico"
-                                                        value={ editandoDados.status_servico }
+                                                        id="id_natureza"
+                                                        name="id_natureza"
+                                                        value={ editandoDados.id_natureza }
                                                         onChange={ handleInputChange }
                                                         required
                                                         style={{
                                                             height: "25px",
-                                                            color: "#040438"
+                                                            color: "#040438",
+                                                            backgroundColor: "#fff"
                                                         }}
                                                     >
-                                                        <option value="1">PF</option>
-                                                        <option value="2">PJ</option>
+                                                        <option
+                                                            name="id_natureza"
+                                                            value="1"
+                                                            selected={ editandoDados.id_natureza === "1" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            PF
+                                                        </option>
+                                                        <option
+                                                            name="id_natureza"
+                                                            value="2"
+                                                            selected={ editandoDados.id_natureza === "2" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            PJ
+                                                        </option>
                                                     </select>
                                                 </td>
                                                 <td>
@@ -286,19 +335,45 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                                 </td>
                                                 <td>
                                                     <select
+                                                        id="status_servico"
                                                         name="status_servico"
                                                         value={ editandoDados.status_servico }
                                                         onChange={ handleInputChange }
                                                         required
                                                         style={{
                                                             height: "25px",
-                                                            color: "#040438"
+                                                            color: "#040438",
+                                                            backgroundColor: "#fff"
                                                         }}
                                                     >
-                                                        <option value="3">Concluído</option>
-                                                        <option value="4">Em Andamento</option>
-                                                        <option value="5">Vencido</option>
-                                                        <option value="6">Cancelado</option>
+                                                        <option
+                                                            value="3"
+                                                            selected={ editandoDados.status_servico === "3" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            Concluído
+                                                        </option>
+                                                        <option
+                                                            value="4"
+                                                            selected={ editandoDados.status_servico === "4" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            Em Andamento
+                                                        </option>
+                                                        <option
+                                                            value="5"
+                                                            selected={ editandoDados.status_servico === "5" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            Vencido
+                                                        </option>
+                                                        <option
+                                                            value="6"
+                                                            selected={ editandoDados.status_servico === "6" }
+                                                            onChange={ handleInputChange }
+                                                        >
+                                                            Cancelado
+                                                        </option>
                                                     </select>
                                                 </td>
                                             </>
@@ -321,28 +396,30 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                         )}
                                         {editandoId === service.id_servico ? (
                                             <>
-                                                <button
-                                                        onClick={ () => saveEdit(service.id_servico) }
-                                                        style={{
-                                                            padding: "2px",
-                                                            marginTop: "10px",
-                                                            marginLeft: "3px",
-                                                            color: "#040438"
-                                                        }}
-                                                >
-                                                    Salvar
-                                                </button>
-                                                <button
-                                                        onClick={ cancelEdit }
-                                                        style={{
-                                                            padding: "2px",
-                                                            marginTop: "10px",
-                                                            marginLeft: "3px",
-                                                            color: "#040438"
-                                                        }}
-                                                >
-                                                    Cancelar
-                                                </button>
+                                                <td colSpan="2">
+                                                    <button
+                                                            onClick={ () => saveEdit(service.id_servico) }
+                                                            style={{
+                                                                padding: "2px",
+                                                                marginTop: "10px",
+                                                                marginLeft: "3px",
+                                                                color: "#040438"
+                                                            }}
+                                                    >
+                                                        Salvar
+                                                    </button>
+                                                    <button
+                                                            onClick={ cancelEdit }
+                                                            style={{
+                                                                padding: "2px",
+                                                                marginTop: "10px",
+                                                                marginLeft: "3px",
+                                                                color: "#040438"
+                                                            }}
+                                                    >
+                                                        Cancelar
+                                                    </button>
+                                                </td>
                                             </>
                                         ) : (
                                             <>

@@ -81,12 +81,30 @@ exports.getClientName = async (id_cliente, id_usuario) => {
     return result.length > 0 ? result[0].nome : "";
 }
 
-exports.edit = async () => {
-
+exports.edit = async (val_servico, aliquota_iss, id_natureza, data_vencimento, status_servico, id_servico) => {
+    const db = await connectDB();
+    return await db.query(
+        `UPDATE tb_servico SET
+            valor_servico = ?,
+            aliquota_iss = ?,
+            id_natureza = ?,
+            dt_vencimento = ?,
+            id_status = ?
+        WHERE id_servico = ?`,
+        [
+            val_servico,
+            aliquota_iss,
+            id_natureza,
+            data_vencimento,
+            status_servico,
+            id_servico
+        ]
+    );
 }
 
-exports.delete = async () => {
-    
+exports.delete = async (id_servico) => {
+    const db = await connectDB();
+    return await db.query(`UPDATE tb_servico SET id_status = 1 WHERE id_servico = ?`, [id_servico]);
 }
 
 exports.reports = async (id_usuario, nome_cliente, cod_servico, servico, data_vencimento, status_servico) => {

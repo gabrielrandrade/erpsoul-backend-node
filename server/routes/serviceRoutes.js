@@ -30,7 +30,11 @@ router.post("/register", [
 router.get("/servicesRegistered", authenticate, getServices);
 
 router.put("/servicesRegistered/:id_servico/edit", [
-    check("servico").notEmpty().withMessage(msg)
+    check("val_servico").notEmpty().withMessage(msg),
+    check("imposto").notEmpty().withMessage(msg),
+    check("id_natureza").notEmpty().withMessage(msg),
+    check("data_vencimento").notEmpty().withMessage(msg),
+    check("status_servico").notEmpty().withMessage(msg)
 ], editService);
 
 router.put("/servicesRegistered/:id_servico/delete", deleteService);

@@ -104,11 +104,73 @@ exports.getServices = async (req, res) => {
 }
 
 exports.editService = async (req, res) => {
+    const { id_servico } = req.params;
+    const { val_servico, imposto, id_natureza, data_vencimento, status_servico } = req.body;
 
+    if (!val_servico || !imposto || !id_natureza || !data_vencimento || !status_servico) {
+        return res.status(400).json({ mensagem: "Os campos não podem ficar vazios!" });
+    }
+
+    const valServicoStr = String(val_servico);
+    if (valServicoStr.length > 20) {
+        return res.status(400).json({ mensagem: "Valor do Serviço inválido!" });
+    }
+    const valServico = parseFloat(valServicoStr.replace(".", "").replace(",", "."));
+
+    const impostoStr = String(imposto);
+    if (impostoStr.length > 10) {
+        return res.status(400).json({ mensagem: "Alíquota ISS inválida!" });
+    }
+    const valImposto = parseFloat(impostoStr.replace(",", "."));
+
+    if (id_natureza !== 1 && id_natureza !== 2) {
+        return res.status(400).json({ mensagem: "Natureza inválida!" });
+    }
+
+    if (!isValidDate(data_vencimento)) {
+        return res.status(400).json({ mensagem: "Data de Vencimento inválida!" });
+    }
+
+    if (
+        status_servico !== "3" &&
+        status_servico !== "4" &&
+        status_servico !== "5" &&
+        status_servico !== "6"
+    ) {
+        return res.status(400).json({ mensagem: "Status inválido!" });
+    }
+    
+    try {
+        const [result] = await ServiceModel.edit(
+            valServico, valImposto, id_natureza, data_vencimento, status_servico, id_servico
+        );
+
+        if (result.affectedRows > 0) {
+            return res.json({ mensagem: "Serviço atualizado com sucesso!" });
+        } else {
+            return res.status(404).json({ erro: "Serviço não encontrado!" });
+        }
+    } catch (err) {
+        console.error("Erro ao atualizar serviço:", err);
+        res.status(500).json({ erro: "Erro ao atualizar serviço" });
+    }
 }
 
 exports.deleteService = async (req, res) => {
-    
+    const { id_servico } = req.params;
+
+    try {
+        const [result] = await ServiceModel.delete(id_servico);
+
+        if (result.affectedRows > 0) {
+            return res.json({ mensagem: "Serviço excluído com sucesso!" });
+        } else {
+            return res.status(404).json({ erro: "Serviço não encontrado!" });
+        }
+    } catch (err) {
+        console.error("Erro ao excluir serviço:", err);
+        res.status(500).json({ erro: "Erro ao excluir serviço" });
+    }
 }
 
 exports.reportsServices = async (req, res) => {
