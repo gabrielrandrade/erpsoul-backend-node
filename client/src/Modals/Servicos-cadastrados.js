@@ -4,7 +4,13 @@ import Swal from "sweetalert2";
 export default function ServicosCadastrados({ isOpenServicosCadastrados, setCloseModal }) {
     const [services, setServices] = useState([]);
     const [editandoId, setEditandoId] = useState(null);
-    const [editandoDados, setEditandoDados] = useState({ nome: "", cpfOuCnpj: "" });
+    const [editandoDados, setEditandoDados] = useState({
+        val_servico: "",
+        imposto: "",
+        id_natureza: "",
+        data_vencimento: "",
+        status_servico: ""
+    });
 
     useEffect(() => {
         if (isOpenServicosCadastrados) {
@@ -26,49 +32,61 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         }
     }, [isOpenServicosCadastrados]);
 
-    const startEdit = (cliente) => {
-        setEditandoId(cliente.id_cliente);
-        setEditandoDados({ nome: cliente.name, cpfOuCnpj: cliente.cpf || cliente.cnpj });
-    };
+    const startEdit = (service) => {
+        setEditandoId(service.id_servico);
+        setEditandoDados({
+            val_servico: service.valor_servico,
+            imposto: service.aliquota_iss,
+            id_natureza: service.id_natureza === 2 ? "PJ" : "PF",
+            data_vencimento: new Date(service.dt_vencimento).toLocaleDateString("pt-BR"),
+            status_servico: service.id_status === 3 ? "Concluído" :
+                            service.id_status === 4 ? "Em Andamento" :
+                            service.id_status === 5 ? "Vencido" :
+                            service.id_status === 6 ? "Cancelado" :
+                            "Status Desconhecido"
+        });
+    }
 
     const cancelEdit = () => {
         setEditandoId(null);
-        setEditandoDados({ nome: "", cpfOuCnpj: "" });
-    };
+        setEditandoDados({
+            val_servico: "",
+            imposto: "",
+            id_natureza: "",
+            data_vencimento: "",
+            status_servico: ""
+        });
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditandoDados({ ...editandoDados, [name]: value });
-    };
+    }
 
-    const saveEdit = (id_cliente) => {
-        const { nome, cpfOuCnpj } = editandoDados;
+    const saveEdit = (id_servico) => {
+        const { val_servico, imposto, id_natureza, data_vencimento, status_servico } = editandoDados;
 
-        if (!nome || !cpfOuCnpj) {
+        if (!val_servico || !imposto || !id_natureza || data_vencimento || status_servico) {
             Swal.fire({
                 title: "Erro!",
                 text: "Os campos não podem ficar vazios!",
                 icon: "error",
                 confirmButtonColor: "#00968F"
             });
-        } else if (nome.length > 50 || nome.length < 1) {
+        } else if (imposto.length > 50) {
             Swal.fire({
-                title: "Nome inválido!",
+                title: "Alíquota ISS inválida!",
                 color: "#050538",
                 confirmButtonColor: "#00968F"
             });
-        } else if (cpfOuCnpj.length < 11   ||
-                   cpfOuCnpj.length > 14   ||
-                   cpfOuCnpj.length === 12 ||
-                   cpfOuCnpj.length === 13
-        ) {
+        } else if (id_natureza !== "PF" && id_natureza !== "PJ") {
             Swal.fire({
-                title: "CPF ou CNPJ inválido!",
+                title: "Natureza inválida!",
                 color: "#050538",
                 confirmButtonColor: "#00968F"
             });
         } else {
-            fetch(`http://localhost:5000/api/crm/clientsRegistered/${ id_cliente }/edit`, {
+            fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/edit`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -103,31 +121,34 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                         icon: "success",
                         confirmButtonColor: "#00968F"
                     });
-                    setClientes(clientes.map(cliente => 
-                        cliente.id_cliente === id_cliente ? { 
-                            ...cliente, 
-                            nome: editandoDados.nome, 
-                            cpf: editandoDados.cpfOuCnpj 
-                        } : cliente
+                    setServices(services.map(service => 
+                        service.id_servico === id_servico ? { 
+                            ...service, 
+                            val_servico: editandoDados.val_servico,
+                            imposto: editandoDados.imposto,
+                            id_natureza: editandoDados.id_natureza,
+                            data_vencimento: editandoDados.data_vencimento,
+                            status_servico: editandoDados.status_servico
+                        } : service
                     ));
                     cancelEdit();
                 } else {
                     Swal.fire({
                         title: "Erro!",
-                        text: "Não foi possível atualizar o cliente.",
+                        text: "Não foi possível atualizar o serviço.",
                         icon: "error",
                         confirmButtonColor: "#00968F"
                     });
                 }
             })
-            .catch((error) => console.error("Erro ao atualizar cliente:", error));
+            .catch((error) => console.error("Erro ao atualizar serviço:", error));
         }
-    };
+    }
 
-    const updateToInactive = (id_cliente) => {
+    const updateToInactive = (id_servico) => {
         Swal.fire({
             title: "Tem certeza?",
-            text: "Esta ação excluirá o cliente!",
+            text: "Esta ação excluirá o serviço!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00968F",
@@ -136,7 +157,7 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/api/crm/clientsRegistered/${ id_cliente }/delete`, {
+                fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/delete`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -144,27 +165,27 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    if (data.mensagem === "Cliente excluído com sucesso!") {
+                    if (data.mensagem === "Serviço excluído com sucesso!") {
                         Swal.fire({
                             title: "Excluído!",
-                            text: "O cliente foi excluído com sucesso.",
+                            text: "O serviço foi excluído com sucesso.",
                             icon: "success",
                             confirmButtonColor: "#00968F"
                         });
-                        setClientes(clientes.filter(cliente => cliente.id_cliente !== id_cliente));
+                        setServices(services.filter(service => service.id_servico !== id_servico));
                     } else {
                         Swal.fire({
                             title: "Erro!",
-                            text: "Não foi possível excluir o cliente.",
+                            text: "Não foi possível excluir o serviço.",
                             icon: "error",
                             confirmButtonColor: "#00968F"
                         });
                     }
                 })
-                .catch((error) => console.error("Erro ao excluir cliente:", error));
+                .catch((error) => console.error("Erro ao excluir serviço:", error));
             }
         });
-    };
+    }
 
     if (isOpenServicosCadastrados) {
         document.body.classList.add("modal-open");
@@ -174,8 +195,14 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                 <div className="formulario">
                     <h1>SERVIÇOS CADASTRADOS</h1>
                     <br />
-                    <div className="rel-clientes">
-                        <table id="table-rel-clientes">
+                    <div className="rel-clientes" style={{ overflowX: "auto", maxWidth: "80%" }}>
+                        <table
+                            id="table-rel-clientes"
+                            style={{
+                                width: "100%",
+                                borderCollapse: "collapse"
+                            }}
+                        >
                             <tr>
                                 <th>Cliente</th>
                                 <th>Serviço</th> 
@@ -195,19 +222,146 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                     <tr key={ index }>
                                         <td>{ service.clientName }</td>
                                         <td>{ service.servico }</td>
-                                        <td>R$ { service.valor_servico }</td>
-                                        <td>{ service.aliquota_iss }%</td>
-                                        <td>{ service.id_natureza === 2 ? "PJ" : "PF" }</td>
-                                        <td>
-                                            { new Date(service.dt_vencimento).toLocaleDateString("pt-BR") }
-                                        </td>
-                                        <td>{
-                                            service.id_status === 3 ? "Concluído" :
-                                            service.id_status === 4 ? "Em Andamento" :
-                                            service.id_status === 5 ? "Vencido" :
-                                            service.id_status === 6 ? "Cancelado" :
-                                            "Status Desconhecido"
-                                        }</td>
+
+                                        {editandoId === service.id_servico ? (
+                                            <>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        id="val_servico"
+                                                        name="val_servico"
+                                                        value={ editandoDados.val_servico }
+                                                        maxLength={ 50 }
+                                                        onChange={ handleInputChange }
+                                                        required
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        id="imposto"
+                                                        name="imposto"
+                                                        value={ editandoDados.imposto }
+                                                        maxLength={ 50 }
+                                                        onChange={ handleInputChange }
+                                                        required
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <select
+                                                        name="status_servico"
+                                                        value={ editandoDados.status_servico }
+                                                        onChange={ handleInputChange }
+                                                        required
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    >
+                                                        <option value="1">PF</option>
+                                                        <option value="2">PJ</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="date"
+                                                        id="data_vencimento"
+                                                        name="data_vencimento"
+                                                        value={ editandoDados.data_vencimento }
+                                                        onChange={ handleInputChange }
+                                                        required
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <select
+                                                        name="status_servico"
+                                                        value={ editandoDados.status_servico }
+                                                        onChange={ handleInputChange }
+                                                        required
+                                                        style={{
+                                                            height: "25px",
+                                                            color: "#040438"
+                                                        }}
+                                                    >
+                                                        <option value="3">Concluído</option>
+                                                        <option value="4">Em Andamento</option>
+                                                        <option value="5">Vencido</option>
+                                                        <option value="6">Cancelado</option>
+                                                    </select>
+                                                </td>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td>R$ { service.valor_servico }</td>
+                                                <td>{ service.aliquota_iss }%</td>
+                                                <td>{ service.id_natureza === 2 ? "PJ" : "PF" }</td>
+                                                <td>
+                                                    { new Date(service.dt_vencimento).toLocaleDateString("pt-BR") }
+                                                </td>
+                                                <td>{
+                                                    service.id_status === 3 ? "Concluído" :
+                                                    service.id_status === 4 ? "Em Andamento" :
+                                                    service.id_status === 5 ? "Vencido" :
+                                                    service.id_status === 6 ? "Cancelado" :
+                                                    "Status Desconhecido"
+                                                }</td>
+                                            </>
+                                        )}
+                                        {editandoId === service.id_servico ? (
+                                            <>
+                                                <button
+                                                        onClick={ () => saveEdit(service.id_servico) }
+                                                        style={{
+                                                            padding: "2px",
+                                                            marginTop: "10px",
+                                                            marginLeft: "3px",
+                                                            color: "#040438"
+                                                        }}
+                                                >
+                                                    Salvar
+                                                </button>
+                                                <button
+                                                        onClick={ cancelEdit }
+                                                        style={{
+                                                            padding: "2px",
+                                                            marginTop: "10px",
+                                                            marginLeft: "3px",
+                                                            color: "#040438"
+                                                        }}
+                                                >
+                                                    Cancelar
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td>
+                                                    <i 
+                                                        className="fa-solid fa-pen"
+                                                        onClick={ () => startEdit(service) } 
+                                                        style={{ cursor: "pointer" }}>
+                                                    </i>
+                                                </td>
+                                                <td>
+                                                    <i 
+                                                        className="fa-solid fa-trash" 
+                                                        onClick={ () => updateToInactive(service.id_servico) } 
+                                                        style={{ cursor: "pointer" }}>
+                                                    </i>
+                                                </td>
+                                            </>
+                                        )}
                                     </tr>
                                 ))
                             )}

@@ -29,17 +29,17 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
     const startEdit = (cliente) => {
         setEditandoId(cliente.id_cliente);
         setEditandoDados({ nome: cliente.name, cpfOuCnpj: cliente.cpf || cliente.cnpj });
-    };
+    }
 
     const cancelEdit = () => {
         setEditandoId(null);
         setEditandoDados({ nome: "", cpfOuCnpj: "" });
-    };
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditandoDados({ ...editandoDados, [name]: value });
-    };
+    }
 
     const saveEdit = (id_cliente) => {
         const { nome, cpfOuCnpj } = editandoDados;
@@ -122,7 +122,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
             })
             .catch((error) => console.error("Erro ao atualizar cliente:", error));
         }
-    };
+    }
 
     const updateToInactive = (id_cliente) => {
         Swal.fire({
@@ -164,7 +164,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                 .catch((error) => console.error("Erro ao excluir cliente:", error));
             }
         });
-    };
+    }
 
     if (isOpenClientesCadastrados) {
         document.body.classList.add("modal-open");
@@ -200,7 +200,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                                 clientes.map((cliente, index) => (
                                     <tr key={ index }>
                                         <td>{ cliente.id_cliente }</td>
-                                        { editandoId === cliente.id_cliente ? (
+                                        {editandoId === cliente.id_cliente ? (
                                             <>
                                                 <td>
                                                     <input
@@ -239,7 +239,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                                                 <td>{ formatCpfCnpj(cliente.cpf || cliente.cnpj) }</td>
                                             </>
                                         )}
-                                        { editandoId === cliente.id_cliente ? (
+                                        {editandoId === cliente.id_cliente ? (
                                             <>
                                                 <button
                                                         onClick={ () => saveEdit(cliente.id_cliente) }
