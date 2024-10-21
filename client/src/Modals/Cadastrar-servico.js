@@ -67,7 +67,6 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
         e.preventDefault();
 
         formData.cpfOuCnpj = formData.cpfOuCnpj.replace(/\D/g, "");
-        // formData.imposto = formData.imposto.replace(/\D/g, "");
         formData.val_servico = formData.val_servico.replace(/\D/g, "");
 
         const {
@@ -317,8 +316,6 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                     name="imposto"
                                     placeholder="Alíquota ISS (%)*"
                                     maxLength={ 7 }
-                                    // min="0.01"
-                                    // step="0.01"
                                     value={ formData.imposto }
                                     onChange={ handleChange }
                                     required

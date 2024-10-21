@@ -10,48 +10,68 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function HomeGratuito() {
+    const [clientes, setClientes] = useState([]);
+    const [services, setServices] = useState([]);
     const [user, setUser] = useState({ nome: "", email: "" });
     const navigate = useNavigate();
 
     useEffect(() => {
         document.body.classList.remove("modal-open");
-
+    
         const token = localStorage.getItem("token");
-
-        const fetchUserData = async () => {
+    
+        const fetchData = async () => {
             try {
-                let response = await fetch("http://localhost:5000/api/home", {
+                const userResponse = await fetch("http://localhost:5000/api/home", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
                         "Content-Type": "application/json"
                     }
                 });
-
-                if (response.status === 401) {
+    
+                if (userResponse.status === 401) {
                     Swal.fire({
                         title: "Sessão expirou!",
                         text: "Faça o login novamente.",
                         color: "#050538",
                         confirmButtonColor: "#00968F"
                     });
+
                     navigate("/", { state: { showLoginModal: true } });
                     return;
                 }
-
-                if (response.mensagem === "Usuário não encontrado!") {
+    
+                if (userResponse.mensagem === "Usuário não encontrado!") {
                     return setUser("Usuário não encontrado!");
                 }
-
-                const data = await response.json();
-                setUser(data);
+    
+                const userData = await userResponse.json();
+                setUser(userData);
+    
+                const [clientesResponse, servicesResponse] = await Promise.all([
+                    fetch("http://localhost:5000/api/crm/clientsRegistered", {
+                        method: "GET",
+                        headers: { "Authorization": `Bearer ${ token }` }
+                    }),
+                    fetch("http://localhost:5000/api/service/servicesRegistered", {
+                        method: "GET",
+                        headers: { "Authorization": `Bearer ${ token }` }
+                    })
+                ]);
+    
+                const clientesData = await clientesResponse.json();
+                const servicesData = await servicesResponse.json();
+    
+                setClientes(clientesData.length === 0 ? [] : clientesData);
+                setServices(servicesData.length === 0 ? [] : servicesData);
             } catch (error) {
-                console.error("Erro ao buscar usuário:", error);
+                console.error("Erro ao buscar dados:", error);
             }
         }
-
-        fetchUserData();
-        
+    
+        fetchData();
+    
         AOS.init();
     }, [navigate]);
     
@@ -82,16 +102,52 @@ export default function HomeGratuito() {
                             <div id="resumo-rapido" data-aos="fade-left">
                                 <p><b>Resumo Rápido</b></p>
                                 <div id="resumo">
-                                    <p>Contas</p>
-                                    <div className="dados-contas"></div>
+                                    <p>Clientes</p>
+                                    <div className="dados-resumo">
+                                        {clientes.length === 0 ? (
+                                            <tr>
+                                                Não há clientes cadastrados.
+                                            </tr>
+                                        ) : (
+                                            clientes.map((cliente, index) => (
+                                                <tr key={ index }>
+                                                    { cliente.nome }
+                                                </tr>
+                                            )) 
+                                        )}
+                                    </div>
+                                </div>
+                                <div id="resumo">
+                                    <p>Serviços</p>
+                                    <div className="dados-resumo">
+                                        {services.length === 0 ? (
+                                            <tr>
+                                                Não há serviços cadastrados.
+                                            </tr>
+                                        ) : (
+                                            services.map((service, index) => (
+                                                <tr key={ index }>
+                                                    { service.servico }
+                                                </tr>
+                                            )) 
+                                        )}
+                                    </div>
                                 </div>
                                 <div id="resumo">
                                     <p>Estoque</p>
-                                    <div className="dados-estoque"></div>
-                                </div>
-                                <div id="resumo">
-                                    <p>Vencimento</p>
-                                    <div className="dados-vencimento"></div>
+                                    <div className="dados-resumo">
+                                        {/* {estoque.length === 0 ? ( */}
+                                            <tr>
+                                                Não há itens no estoque.
+                                            </tr>
+                                        {/* ) : (
+                                            estoque.map((produto, index) => (
+                                                <tr key={ index }>
+                                                    { produto.nome }
+                                                </tr>
+                                            )) 
+                                        )} */}
+                                    </div>
                                 </div>
                             </div>
                             <div id ="busca-rapida" data-aos="fade-right">

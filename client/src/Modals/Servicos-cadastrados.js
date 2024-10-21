@@ -53,12 +53,14 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+
         setEditandoDados({ ...editandoDados, [name]: value });
     }
 
     const saveEdit = (id_servico) => {
-        editandoDados.val_servico = editandoDados.val_servico.replace(/\D/g, "");
-        // editandoDados.imposto = editandoDados.imposto.replace(/\D/g, "");
+        if (isNaN(editandoDados.val_servico)) {
+            editandoDados.val_servico = editandoDados.val_servico.replace(/\D/g, "");
+        }
 
         const { val_servico, imposto, id_natureza, data_vencimento, status_servico } = editandoDados;
 

@@ -211,7 +211,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
             const clienteData = [
                 cliente.id_cliente,
                 cliente.nome,
-                cliente.cpf || cliente.cnpj,
+                formatCpfCnpj(cliente.cpf || cliente.cnpj),
                 new Date(cliente.dt_nasc).toLocaleDateString("pt-BR"),
                 cliente.endereco_completo,
                 cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico"
@@ -241,7 +241,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
             const clienteData = [
                 cliente.id_cliente,
                 cliente.nome,
-                cliente.cpf || cliente.cnpj,
+                formatCpfCnpj(cliente.cpf || cliente.cnpj),
                 new Date(cliente.dt_nasc).toLocaleDateString("pt-BR"),
                 cliente.endereco_completo,
                 cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico"
@@ -265,7 +265,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
         let texto = "N° Cliente | Nome | CPF/CNPJ | Data de Nascimento | Endereço | Tipo de Cliente\n";
 
         clientes.forEach((cliente) => {
-            texto += `${ cliente.id_cliente } | ${ cliente.nome } | ${ cliente.cpf || cliente.cnpj } | ${ new Date(cliente.dt_nasc).toLocaleDateString("pt-BR") } | ${ cliente.endereco_completo || '' } | ${ cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico" }\n`;
+            texto += `${ cliente.id_cliente } | ${ cliente.nome } | ${ formatCpfCnpj(cliente.cpf || cliente.cnpj) } | ${ new Date(cliente.dt_nasc).toLocaleDateString("pt-BR") } | ${ cliente.endereco_completo || '' } | ${ cliente.id_tipo_cliente === 1 ? "Físico" : "Jurídico" }\n`;
         });
 
         const blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
@@ -321,6 +321,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                                     placeholder="CPF ou CNPJ"
                                     minLength={ 14 }
                                     maxLength={ 18 }
+                                    value={ formatCpfCnpj(formData.cpfOuCnpj) }
                                     onChange={ handleChange }
                                 />
                                 <select

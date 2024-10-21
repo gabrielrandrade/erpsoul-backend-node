@@ -78,9 +78,7 @@ button{
     .mainGratuito .container .carrinho,
     .mainGratuito #alterar-usuario .btn-alterar,
     .mainGratuito #resumo-rapido p,
-    .mainGratuito #resumo-rapido #resumo .dados-contas,
-    .mainGratuito #resumo-rapido #resumo .dados-estoque,
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento,
+    .mainGratuito #resumo-rapido #resumo .dados-resumo,
     .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido,
     .mainGratuito #acessar-erp #acesso-gratuito,
     .mainGratuito #acessar-erp #acesso-gratuito-cor,
@@ -143,9 +141,7 @@ button{
     .mainGratuito #alterar-usuario,
     .mainGratuito #resumo-rapido,
     .mainGratuito #resumo-rapido #resumo,
-    .mainGratuito #resumo-rapido #resumo .dados-contas,
-    .mainGratuito #resumo-rapido #resumo .dados-estoque,
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento,
+    .mainGratuito #resumo-rapido #resumo .dados-resumo,
     .mainGratuito #busca-rapida,
     .mainGratuito #acessar-erp,
     .mainGratuito #acessar-erp #acesso-gratuito,
@@ -240,14 +236,19 @@ button{
         color: #fff
     }
 
+    .mainGratuito #resumo-rapido #resumo{margin: 20px 0}
+
     .mainGratuito #resumo-rapido #resumo p, .mainGratuito #busca-rapida p{margin-top: 15px}
 
-    .mainGratuito #resumo-rapido #resumo .dados-contas,
-    .mainGratuito #resumo-rapido #resumo .dados-estoque,
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
-        height: 100px;
+    .mainGratuito #resumo-rapido #resumo .dados-resumo{
+        max-height: 200px;
+        padding: 5px;
         margin-top: 20px;
+        color: #000;
+        overflow-y: auto;
     }
+
+    /* .mainGratuito #busca-rapida{margin-top: 150px} */
 
     .mainGratuito #busca-rapida .lista-menu-rapido{
         display: flex;
@@ -348,11 +349,7 @@ button{
         margin-top: 10px;
     }
 
-    .mainGratuito #resumo-rapido #resumo .dados-contas,
-    .mainGratuito #resumo-rapido #resumo .dados-estoque,
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
-        height: 250px
-    }
+    .mainGratuito #resumo-rapido #resumo .dados-resumo{height: 250px}
 
     .mainGratuito .container #busca-rapida{margin-top: -130px}
 
@@ -438,11 +435,7 @@ button{
 
     .mainGratuito .alterar-dados:hover{background: var(--bc)}
 
-    .mainGratuito #resumo-rapido #resumo .dados-contas,
-    .mainGratuito #resumo-rapido #resumo .dados-estoque,
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
-        height: 300px
-    }
+    .mainGratuito #resumo-rapido #resumo .dados-resumo{height: 300px}
 
     .mainGratuito .container #busca-rapida{margin-top: -140px}
 
@@ -588,23 +581,7 @@ button{
 
     .mainGratuito #resumo-rapido #resumo p{ color: #fff}
 
-    .mainGratuito #resumo-rapido #resumo .dados-contas{
-        width: 100%;
-        height: 467px;
-        margin-top: 20px;
-        background: rgba(0,150,143,0.5);
-        float: left;
-    }
-
-    .mainGratuito #resumo-rapido #resumo .dados-estoque{
-        width: 100%;
-        height: 467px;
-        margin-top: 20px;
-        background:rgba(0,150,143,0.5);
-        float: left;
-    }
-
-    .mainGratuito #resumo-rapido #resumo .dados-vencimento{
+    .mainGratuito #resumo-rapido #resumo .dados-resumo{
         width: 100%;
         height: 467px;
         margin-top: 20px;

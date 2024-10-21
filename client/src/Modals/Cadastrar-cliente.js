@@ -20,7 +20,51 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        if (name === "cpfOuCnpj") {
+        if (name === "cep") {
+            setFormData({
+                ...formData,
+                [name]: value
+            });
+
+            const cepSemMascara = value.replace(/\D/g, "");
+
+            if (cepSemMascara.length === 8) {
+                fetch(`https://viacep.com.br/ws/${ cepSemMascara }/json/`, {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" }
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.erro) {
+                        setFormData({
+                            ...formData,
+                            cep: "",
+                            logradouro: "",
+                            bairro: "",
+                            cidade: "",
+                            uf: ""
+                        });
+
+                        Swal.fire({
+                            title: "CEP não encontrado!",
+                            text: "Verifique se o CEP está correto.",
+                            icon: "error",
+                            confirmButtonColor: "#00968F"
+                        });
+                    } else {
+                        setFormData({
+                            ...formData,
+                            cep: data.cep,
+                            logradouro: data.logradouro,
+                            bairro: data.bairro,
+                            cidade: data.localidade,
+                            uf: data.uf
+                        });
+                    }
+                })
+                .catch((error) => console.error("Erro ao buscar o CEP:", error));
+            }
+        } else if (name === "cpfOuCnpj") {
             const valorMascarado = mask(value);
             setFormData({
                 ...formData,
@@ -247,6 +291,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                                         name="logradouro"
                                         placeholder="Logradouro"
                                         maxLength={ 60 }
+                                        value={ formData.logradouro }
                                         onChange={ handleChange }
                                         required
                                     />
@@ -288,6 +333,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                                         name="bairro"
                                         placeholder="Bairro"
                                         maxLength={ 100 }
+                                        value={ formData.bairro }
                                         onChange={ handleChange }
                                         required
                                     />
@@ -301,6 +347,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                                         name="cidade"
                                         placeholder="Cidade"
                                         maxLength={ 30 }
+                                        value={ formData.cidade }
                                         onChange={ handleChange }
                                         required
                                     />
@@ -315,6 +362,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                                         placeholder="UF"
                                         minLength={ 2 }
                                         maxLength={ 2 }
+                                        value={ formData.uf }
                                         onChange={ handleChange }
                                         required
                                     />
