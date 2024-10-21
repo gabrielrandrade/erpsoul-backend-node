@@ -16,11 +16,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
             })
             .then((response) => response.json())
             .then((data) => {
-                if (data.length === 0) {
-                    setClientes([]);
-                } else {
-                    setClientes(data);
-                }
+                setClientes(data.length === 0 ? [] : data);
             })
             .catch((error) => console.error("Erro ao buscar dados:", error));
         }
@@ -103,6 +99,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                         icon: "success",
                         confirmButtonColor: "#00968F"
                     });
+
                     setClientes(clientes.map(cliente => 
                         cliente.id_cliente === id_cliente ? { 
                             ...cliente, 
@@ -110,6 +107,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                             cpf: editandoDados.cpfOuCnpj 
                         } : cliente
                     ));
+                    
                     cancelEdit();
                 } else {
                     Swal.fire({
@@ -151,6 +149,7 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                             icon: "success",
                             confirmButtonColor: "#00968F"
                         });
+
                         setClientes(clientes.filter(cliente => cliente.id_cliente !== id_cliente));
                     } else {
                         Swal.fire({

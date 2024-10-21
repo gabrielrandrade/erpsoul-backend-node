@@ -54,8 +54,7 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
         } else if ((
                     cpfOuCnpj.length === 14     && 
                     id_tipo_cliente.length > 0  &&
-                    id_tipo_cliente !== "2"
-                   ) || 
+                    id_tipo_cliente !== "2")    ||
                     id_tipo_cliente.length > 2
         ) {
             Swal.fire({
@@ -162,12 +161,18 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                     })
                     .then(response => response.json())
                     .then(data => {
-                        if (result.value === "excel") {
-                            exportToExcel(data.clientes);
-                        } else if (result.value === "pdf") {
-                            exportToPDF(data.clientes);
-                        } else if (result.value === "txt") {
-                            exportToText(data.clientes);
+                        switch (result.value) {
+                            case "excel":
+                                exportToExcel(data.clientes);
+                                break;
+                            case "pdf":
+                                exportToPDF(data.clientes);
+                                break;
+                            case "txt":
+                                exportToText(data.clientes);
+                                break;
+                            default:
+                                console.error("Formato de exportação inválido:", result.value);
                         }
                     })
                     .catch(error => console.error("Erro ao exportar relatório:", error));

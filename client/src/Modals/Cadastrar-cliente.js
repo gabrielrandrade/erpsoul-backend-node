@@ -28,13 +28,24 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
 
         const { nome, cpfOuCnpj, id_tipo_cliente, logradouro, numero, cep, bairro, cidade, uf } = formData;
 
-        if (!nome || !cpfOuCnpj || !id_tipo_cliente || !logradouro || !numero || !cep || !bairro || !cidade || !uf) {
+        if (
+            !nome            ||
+            !cpfOuCnpj       ||
+            !id_tipo_cliente ||
+            !logradouro      ||
+            !numero          ||
+            !cep             ||
+            !bairro          ||
+            !cidade          ||
+            !uf
+        ) {
             const Toast = Swal.mixin({
                 position: "center",
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Preencha todos os campos requeridos!"
@@ -78,6 +89,7 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
             });
         } else {
             formData.id_tipo_cliente = cpfOuCnpj.length === 11 ? "1" : "2";
+            
             const token = localStorage.getItem("token");
 
             fetch("http://localhost:5000/api/crm/register", {

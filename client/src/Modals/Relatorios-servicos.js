@@ -151,12 +151,21 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                     })
                     .then(response => response.json())
                     .then(data => {
-                        if (result.value === "excel") {
-                            exportToExcel(data.servicos);
-                        } else if (result.value === "pdf") {
-                            exportToPDF(data.servicos);
-                        } else if (result.value === "txt") {
-                            exportToText(data.servicos);
+                        switch (result.value) {
+                            case "excel":
+                                exportToExcel(data.servicos);
+                            break;
+
+                            case "pdf":
+                                exportToPDF(data.servicos);
+                            break;
+                            
+                            case "txt":
+                                exportToText(data.servicos);
+                            break;
+
+                            default:
+                                console.error("Formato de exportação inválido:", result.value);
                         }
                     })
                     .catch(error => console.error("Erro ao exportar relatório:", error));
@@ -337,7 +346,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                 <div className="formulario">
                     <h1>Relatórios</h1>
                     <h3>
-                        Para gerar seu relatório, é necessário que pelo menos um dos campos esteja preenchido. 
+                        Para gerar seu relatório, é necessário que pelo menos um dos campos esteja preenchido.
                     </h3>
                     <form onSubmit={ handleSubmit }>
                         <div className="row">

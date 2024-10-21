@@ -123,7 +123,10 @@ exports.editService = async (req, res) => {
     }
     const valImposto = parseFloat(impostoStr.replace(",", "."));
 
-    if (id_natureza !== 1 && id_natureza !== 2) {
+    if (
+        (id_natureza !== 1 && id_natureza !== "1") &&
+        (id_natureza !== 2 && id_natureza !== "2")
+    ) {
         return res.status(400).json({ mensagem: "Natureza inválida!" });
     }
 
@@ -132,10 +135,10 @@ exports.editService = async (req, res) => {
     }
 
     if (
-        status_servico !== "3" &&
-        status_servico !== "4" &&
-        status_servico !== "5" &&
-        status_servico !== "6"
+        (status_servico !== 3 && status_servico !== "3") &&
+        (status_servico !== 4 && status_servico !== "4") &&
+        (status_servico !== 5 && status_servico !== "5") &&
+        (status_servico !== 6 && status_servico !== "6")
     ) {
         return res.status(400).json({ mensagem: "Status inválido!" });
     }

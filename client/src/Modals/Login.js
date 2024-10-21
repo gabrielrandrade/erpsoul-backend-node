@@ -3,12 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function Login({ isOpenLogin }) {
-    const [formData, setFormData] = useState({
-        email: "",
-        senha: ""
-    });
-
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState({ email: "", senha: "" });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,6 +13,10 @@ export default function Login({ isOpenLogin }) {
             ...formData,
             [name]: value
         });
+    }
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
     }
 
     const handleSubmit = (e) => {
@@ -28,6 +29,7 @@ export default function Login({ isOpenLogin }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Preencha todos os campos!"
@@ -39,6 +41,7 @@ export default function Login({ isOpenLogin }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+            
             Toast.fire({
                 icon: "error",
                 title: "Credenciais inválidas!"
@@ -76,6 +79,7 @@ export default function Login({ isOpenLogin }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Credenciais inválidas!"
@@ -87,10 +91,12 @@ export default function Login({ isOpenLogin }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "success",
                         title: "Usuário logado com sucesso!"
                     });
+
                     localStorage.setItem("token", data.token);
                     navigate("/home-gratuito");
                 } else {
@@ -133,9 +139,9 @@ export default function Login({ isOpenLogin }) {
                                         required
                                     />
                                 </div>
-                                <div className="col-12">
+                                <div className="col-12" style={{ position: "relative" }}>
                                     <input
-                                        type="password"
+                                        type={ showPassword ? "text" : "password" }
                                         id="senha"
                                         name="senha"
                                         placeholder="Senha"
@@ -143,11 +149,34 @@ export default function Login({ isOpenLogin }) {
                                         onChange={ handleChange }
                                         required
                                     />
+                                    {formData.senha && (
+                                        <button
+                                            type="button"
+                                            onClick={ handleTogglePassword }
+                                            style={{
+                                                color: "#FFF",
+                                                position: "absolute",
+                                                right: "10px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
+                                                background: "none",
+                                                border: "none",
+                                                cursor: "pointer"
+                                            }}
+                                        >
+                                            { showPassword ? "Ocultar" : "Mostrar" }
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-12">
-                                    <input className="check-box" type="checkbox" id="conectado" name="conectado" />
+                                    <input
+                                        type="checkbox"
+                                        id="conectado"
+                                        name="conectado"
+                                        className="check-box"
+                                    />
                                     <label htmlFor="conectado"> Lembre-se de mim</label>
                                 </div>
                             </div>

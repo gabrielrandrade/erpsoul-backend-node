@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function TesteGratis({ isOpenTesteGratis }) {
+    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         nome: "",
         email: "",
@@ -15,8 +17,6 @@ export default function TesteGratis({ isOpenTesteGratis }) {
         faturamento: ""
     });
 
-    const navigate = useNavigate();
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -25,10 +25,24 @@ export default function TesteGratis({ isOpenTesteGratis }) {
         });
     }
 
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { nome, email, senha, whatsapp, nome_empresa, cpfOuCnpj, email_contador, cargo, faturamento } = formData;
+        const {
+            nome,
+            email,
+            senha,
+            whatsapp,
+            nome_empresa,
+            cpfOuCnpj,
+            email_contador,
+            cargo,
+            faturamento
+        } = formData;
 
         if (!nome || !email || !senha || !whatsapp || !nome_empresa || !cpfOuCnpj || !cargo) {
             const Toast = Swal.mixin({
@@ -37,17 +51,24 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Preencha todos os campos requeridos!"
             });
-        } else if (nome.length > 50 || nome.length < 1 || nome_empresa.length > 50 || nome_empresa.length < 1 ) {
+        } else if (
+            nome.length > 50         ||
+            nome.length < 1          ||
+            nome_empresa.length > 50 ||
+            nome_empresa.length < 1
+        ) {
             const Toast = Swal.mixin({
                 position: "center",
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Nome inválido!"
@@ -59,6 +80,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "E-mail inválido!"
@@ -70,6 +92,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Senha inválida!"
@@ -81,14 +104,16 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "WhatsApp inválido!"
             });
-        } else if (cpfOuCnpj.length < 11   ||
-                   cpfOuCnpj.length > 14   ||
-                   cpfOuCnpj.length === 12 ||
-                   cpfOuCnpj.length === 13
+        } else if (
+            cpfOuCnpj.length < 11   ||
+            cpfOuCnpj.length > 14   ||
+            cpfOuCnpj.length === 12 ||
+            cpfOuCnpj.length === 13
         ) {
             const Toast = Swal.mixin({
                 position: "center",
@@ -96,6 +121,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "CPF ou CNPJ inválido!"
@@ -107,6 +133,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Cargo inválido!"
@@ -118,6 +145,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                 timer: 2000,
                 timerProgressBar: true,
             });
+
             Toast.fire({
                 icon: "error",
                 title: "Faturamento inválido!"
@@ -150,6 +178,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Nome inválido!"
@@ -161,6 +190,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "E-mail inválido!"
@@ -172,6 +202,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Senha inválida!"
@@ -183,6 +214,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "WhatsApp inválido!"
@@ -194,6 +226,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "CPF ou CNPJ inválido!"
@@ -205,6 +238,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Cargo inválido!"
@@ -216,6 +250,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Faturamento inválido!"
@@ -227,10 +262,12 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "success",
                         title: "Usuário cadastrado com sucesso!"
                     });
+
                     localStorage.setItem("token", data.token);
                     navigate("/home-gratuito");
                 } else {
@@ -240,6 +277,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                         timer: 2000,
                         timerProgressBar: true,
                     });
+
                     Toast.fire({
                         icon: "error",
                         title: "Não foi possível cadastrar usuário!"
@@ -257,7 +295,9 @@ export default function TesteGratis({ isOpenTesteGratis }) {
 
         return(
             <>
-                <h2>Teste por <b style={{ color:"#00FFF4", fontSize: "40px" }}>30</b> dias grátis!</h2>
+                <h2>
+                    Teste por <b style={{ color:"#00FFF4", fontSize: "40px" }}>30</b> dias grátis!
+                </h2>
                 <div className="box-teste">
                     <div className="formulario">
                         <form onSubmit={ handleSubmit }>
@@ -288,9 +328,9 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-6">
+                                <div className="col-6" style={{ position: "relative" }}>
                                     <input
-                                        type="text"
+                                        type={ showPassword ? "text" : "password" }
                                         id="senha"
                                         name="senha"
                                         placeholder="Senha*"
@@ -298,6 +338,24 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                                         onChange={ handleChange }
                                         required
                                     />
+                                    {formData.senha && (
+                                        <button
+                                            type="button"
+                                            onClick={ handleTogglePassword }
+                                            style={{
+                                                color: "#FFF",
+                                                position: "absolute",
+                                                right: "10px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
+                                                background: "none",
+                                                border: "none",
+                                                cursor: "pointer"
+                                            }}
+                                        >
+                                            { showPassword ? "Ocultar" : "Mostrar" }
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                             <div className="row">
@@ -306,7 +364,7 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                                         type="text"
                                         id="whatsapp"
                                         name="whatsapp"
-                                        placeholder="NºWhatsApp (com DDD)*"
+                                        placeholder="Nº de WhatsApp* Ex. (11) 91111-0000"
                                         maxLength={ 14 }
                                         onChange={ handleChange }
                                         required

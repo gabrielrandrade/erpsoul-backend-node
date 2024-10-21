@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footers from "../Inc/Footers.js";
 import logo from "../Assets/logo.png";
@@ -9,22 +9,7 @@ const EsqueciSenha = () => {
     const [email, setEmail] = useState("");
     const [canSendEmail, setCanSendEmail] = useState(true);
     const [timer, setTimer] = useState(0);
-    const navigate = useNavigate();
     let interval = null;
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-
-        if (token) {
-            Swal.fire({
-                title: "Link inválido!",
-                color: "#050538",
-                confirmButtonColor: "#00968F"
-            }).then(() => {
-                navigate("/home-gratuito");
-            });
-        }
-    }, [navigate]);
 
     useEffect(() => {
         if (timer === 0 && !canSendEmail) {

@@ -27,7 +27,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
             })
             .then((response) => response.json())
             .then((data) => {
-                setClientes(data.length > 0 ? data : []);
+                setClientes(data.length === 0 ? [] : data);
             })
             .catch((error) => console.error("Erro ao buscar dados:", error));
         }
@@ -155,6 +155,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         timer: 2000,
                         timerProgressBar: true
                     });
+                    
                     Toast.fire({
                         icon: "error",
                         title: "Preencha todos os campos requeridos!"

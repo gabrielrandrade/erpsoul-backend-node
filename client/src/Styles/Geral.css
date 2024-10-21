@@ -391,7 +391,7 @@ button{
         background-color: var(--fc-primary)
     }
 
-    .interna .central .rel-clientes{
+    .interna .central .rel-clientes, .interna .central .rel-servicos{
         width: 90%;
         display: flex;
         align-items: center;
@@ -401,6 +401,35 @@ button{
         border-radius: 11px;
         box-shadow: var(--box-shadow);
         background-color: var(--fct-primary);
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos{
+        width: 100%;
+        max-width: 400px;
+        margin: 20px 0;
+        font-size: 1em;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos tr{
+        display: block;
+        text-align: left;
+        color: var(--bc);
+        margin-bottom: 10px;
+        background-color: var(--fc-primary);
+    }
+    
+    .interna .central .rel-servicos #table-rel-servicos td{
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        position: relative;
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos th,
+    .interna .central .rel-servicos #table-rel-servicos td{
+        border: 1px solid var(--bc)
     }
 
     .info .modal-btn{
@@ -731,7 +760,7 @@ button{
         background-color: var(--fc-primary);
     }
 
-    .interna .central .rel-clientes{
+    .interna .central .rel-clientes, .interna .central .rel-servicos{
         width: 100%;
         height: auto;
         padding: 2rem;
@@ -1175,6 +1204,36 @@ button{
        font-family: 'Itim';
        width: 100%;
        float: left;
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos{
+        width: 100%;
+        max-width: 400px;
+        margin: 20px 0;
+        font-size: 1em;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos tr{
+        text-align: left;
+        color: var(--bc);
+        background-color: var(--fc-primary);
+    }
+    
+    .interna .central .rel-servicos #table-rel-servicos td{
+        font-size: 1em;
+        text-align: right;
+        position: relative;
+    }
+
+    .interna .central .rel-servicos #table-rel-servicos tr td #val_servico{width: 80px}
+
+    .interna .central .rel-servicos #table-rel-servicos tr td #imposto{width: 40px}
+
+    .interna .central .rel-servicos #table-rel-servicos th,
+    .interna .central .rel-servicos #table-rel-servicos td{
+        border: 1px solid var(--bc)
     }
 
     .natureza-servico{
