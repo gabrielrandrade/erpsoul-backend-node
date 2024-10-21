@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import mask from "../Inc/MaskCpfCnpj";
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
@@ -181,17 +182,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         }
     }
 
-    function formatarDocumento(cpfOuCnpjCliente) {
-        if (!cpfOuCnpjCliente) return "";
-    
-        if (cpfOuCnpjCliente.length === 11) {
-            return cpfOuCnpjCliente.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-        } else if (cpfOuCnpjCliente.length === 14) {
-            return cpfOuCnpjCliente.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
-        }
-    
-        return cpfOuCnpjCliente;
-    }
+    const formatCpfCnpj = (cpfOuCnpj) => { return mask(cpfOuCnpj) }
 
     const exportToExcel = (servicos) => {
         const wb = XLSX.utils.book_new();
@@ -216,10 +207,10 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                 servico.id_servico,
                 servico.cod_lc,
                 servico.cod_servico,
-                `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })`,
+                `${ servico.nome_cliente } (${ formatCpfCnpj(servico.cpfOuCnpjCliente) })`,
                 servico.servico,
                 servico.descricao,
-                "R$ " + servico.valor_servico,
+                parseFloat(servico.valor_servico).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }),
                 servico.aliquota_iss + "%",
                 servico.id_natureza === 2 ? "PJ" : "PF",
                 new Date(servico.dt_vencimento).toLocaleDateString("pt-BR"),
@@ -266,10 +257,10 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                 servico.id_servico,
                 servico.cod_lc,
                 servico.cod_servico,
-                `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })`,
+                `${ servico.nome_cliente } (${ formatCpfCnpj(servico.cpfOuCnpjCliente) })`,
                 servico.servico,
                 servico.descricao,
-                "R$ " + servico.valor_servico,
+                parseFloat(servico.valor_servico).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }),
                 servico.aliquota_iss + "%",
                 servico.id_natureza === 2 ? "PJ" : "PF",
                 new Date(servico.dt_vencimento).toLocaleDateString("pt-BR"),
@@ -318,7 +309,7 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         let texto = "N° Serviço | Código LC-116 | Código do Serviço | Cliente | Serviço | Descrição do Serviço | Valor do Serviço | Alíquota ISS | Natureza | Data de Vencimento | Status\n";
 
         servicos.forEach((servico) => {
-            texto += `${ servico.id_servico } | ${ servico.cod_lc } | ${ servico.cod_servico } | ${ `${ servico.nome_cliente } (${ formatarDocumento(servico.cpfOuCnpjCliente) })` } | ${ servico.servico } | ${ "R$ " + servico.valor_servico } | ${ servico.aliquota_iss + "%" } | ${ servico.id_natureza === 2 ? "PJ" : "PF" } | ${ new Date(servico.dt_vencimento).toLocaleDateString("pt-BR") } | ${ servico.id_status === 3 ? "Concluído" : servico.id_status === 4 ? "Em Andamento" : servico.id_status === 5 ? "Vencido" : servico.id_status === 6 ? "Cancelado" : "Status Desconhecido" }\n`;
+            texto += `${ servico.id_servico } | ${ servico.cod_lc } | ${ servico.cod_servico } | ${ `${ servico.nome_cliente } (${ formatCpfCnpj(servico.cpfOuCnpjCliente) })` } | ${ servico.servico } | ${ parseFloat(servico.valor_servico).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) } | ${ servico.aliquota_iss + "%" } | ${ servico.id_natureza === 2 ? "PJ" : "PF" } | ${ new Date(servico.dt_vencimento).toLocaleDateString("pt-BR") } | ${ servico.id_status === 3 ? "Concluído" : servico.id_status === 4 ? "Em Andamento" : servico.id_status === 5 ? "Vencido" : servico.id_status === 6 ? "Cancelado" : "Status Desconhecido" }\n`;
         });
 
         const blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
@@ -430,7 +421,11 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                                     <tr key={ index }>
                                         <td>{ servico.nome_cliente }</td>
                                         <td>{ servico.servico }</td>
-                                        <td>R$ { servico.valor_servico }</td>
+                                        <td>
+                                            { parseFloat(servico.valor_servico).toLocaleString("pt-BR",
+                                                { style: "currency", currency: "BRL" })
+                                            }
+                                        </td>
                                         <td>{ servico.aliquota_iss }%</td>
                                         <td>{ servico.id_natureza === 2 ? "PJ" : "PF" }</td>
                                         <td>

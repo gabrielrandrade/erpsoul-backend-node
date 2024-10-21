@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import mask from "../Inc/MaskCpfCnpj.js";
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
@@ -6,6 +7,7 @@ import "jspdf-autotable";
 
 export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseModal }) {
     const [clientes, setClientes] = useState([]);
+    const formatCpfCnpj = (cpfOuCnpj) => { return mask(cpfOuCnpj) }
 
     const [formData, setFormData] = useState({
         nome: "",
@@ -16,16 +18,27 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+
+        if (name === "cpfOuCnpj") {
+            const valorMascarado = mask(value);
+            setFormData({
+                ...formData,
+                [name]: valorMascarado
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value
+            });
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         setClientes([]);
+
+        formData.cpfOuCnpj = formData.cpfOuCnpj.replace(/\D/g, "");
 
         const { nome, cpfOuCnpj, dt_nasc, id_tipo_cliente } = formData;
 
@@ -275,16 +288,6 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
     if (isOpenRelatoriosClientes) {
         document.body.classList.add("modal-open");
 
-        function formatCpfCnpj(value) {
-            if (value.length === 11) {
-                return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-            } else if (value.length === 14) {
-                return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
-            }
-            
-            return value;
-        }
-
         return(
             <> 
                 <div className="formulario">
@@ -313,11 +316,11 @@ export default function RelatoriosClientes({ isOpenRelatoriosClientes, setCloseM
                             <div className="col-6">
                                 <input
                                     type="text"
-                                    name="cpfOuCnpj"
                                     id="cpfOuCnpj"
+                                    name="cpfOuCnpj"
                                     placeholder="CPF ou CNPJ"
-                                    minLength={ 11 }
-                                    maxLength={ 14 }
+                                    minLength={ 14 }
+                                    maxLength={ 18 }
                                     onChange={ handleChange }
                                 />
                                 <select

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import mask from "../Inc/MaskCpfCnpj.js";
 import Swal from "sweetalert2";
 
 export default function ClientesCadastrados({ isOpenClientesCadastrados, setCloseModal }) {
@@ -22,9 +23,12 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
         }
     }, [isOpenClientesCadastrados]);
 
+    const formatCpfCnpj = (cpfOuCnpj) => { return mask(cpfOuCnpj) }
+
     const startEdit = (cliente) => {
         setEditandoId(cliente.id_cliente);
-        setEditandoDados({ nome: cliente.name, cpfOuCnpj: cliente.cpf || cliente.cnpj });
+        const cpfOuCnpj = formatCpfCnpj(cliente.cpf || cliente.cnpj);
+        setEditandoDados({ nome: cliente.nome, cpfOuCnpj });
     }
 
     const cancelEdit = () => {
@@ -34,11 +38,25 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditandoDados({ ...editandoDados, [name]: value });
+
+        if (name === "cpfOuCnpj") {
+            const valorMascarado = mask(value);
+            setEditandoDados({
+                ...editandoDados,
+                [name]: valorMascarado
+            });
+        } else {
+            setEditandoDados({
+                ...editandoDados,
+                [name]: value
+            });
+        }
     }
 
     const saveEdit = (id_cliente) => {
-        const { nome, cpfOuCnpj } = editandoDados;
+       editandoDados.cpfOuCnpj = editandoDados.cpfOuCnpj.replace(/\D/g, "");
+
+       const { nome, cpfOuCnpj } = editandoDados;
 
         if (!nome || !cpfOuCnpj) {
             Swal.fire({
@@ -132,7 +150,8 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
             cancelButtonColor: "#d33",
             confirmButtonText: "Sim, excluir!",
             cancelButtonText: "Cancelar"
-        }).then((result) => {
+        })
+        .then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/api/crm/clientsRegistered/${ id_cliente }/delete`, {
                     method: "PUT",
@@ -167,16 +186,6 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
 
     if (isOpenClientesCadastrados) {
         document.body.classList.add("modal-open");
-
-        function formatCpfCnpj(value) {
-            if (value.length === 11) {
-                return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-            } else if (value.length === 14) {
-                return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
-            }
-            
-            return value;
-        }
 
         return(
             <>
@@ -221,10 +230,11 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
                                                         type="text"
                                                         id="cpfOuCnpj"
                                                         name="cpfOuCnpj" 
+                                                        minLength={ 14 }
+                                                        maxLength={ 18 }
                                                         value={ editandoDados.cpfOuCnpj } 
-                                                        maxLength={ 14 }
-                                                        required
                                                         onChange={ handleInputChange }
+                                                        required
                                                         style={{
                                                             height: "25px",
                                                             color: "#040438"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { NumericFormat } from "react-number-format";
 
 export default function ServicosCadastrados({ isOpenServicosCadastrados, setCloseModal }) {
     const [services, setServices] = useState([]);
@@ -56,6 +57,9 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
     }
 
     const saveEdit = (id_servico) => {
+        editandoDados.val_servico = editandoDados.val_servico.replace(/\D/g, "");
+        // editandoDados.imposto = editandoDados.imposto.replace(/\D/g, "");
+
         const { val_servico, imposto, id_natureza, data_vencimento, status_servico } = editandoDados;
 
         if (!val_servico || !imposto || !id_natureza || !data_vencimento || !status_servico) {
@@ -259,12 +263,16 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                         {editandoId === service.id_servico ? (
                                             <>
                                                 <td>
-                                                    <input
-                                                        type="text"
+                                                    <NumericFormat
                                                         id="val_servico"
                                                         name="val_servico"
+                                                        placeholder="Valor do Serviço (R$)*"
+                                                        maxLength={ 23 }
+                                                        prefix={ "R$ " }
+                                                        decimalSeparator=","
+                                                        thousandSeparator="."
+                                                        decimalScale={ 2 }
                                                         value={ editandoDados.val_servico }
-                                                        maxLength={ 50 }
                                                         onChange={ handleInputChange }
                                                         required
                                                         style={{
@@ -279,7 +287,7 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                                         id="imposto"
                                                         name="imposto"
                                                         value={ editandoDados.imposto }
-                                                        maxLength={ 50 }
+                                                        maxLength={ 7 }
                                                         onChange={ handleInputChange }
                                                         required
                                                         style={{
@@ -377,7 +385,11 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                             </>
                                         ) : (
                                             <>
-                                                <td>R$ { service.valor_servico }</td>
+                                                <td>
+                                                    { parseFloat(service.valor_servico).toLocaleString("pt-BR",
+                                                        { style: "currency", currency: "BRL" })
+                                                    }
+                                                </td>
                                                 <td>{ service.aliquota_iss }%</td>
                                                 <td>{ service.id_natureza === 2 ? "PJ" : "PF" }</td>
                                                 <td>

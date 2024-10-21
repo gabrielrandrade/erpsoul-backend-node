@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { formatCpfCnpj } from "../Inc/MaskCpfCnpj";
 import Swal from "sweetalert2";
+import { NumericFormat } from "react-number-format";
 
 export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal }) {
     const [formData, setFormData] = useState({
@@ -63,6 +65,10 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        formData.cpfOuCnpj = formData.cpfOuCnpj.replace(/\D/g, "");
+        // formData.imposto = formData.imposto.replace(/\D/g, "");
+        formData.val_servico = formData.val_servico.replace(/\D/g, "");
 
         const {
             cliente,
@@ -258,7 +264,7 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                     type="text"
                                     id="cpfOuCnpj"
                                     name="cpfOuCnpj"
-                                    value={ formData.cpfOuCnpj }
+                                    value={ formatCpfCnpj(formData.cpfOuCnpj) }
                                     onChange={ handleClienteChange }
                                     readOnly
                                     required
@@ -310,6 +316,10 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                                     id="imposto"
                                     name="imposto"
                                     placeholder="Alíquota ISS (%)*"
+                                    maxLength={ 7 }
+                                    // min="0.01"
+                                    // step="0.01"
+                                    value={ formData.imposto }
                                     onChange={ handleChange }
                                     required
                                 />
@@ -317,11 +327,16 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input
-                                    type="text"
+                                <NumericFormat
                                     id="val_servico"
                                     name="val_servico"
                                     placeholder="Valor do Serviço (R$)*"
+                                    maxLength={ 23 }
+                                    prefix={ "R$ " }
+                                    decimalSeparator=","
+                                    thousandSeparator="."
+                                    decimalScale={ 2 }
+                                    value={ formData.val_servico }
                                     onChange={ handleChange }
                                     required
                                 />

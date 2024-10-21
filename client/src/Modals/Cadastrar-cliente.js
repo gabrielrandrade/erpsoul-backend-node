@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import mask from "../Inc/MaskCpfCnpj.js";
 import Swal from "sweetalert2";
+import InputMask from "react-input-mask";
 
 export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal }) {
     const [formData, setFormData] = useState({
@@ -17,14 +19,26 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+
+        if (name === "cpfOuCnpj") {
+            const valorMascarado = mask(value);
+            setFormData({
+                ...formData,
+                [name]: valorMascarado
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value
+            });
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        formData.cpfOuCnpj = formData.cpfOuCnpj.replace(/\D/g, "");
+        formData.cep = formData.cep.replace(/\D/g, "");
 
         const { nome, cpfOuCnpj, id_tipo_cliente, logradouro, numero, cep, bairro, cidade, uf } = formData;
 
@@ -203,10 +217,11 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                                         id="cpfOuCnpj"
                                         name="cpfOuCnpj"
                                         placeholder="CPF ou CNPJ"
-                                        minLength={ 11 }
-                                        maxLength={ 14 }
-                                        required
+                                        minLength={ 14 }
+                                        maxLength={ 18 }
+                                        value={ formData.cpfOuCnpj }
                                         onChange={ handleChange }
+                                        required
                                     />
                                 </div>
                             </div>
@@ -252,15 +267,17 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input
-                                        type="text"
+                                    <InputMask
+                                        mask="99999-999"
                                         id="cep"
                                         name="cep"
                                         placeholder="CEP"
-                                        maxLength={ 8 }
+                                        value={ formData.cep }
                                         onChange={ handleChange }
                                         required
-                                    />
+                                    >
+                                        { (inputProps) => <input { ...inputProps } type="text" /> }
+                                    </InputMask>
                                 </div>
                             </div>
                             <div className="row">

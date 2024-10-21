@@ -9,6 +9,8 @@ const NovaSenha = () => {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [confSenha, setConfSenha] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfPassword, setShowConfPassword] = useState(false);
     const [idRec, setIdRec] = useState("");
     const navigate = useNavigate();
 
@@ -46,6 +48,14 @@ const NovaSenha = () => {
     const handleChangeSenha = (e) => { setSenha(e.target.value) }
 
     const handleChangeConfSenha = (e) => { setConfSenha(e.target.value) }
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    }
+
+    const handleToggleConfPassword = () => {
+        setShowConfPassword(!showConfPassword);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -193,32 +203,68 @@ const NovaSenha = () => {
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-12">
+                                            <div className="col-12" style={{ position: "relative" }}>
                                                 <label className="labelSenha">Digite sua nova senha:</label>
                                                 <input
-                                                    type="password"
-                                                    name="senha"
+                                                    type={ showPassword ? "text" : "password" }
                                                     id="senha"
-                                                    placeholder="Nova Senha"
+                                                    name="senha"
+                                                    placeholder="Nova Senha*"
                                                     maxLength={ 60 }
                                                     onChange={ handleChangeSenha }
                                                     value={ senha }
                                                     required
                                                 />
+                                                {senha && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={ handleTogglePassword }
+                                                        style={{
+                                                            color: "#FFF",
+                                                            position: "absolute",
+                                                            right: "10px",
+                                                            top: "60%",
+                                                            transform: "translateY(-50%)",
+                                                            background: "none",
+                                                            border: "none",
+                                                            cursor: "pointer"
+                                                        }}
+                                                    >
+                                                        { showPassword ? "Ocultar" : "Mostrar" }
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-12">
+                                            <div className="col-12" style={{ position: "relative" }}>
                                                 <input
-                                                    type="password"
-                                                    name="confSenha"
+                                                    type={ showConfPassword ? "text" : "password" }
                                                     id="confSenha"
-                                                    placeholder="Repita Nova Senha"
+                                                    name="confSenha"
+                                                    placeholder="Repita Nova Senha*"
                                                     maxLength={ 60 }
                                                     onChange={ handleChangeConfSenha }
                                                     value={ confSenha }
                                                     required
                                                 />
+                                                {confSenha && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={ handleToggleConfPassword }
+                                                        style={{
+                                                            color: "#FFF",
+                                                            position: "absolute",
+                                                            right: "10px",
+                                                            top: "40%",
+                                                            transform: "translateY(-50%)",
+                                                            background: "none",
+                                                            border: "none",
+                                                            cursor: "pointer"
+                                                        }}
+                                                    >
+                                                        { showConfPassword ? "Ocultar" : "Mostrar" }
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="btn">

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import mask from "../Inc/MaskCpfCnpj.js";
 import Swal from "sweetalert2";
+import InputMask from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 
 export default function TesteGratis({ isOpenTesteGratis }) {
     const navigate = useNavigate();
@@ -19,10 +22,19 @@ export default function TesteGratis({ isOpenTesteGratis }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+
+        if (name === "cpfOuCnpj") {
+            const valorMascarado = mask(value);
+            setFormData({
+                ...formData,
+                [name]: valorMascarado
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value
+            });
+        }
     }
 
     const handleTogglePassword = () => {
@@ -31,6 +43,10 @@ export default function TesteGratis({ isOpenTesteGratis }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        formData.whatsapp = formData.whatsapp.replace(/\D/g, "");
+        formData.cpfOuCnpj = formData.cpfOuCnpj.replace(/\D/g, "");
+        formData.faturamento = formData.faturamento.replace(/\D/g, "");
 
         const {
             nome,
@@ -360,15 +376,17 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input
-                                        type="text"
+                                    <InputMask
+                                        mask="(99) 99999-9999"
                                         id="whatsapp"
                                         name="whatsapp"
                                         placeholder="Nº de WhatsApp* Ex. (11) 91111-0000"
-                                        maxLength={ 14 }
+                                        value={ formData.whatsapp }
                                         onChange={ handleChange }
                                         required
-                                    />
+                                    >
+                                        { (inputProps) => <input { ...inputProps } type="text" /> }
+                                    </InputMask>
                                 </div>
                             </div>
                             <div className="row">
@@ -391,8 +409,9 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                                         id="cpfOuCnpj"
                                         name="cpfOuCnpj"
                                         placeholder="CPF/CNPJ*"
-                                        minLength={ 11 }
-                                        maxLength={ 14 }
+                                        minLength={ 14 }
+                                        maxLength={ 18 }
+                                        value={ formData.cpfOuCnpj }
                                         onChange={ handleChange }
                                         required
                                     />
@@ -425,12 +444,16 @@ export default function TesteGratis({ isOpenTesteGratis }) {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <input
-                                        type="text"
+                                    <NumericFormat
                                         id="faturamento"
                                         name="faturamento"
                                         placeholder="Faturamento"
-                                        maxLength={ 20 }
+                                        maxLength={ 23 }
+                                        prefix={ "R$ " }
+                                        decimalSeparator=","
+                                        thousandSeparator="."
+                                        decimalScale={ 2 }
+                                        value={ formData.faturamento }
                                         onChange={ handleChange }
                                     />
                                 </div>
