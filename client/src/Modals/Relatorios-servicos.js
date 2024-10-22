@@ -400,8 +400,8 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                             </button>
                         </div>
                     </form>
-                    <div className="rel-clientes">
-                        <table id="table-rel-clientes">
+                    <div className="rel-servicos">
+                        <table id="table-rel-servicos">
                             <tr>
                                 <th>Cliente</th>
                                 <th>Serviço</th> 
@@ -414,7 +414,9 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
 
                             {servicos.length === 0 ? (
                                 <tr>
-                                    <td colSpan="7">Serviços não foram encontrados.</td>
+                                    <td colSpan="7" style={{ textAlign: "center" }}>
+                                        Serviços não foram encontrados.
+                                    </td>
                                 </tr>
                             ) : (
                                 servicos.map((servico, index) => (

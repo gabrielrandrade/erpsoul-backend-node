@@ -441,12 +441,14 @@ button{
     .mainGratuito .container #busca-rapida{margin-top: -100px}
 
     .mainGratuito #busca-rapida .lista-menu-rapido .menu-rapido a:hover{color: var(--fc-primary)}
-    
-    .mainGratuito .container .ajuda .para1{margin-bottom: -54px}
+
+    .mainGratuito .container .ajuda{margin: 20px 0 -10px 0}
+
+    .mainGratuito .container .ajuda .para1{margin-bottom: -28px}
+
+    .mainGratuito .container .ajuda .para2{margin-top: -30px}
 
     .mainGratuito .container .ajuda .para1 a:hover{color: #00968f}
-
-    .mainGratuito .container .ajuda{margin: 19px 0 0 0}
 }
 
 /* Tela Desktop - Largo */
@@ -637,10 +639,9 @@ button{
         float: left;
         border-radius: 11px;
         margin-top: 50px;
-        margin-left: 13.5%;
+        margin-left: -18%;
         text-align: center;
         box-shadow: 10px 10px 10px rgba(0,0,0, 0.25);  
-        position: relative;
         right: 540px;
     }
 
@@ -710,7 +711,8 @@ button{
         align-items: center;
     }
 
-    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar, .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-assinar,
+    .mainGratuito #acessar-erp #acesso-gratuito-cor .btn-acessar{
         width: 100%;
         height: 30px;
         border-radius: 11px;
@@ -726,7 +728,6 @@ button{
         margin-left: 20%;
         border-radius: 11px;
         box-shadow: 10px 10px 10px rgba(0,0,0, 0.25);
-        position: relative; 
         bottom: 225px;  
     }
 
@@ -744,12 +745,12 @@ button{
         margin-right: 15%;
     }
 
-    .mainGratuito #resumo-vendas  .mes-anterior{
+    .mainGratuito #resumo-vendas .mes-anterior{
         float: left;
         margin-left: 10%;
     }
 
-    .mainGratuito #resumo-vendas  .valor-anterior{
+    .mainGratuito #resumo-vendas .valor-anterior{
         float: left;
         margin-left: 25%;
     }
@@ -771,7 +772,7 @@ button{
         margin-left: 10%;
     }
 
-    .mainGratuito #resumo-vendas  .valor-atual{
+    .mainGratuito #resumo-vendas .valor-atual{
         float: left;
         margin-left: 29%;
     }
@@ -784,6 +785,7 @@ button{
     .mainGratuito .container .ajuda{
         width: 70%;
         height: 114px;
+        margin-top: 20px;
         margin-left: 37%;
     }
 

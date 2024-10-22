@@ -254,7 +254,9 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
 
                             {services.length === 0 ? (
                                 <tr>
-                                    <td colSpan="7">Não há serviços cadastrados.</td>
+                                    <td colSpan="7" style={{ textAlign: "center" }}>
+                                        Não há serviços cadastrados.
+                                    </td>
                                 </tr>
                             ) : (
                                 services.map((service, index) => (
@@ -284,18 +286,24 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                                                     />
                                                 </td>
                                                 <td>
-                                                    <input
-                                                        type="text"
+                                                    <NumericFormat
                                                         id="imposto"
                                                         name="imposto"
-                                                        value={ editandoDados.imposto }
+                                                        placeholder="Alíquota ISS (%)*"
                                                         maxLength={ 7 }
-                                                        onChange={ handleInputChange }
-                                                        required
-                                                        style={{
-                                                            height: "25px",
-                                                            color: "#040438"
+                                                        value={ editandoDados.imposto }
+                                                        onValueChange={(values) => {
+                                                            const { value } = values;
+                                                            setEditandoDados({
+                                                                ...editandoDados,
+                                                                imposto: value
+                                                            });
                                                         }}
+                                                        decimalScale={ 2 }
+                                                        fixedDecimalScale={ true }
+                                                        allowNegative={ true }
+                                                        suffix="%"
+                                                        required
                                                     />
                                                 </td>
                                                 <td>

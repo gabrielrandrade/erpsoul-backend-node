@@ -92,8 +92,8 @@ export default function HomeGratuito() {
                             <div id="alterar-usuario" data-aos="fade-right">
                                 <div>
                                     <Link className="icon" to="#"><i class="fa-regular fa-circle-user"></i></Link>
-                                    <p className="email-usuario"><b>{ user.email }</b></p>
-                                    <p className="plano-usuario">Plano Gratuito</p>
+                                    <p><b>{ user.nome }</b></p>
+                                    <p className="email-usuario">{ user.email }</p>
                                     <button className="alterar-dados">
                                         <Link to="#" className="btn-alterar">Alterar</Link>
                                     </button>
@@ -163,13 +163,13 @@ export default function HomeGratuito() {
                             </div>
                             <div id="acessar-erp" data-aos="fade-right">
                                 <div id="acesso-gratuito">
-                                    <p className="restante-gratuito">7 dias restantes na Soul</p>
+                                    <p className="restante-gratuito">30 dias restantes na Soul</p>
                                 </div>
                                 <div id="acesso-gratuito-cor">    
                                     <div id="logo-acesso">
                                         <img src={ logoPequeno } title="ERP - SOUL" alt="Logotipo" />
                                     </div>
-                                    <p><b>{ user.nome }</b></p>
+                                    <p className="plano-usuario"><b>Plano Gratuito</b></p>
                                     <button className="assinar-erp">
                                         <Link to="/pagamento" className="btn-assinar">Assinar</Link>
                                     </button>

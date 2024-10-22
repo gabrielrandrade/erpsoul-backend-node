@@ -310,14 +310,23 @@ export default function CadastrarServico({ isOpenCadastrarServico, setCloseModal
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <input
-                                    type="text"
+                                <NumericFormat
                                     id="imposto"
                                     name="imposto"
                                     placeholder="Alíquota ISS (%)*"
                                     maxLength={ 7 }
                                     value={ formData.imposto }
-                                    onChange={ handleChange }
+                                    onValueChange={(values) => {
+                                        const { value } = values;
+                                        setFormData({
+                                            ...formData,
+                                            imposto: value
+                                        });
+                                    }}
+                                    decimalScale={ 2 }
+                                    fixedDecimalScale={ true }
+                                    allowNegative={ true }
+                                    suffix="%"
                                     required
                                 />
                             </div>

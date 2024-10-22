@@ -202,7 +202,9 @@ export default function ClientesCadastrados({ isOpenClientesCadastrados, setClos
 
                             {clientes.length === 0 ? (
                                 <tr>
-                                    <td colSpan="3">Não há clientes cadastrados.</td>
+                                    <td colSpan="3" style={{ textAlign: "center" }}>
+                                        Não há clientes cadastrados.
+                                    </td>
                                 </tr>
                             ) : (
                                 clientes.map((cliente, index) => (
