@@ -3,7 +3,7 @@ const connectDB = require("../config/db.js");
 exports.findClient = async (cpfOuCnpj, id) => {
     const db = await connectDB();
     return await db.query(`
-        SELECT cpf, cnpj FROM tb_cliente WHERE id_usuario = ? AND (cpf = ? OR cnpj = ?)`,
+        SELECT cpf, cnpj FROM tb_cliente WHERE id_usuario = ? AND id_status != 1 AND (cpf = ? OR cnpj = ?)`,
         [
             id,
             cpfOuCnpj.length === 11 ? cpfOuCnpj : null,

@@ -123,6 +123,7 @@ exports.reports = async (id_usuario, nome_cliente, cod_servico, servico, data_ve
             AND (s.servico = ? OR ? IS NULL)
             AND (s.dt_vencimento = ? OR ? IS NULL)
             AND (s.id_status = ? OR ? IS NULL)
+            AND (s.id_status != 1)
         `,
         [
             id_usuario,
