@@ -4,7 +4,7 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const express = require("express");
 const connectDB = require("./config/db.js");
-const rateLimit = require("express-rate-limit");
+// const rateLimit = require("express-rate-limit");
 const apiRoutes = require("./routes/apiRoutes.js");
 const checkDBConnection = require("./middlewares/checkDBConnection.js");
 
