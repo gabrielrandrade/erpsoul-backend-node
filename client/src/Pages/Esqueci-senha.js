@@ -42,8 +42,8 @@ const EsqueciSenha = () => {
                 return;
             }
 
-            // fetch("http://localhost:5000/api/user/forgot-password", {
-            fetch("https://soulerp.srv-tii.com.br/api/user/forgot-password", {
+            // fetch("https://soulerp.srv-tii.com.br/api/user/forgot-password", {
+            fetch("http://localhost:5000/api/user/forgot-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

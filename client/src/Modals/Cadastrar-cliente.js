@@ -150,8 +150,8 @@ export default function CadastrarCliente({ isOpenCadastrarCliente, setCloseModal
             
             const token = localStorage.getItem("token");
 
-            // fetch("http://localhost:5000/api/crm/register", {
-            fetch("https://soulerp.srv-tii.com.br/api/crm/register", {
+            // fetch("https://soulerp.srv-tii.com.br/api/crm/register", {
+            fetch("http://localhost:5000/api/crm/register", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${ token }`,

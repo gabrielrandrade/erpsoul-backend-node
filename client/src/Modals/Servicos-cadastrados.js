@@ -17,8 +17,8 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         if (isOpenServicosCadastrados) {
             const token = localStorage.getItem("token");
 
-            // fetch("http://localhost:5000/api/service/servicesRegistered", {
-            fetch("https://soulerp.srv-tii.com.br/api/service/servicesRegistered", {
+            // fetch("https://soulerp.srv-tii.com.br/api/service/servicesRegistered", {
+            fetch("http://localhost:5000/api/service/servicesRegistered", {
                 method: "GET",
                 headers: { "Authorization": `Bearer ${ token }` }
             })
@@ -105,8 +105,8 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                 confirmButtonColor: "#00968F"
             });
         } else {
-            // fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/edit`, {
-            fetch(`https://soulerp.srv-tii.com.br/api/service/servicesRegistered/${ id_servico }/edit`, {
+            // fetch(`https://soulerp.srv-tii.com.br/api/service/servicesRegistered/${ id_servico }/edit`, {
+            fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/edit`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -160,8 +160,8 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
                         confirmButtonColor: "#00968F"
                     });
 
-                    // fetch("http://localhost:5000/api/service/servicesRegistered", {
-                    fetch("https://soulerp.srv-tii.com.br/api/service/servicesRegistered", {
+                    // fetch("https://soulerp.srv-tii.com.br/api/service/servicesRegistered", {
+                    fetch("http://localhost:5000/api/service/servicesRegistered", {
                         method: "GET",
                         headers: { 
                             "Authorization": `Bearer ${ localStorage.getItem("token" )}`
@@ -204,8 +204,8 @@ export default function ServicosCadastrados({ isOpenServicosCadastrados, setClos
         })
         .then((result) => {
             if (result.isConfirmed) {
-                // fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/delete`, {
-                fetch(`https://soulerp.srv-tii.com.br/api/service/servicesRegistered/${ id_servico }/delete`, {
+                // fetch(`https://soulerp.srv-tii.com.br/api/service/servicesRegistered/${ id_servico }/delete`, {
+                fetch(`http://localhost:5000/api/service/servicesRegistered/${ id_servico }/delete`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"

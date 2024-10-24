@@ -24,8 +24,8 @@ export default function Estoque() {
 
         const fetchUserData = async () => {
             try {
-                // let response = await fetch("http://localhost:5000/api/private-route", {
-                let response = await fetch("https://soulerp.srv-tii.com.br/api/private-route", {
+                // let response = await fetch("https://soulerp.srv-tii.com.br/api/private-route", {
+                let response = await fetch("http://localhost:5000/api/private-route", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
