@@ -7,8 +7,8 @@ let pool = null;
 
 async function connectDB() {
     try {
-        // Por não ter uma senha, !process.env.DB_PASSWORD precisa ser removido
-        if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_NAME) {
+        // !process.env.DB_PASSWORD caso não tenha senha, retirar a verificação de senha
+        if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_NAME || !process.env.DB_PASSWORD) {
             throw new Error("Faltam variáveis de ambiente para a conexão ao banco de dados!");
         }
 

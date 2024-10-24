@@ -58,7 +58,8 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
         } else {
             const token = localStorage.getItem("token");
 
-            fetch("http://localhost:5000/api/service/reports", {
+            // fetch("http://localhost:5000/api/service/reports", {
+            fetch("https://soulerp.srv-tii.com.br/api/service/reports", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${ token }`,
@@ -143,7 +144,8 @@ export default function RelatoriosServicos({ isOpenRelatoriosServicos, setCloseM
                 if (result.isConfirmed) {
                     const servicoIds = servicos.map(servico => servico.id_servico);
 
-                    fetch("http://localhost:5000/api/service/exportReports", {
+                    // fetch("http://localhost:5000/api/service/exportReports", {
+                    fetch("https://soulerp.srv-tii.com.br/api/service/exportReports", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

@@ -4,7 +4,7 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const express = require("express");
 const connectDB = require("./config/db.js");
-// const rateLimit = require("express-rate-limit");
+const rateLimit = require("express-rate-limit");
 const apiRoutes = require("./routes/apiRoutes.js");
 const checkDBConnection = require("./middlewares/checkDBConnection.js");
 
@@ -16,7 +16,6 @@ app.use(xss()); // Prevenção contra ataques de cross-site scripting (XSS)
 app.use(cors());
 app.use(express.json());
 
-/*
 // Limitar requisições (para evitar DoS)
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -25,7 +24,6 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-*/
 
 // Conexão com o banco de dados e inicialização do servidor
 (async () => {

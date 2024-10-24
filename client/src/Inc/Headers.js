@@ -18,7 +18,8 @@ function Headers() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem("token");
-                fetch("http://localhost:5000/api/user/logout", {
+                // fetch("http://localhost:5000/api/user/logout", {
+                fetch("https://soulerp.srv-tii.com.br/api/user/logout", {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${ token }`,

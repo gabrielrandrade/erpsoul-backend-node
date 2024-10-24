@@ -22,7 +22,8 @@ export default function HomeGratuito() {
     
         const fetchData = async () => {
             try {
-                const userResponse = await fetch("http://localhost:5000/api/home", {
+                // const userResponse = await fetch("http://localhost:5000/api/home", {
+                const userResponse = await fetch("https://soulerp.srv-tii.com.br/api/home", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${ token }`,
@@ -50,11 +51,13 @@ export default function HomeGratuito() {
                 setUser(userData);
     
                 const [clientesResponse, servicesResponse] = await Promise.all([
-                    fetch("http://localhost:5000/api/crm/clientsRegistered", {
+                    // fetch("http://localhost:5000/api/crm/clientsRegistered", {
+                    fetch("https://soulerp.srv-tii.com.br/api/crm/clientsRegistered", {
                         method: "GET",
                         headers: { "Authorization": `Bearer ${ token }` }
                     }),
-                    fetch("http://localhost:5000/api/service/servicesRegistered", {
+                    // fetch("http://localhost:5000/api/service/servicesRegistered", {
+                    fetch("https://soulerp.srv-tii.com.br/api/service/servicesRegistered", {
                         method: "GET",
                         headers: { "Authorization": `Bearer ${ token }` }
                     })

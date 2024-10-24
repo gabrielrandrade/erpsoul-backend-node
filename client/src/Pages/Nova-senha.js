@@ -85,7 +85,8 @@ const NovaSenha = () => {
                 confirmButtonColor: "#00968F"
             });
         } else {
-            fetch("http://localhost:5000/api/user/reset-password", {
+            // fetch("http://localhost:5000/api/user/reset-password", {
+            fetch("https://soulerp.srv-tii.com.br/api/user/reset-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

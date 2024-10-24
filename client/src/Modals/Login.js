@@ -49,7 +49,8 @@ export default function Login({ isOpenLogin }) {
         } else {
             const conectado = document.getElementById("conectado").checked;
 
-            fetch("http://localhost:5000/api/user/login", {
+            // fetch("http://localhost:5000/api/user/login", {
+            fetch("https://soulerp.srv-tii.com.br/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
