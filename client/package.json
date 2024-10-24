@@ -1,7 +1,7 @@
 {
   "name": "erpsoul-backend-node",
   "version": "0.1.0",
-  "homepage": "https://soulerp.srv-tii.com.br/",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm install --production",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

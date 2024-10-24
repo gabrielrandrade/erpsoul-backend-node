@@ -12,10 +12,11 @@ const PrivateRoute = ({ children }) => {
             icon: "error",
             confirmButtonColor: "#00968F"
         });
+
         return <Navigate to="/" state={{ showLoginModal: true }} />;
     }
 
     return children;
-};
+}
 
 export default PrivateRoute;
