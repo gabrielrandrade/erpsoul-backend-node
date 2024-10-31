@@ -23,7 +23,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone o repositório do GitHub:
 
 ```
-git clone https://github.com/DevoluaP/erpsoul-backend-node.git
+git clone https://github.com/gabrielrandrade/erpsoul-backend-node.git
 cd erpsoul-backend-node
 ```
 
